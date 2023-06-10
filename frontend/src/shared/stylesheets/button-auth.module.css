@@ -1,0 +1,21 @@
+sl-button.btn-sign-up {
+  width: 100%;
+  margin-top: 10px;
+}
+
+sl-button.btn-sign-up::part(base) {
+  border: none;
+  min-height: 2.5rem;
+  padding: 0.1rem;
+  background-color: #03001c;
+  border-radius: var(--sl-border-radius-medium);
+  font-size: 1.3rem;
+  box-shadow: 0 4px 2px -2px gray;
+}
+
+/*Mobile devices*/
+@media only screen and (max-width: 600px) {
+  sl-button.btn-sign-up::part(base) {
+    font-size: var(--sl-button-font-size-medium);
+  }
+}

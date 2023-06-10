@@ -1,0 +1,3 @@
+liveResults: -json de forma celui din getLocations.js cu toate judetele impreuna cu numarul de voturi, update in fiecare ora
+
+results: -

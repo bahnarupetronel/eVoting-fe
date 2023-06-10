@@ -1,0 +1,23 @@
+.cards-container {
+  width: 100%;
+  margin-top: 3%;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+img {
+  object-fit: fill;
+}
+
+.card {
+  flex: 1 0 20%; /* explanation below */
+  width: 20%;
+  min-width: 200px;
+  margin: 5px;
+}
+/* 
+@media only screen and (max-width: 600px) {
+  img {
+    height: 49vh;
+  }
+} */
