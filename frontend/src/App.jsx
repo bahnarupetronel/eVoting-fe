@@ -51,9 +51,9 @@ function App() {
           <Route
             path="/logout"
             element={
-              // <ProtectedRoute>
-              <Logout />
-              // </ProtectedRoute>
+              <ProtectedRoute>
+                <Logout />
+              </ProtectedRoute>
             }
           />
           <Route
