@@ -42,9 +42,9 @@ function App() {
           <Route path="" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
-          <Route path="/register/form1" element={<Form1 />} />
+          {/* <Route path="/register/form1" element={<Form1 />} />
           <Route path="/register/form2" element={<Form2 />} />
-          <Route path="/register/form3" element={<Form3 />} />
+          <Route path="/register/form3" element={<Form3 />} /> */}
           <Route path="/register/confirm" element={<Confirm />} />
           <Route path="/about" element={<About />} />
           <Route path="/vote/locations" element={<VoteLocations />} />

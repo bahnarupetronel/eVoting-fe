@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useAppState } from "../../../context/form/state";
 import { Button, Form, Field, Input } from "./fields/index.js";
 
-const Form2 = () => {
+const Form2 = ({ changeLocation }) => {
   const [state, setState] = useAppState();
   const {
     handleSubmit,
@@ -18,12 +18,12 @@ const Form2 = () => {
 
   const saveData = (data) => {
     setState({ ...state, ...data });
-    navigate("/register/form3");
+    changeLocation("form3");
   };
 
   const goToPrevious = (data) => {
-    data ? setState({ ...state, ...data }) : console.log("no update");
-    navigate("/register");
+    data ? setState({ ...state, ...data }) : "";
+    changeLocation("form1");
   };
 
   return (
@@ -34,7 +34,7 @@ const Form2 = () => {
           <Input
             placeholder="Address"
             className={errors?.address1 ? "field-error" : "no-field-error"}
-            {...register("address1", {
+            {...register("addressLine1", {
               required: "Address 1 is required",
             })}
             id="address1"
@@ -44,7 +44,7 @@ const Form2 = () => {
           <Input
             placeholder="Address"
             className={errors?.address2 ? "field-error" : "no-field-error"}
-            {...register("address2")}
+            {...register("addressLine2")}
             id="address2"
           />
         </Field>
@@ -62,7 +62,7 @@ const Form2 = () => {
           <Input
             placeholder="Zip/postal code "
             className={errors?.zip ? "field-error" : "no-field-error"}
-            {...register("zipCode", {
+            {...register("postalCode", {
               required: "Zip/ postal code is required",
             })}
             id="zip"
@@ -100,7 +100,7 @@ const Form2 = () => {
         </Field>
         <div className="button-row">
           <Button onClick={handleSubmit(goToPrevious)}>{"<"} Previous</Button>
-          <Button>Next {">"}</Button>
+          <Button onClick={handleSubmit(saveData)}>Next {">"}</Button>
         </div>
       </fieldset>
     </Form>

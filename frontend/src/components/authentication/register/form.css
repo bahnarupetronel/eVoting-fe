@@ -25,7 +25,11 @@ h4 {
   border-bottom: 3px solid #19376d;
 }
 
-.btn-edit,
+.btn-edit {
+  background-color: #19376d;
+  color: fff;
+}
+
 .state-info {
   color: #19376d;
   font-weight: 600;
@@ -33,4 +37,14 @@ h4 {
 
 .p-confirm {
   text-align: left;
+}
+
+.ReactModal__Content {
+  width: 50%;
+  height: 50%;
+  margin: auto;
+}
+
+.image-link {
+  cursor: pointer;
 }
