@@ -7,10 +7,15 @@ import {
   isPasswordValid,
   loginFormErrors,
 } from "../../../shared/utils/validateForm";
+import loginUser from "./loginUser";
+import { NotificationManager } from "react-notifications";
+import "react-notifications/lib/notifications.css";
+import { useNavigate } from "react-router-dom";
 
 const LoginForm = () => {
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
+  const navigate = useNavigate();
 
   const addHiddenAttribute = () => {
     const spanError = document.querySelector("#invalid-entries");
@@ -45,12 +50,35 @@ const LoginForm = () => {
     setPassword(e.target.value);
   };
   const x = 10;
-  function handleSubmit(event) {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     addHiddenAttribute();
     removeErrorClass();
     if (!isEmailValid(email) || !isPasswordValid(password)) showError();
-  }
+    else {
+      const body = {
+        password: password,
+        email: email,
+      };
+      const response = await loginUser(body);
+      if (response.status === 200) {
+        NotificationManager.success(
+          "Your login was successful.",
+          "Successfully logged in. ",
+          5000
+        );
+        const data = await response.text();
+        localStorage.setItem("isUserLoggedIn", true);
+        navigate("/");
+      } else {
+        NotificationManager.error(
+          "We're sorry, but your login was unsuccessful. Incorrect email or password",
+          "Login failed",
+          5000
+        );
+      }
+    }
+  };
   return (
     <div className={styles["form-container"]}>
       <form onSubmit={handleSubmit} className={styles["form-module"]}>

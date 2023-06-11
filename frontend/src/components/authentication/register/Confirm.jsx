@@ -14,6 +14,7 @@ import registerUser from "./utils/registerUser";
 import { NotificationManager } from "react-notifications";
 import "react-notifications/lib/notifications.css";
 import { useNavigate } from "react-router-dom";
+
 const Confirm = ({ changeLocation, file }) => {
   const [state] = useAppState();
   const { handleSubmit } = useForm({ defaultValues: state });
