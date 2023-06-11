@@ -6,7 +6,7 @@ export const Section = ({ title, children, handleClick }) => {
       <div className="title-row mb-4">
         <h4>{title}</h4>
         <button className={`btn-edit`} onClick={handleClick}>
-          Edit
+          Editeaza
         </button>
       </div>
       <div className="content">{children}</div>

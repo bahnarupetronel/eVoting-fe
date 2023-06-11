@@ -82,42 +82,42 @@ const LoginForm = () => {
   return (
     <div className={styles["form-container"]}>
       <form onSubmit={handleSubmit} className={styles["form-module"]}>
-        <h2>Login now</h2>
+        <h2>Intra in cont</h2>
         <span role="alert" id="invalid-form" aria-hidden="true" hidden>
-          All inputs and selects are mandatory.
+          Toate campurile sunt obligatorii
         </span>
         <SlInput
           name="email"
           label="Email"
           className="email"
-          placeholder="Enter your email"
+          placeholder="Introduceti email-ul"
           autocomplete
           onSlChange={handleEmailChange}
         />
         <SlInput
           type="password"
           name="password"
-          label="Password"
+          label="Parola"
           className="password"
-          placeholder="Enter a password"
+          placeholder="Introduceti parola"
           password-toggle
           onSlChange={handlePasswordChange}
         />
         <span id="invalid-entries" aria-hidden="true" hidden>
-          Invalid email or password.
+          Parola sau email invalid.
         </span>
         <SlButton
           type="submit"
           variant="primary"
           className={btn["btn-sign-up"]}
         >
-          Sign up
+          Inregistreaza-te
         </SlButton>
         <p>
-          Don't have an account? <a href="/register"> Join now.</a>
+          Nu ai un cont? <a href="/register"> Poti crea unul acum!</a>
         </p>
         <p>
-          Forgot password? <a href="/reset-password"> Reset now.</a>
+          Ai uitat parola? <a href="/reset-password"> Resetare parola.</a>
         </p>
       </form>
     </div>

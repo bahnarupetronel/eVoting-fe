@@ -29,78 +29,78 @@ const Form2 = ({ changeLocation }) => {
   return (
     <Form onSubmit={handleSubmit(saveData)}>
       <fieldset>
-        <legend>Address</legend>
-        <Field label="Address line 1*" error={errors?.address1}>
+        <legend>Adresa</legend>
+        <Field label="Adresa 1*" error={errors?.addressLine1}>
           <Input
-            placeholder="Address"
-            className={errors?.address1 ? "field-error" : "no-field-error"}
+            placeholder="Adresa"
+            className={errors?.addressLine1 ? "field-error" : "no-field-error"}
             {...register("addressLine1", {
-              required: "Address 1 is required",
+              required: "Adresa 1 e obligatorie",
             })}
-            id="address1"
+            id="addressLine1"
           />
         </Field>
-        <Field label="Address line 2" error={errors?.address2}>
+        <Field label="Adresa 2" error={errors?.addressLine2}>
           <Input
-            placeholder="Address"
-            className={errors?.address2 ? "field-error" : "no-field-error"}
+            placeholder="Adresa"
+            className={errors?.addressLine2 ? "field-error" : "no-field-error"}
             {...register("addressLine2")}
-            id="address2"
+            id="addressLine2"
           />
         </Field>
-        <Field label="Phone number*" error={errors?.phoneNumber}>
+        <Field label="Numarul de telefon*" error={errors?.phoneNumber}>
           <Input
-            placeholder="Phone number"
+            placeholder="Numarul de telefon"
             className={errors?.zip ? "field-error" : "no-field-error"}
             {...register("phoneNumber", {
-              required: "Phone number code is required",
+              required: "Numarul de telefon este obligatoriu!",
             })}
             id="phoneNumber"
           />
         </Field>
-        <Field label="Zip/Postal code*" error={errors?.zip}>
+        <Field label="Zip/Postal code*" error={errors?.postalCode}>
           <Input
-            placeholder="Zip/postal code "
-            className={errors?.zip ? "field-error" : "no-field-error"}
+            placeholder="Cod postal"
+            className={errors?.postalCode ? "field-error" : "no-field-error"}
             {...register("postalCode", {
-              required: "Zip/ postal code is required",
+              required: "Cod postal",
             })}
-            id="zip"
+            id="postalCode"
           />
         </Field>
-        <Field label="City*" error={errors?.city}>
+        <Field label="Oras*" error={errors?.city}>
           <Input
-            placeholder="City"
+            placeholder="Oras"
             className={errors?.city ? "field-error" : "no-field-error"}
             {...register("city", {
-              required: "City is required",
+              required: "Orasul este obligatoriu!",
             })}
             id="city"
           />
         </Field>
-        <Field label="State/Province*" error={errors?.state}>
+        <Field label="Judet*" error={errors?.state}>
           <Input
             placeholder="State"
             className={errors?.state ? "field-error" : "no-field-error"}
             {...register("state", {
-              required: "State is required",
+              required: "Judetul este obligatoriu",
             })}
-            id="county"
+            id="state"
           />
         </Field>
-        <Field label="Country*" error={errors?.country}>
+        <Field label="Tara*" error={errors?.country}>
           <Input
-            placeholder="Country"
+            placeholder="Tara"
             className={errors?.country ? "field-error" : "no-field-error"}
             {...register("country", {
-              required: "Country is required",
+              required: "Tara este obligatorie!",
             })}
             id="country"
           />
         </Field>
         <div className="button-row">
-          <Button onClick={handleSubmit(goToPrevious)}>{"<"} Previous</Button>
-          <Button onClick={handleSubmit(saveData)}>Next {">"}</Button>
+          <Button onClick={handleSubmit(goToPrevious)}>{"<"} Inapoi</Button>
+          <Button onClick={handleSubmit(saveData)}>Urmatorul {">"}</Button>
         </div>
       </fieldset>
     </Form>

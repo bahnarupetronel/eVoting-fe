@@ -16,13 +16,12 @@ import Button from "@mui/material/Button";
 import { useState } from "react";
 
 const drawerWidth = 240;
-const navItems = ["Home", "Vote", "Results", "About", "Account"];
+const navItems = ["Acasa", "Voteaza", "FAQ", "Contul meu"];
 const hrefItem = {
-  Home: "/",
-  Vote: "/vote",
-  Results: "/results/live",
-  About: "/about",
-  Account: "/user/:userId",
+  Acasa: "/",
+  Voteaza: "/vote",
+  FAQ: "/faq",
+  "Contul meu": "/user/:userId",
 };
 
 export default function NavBar(props) {

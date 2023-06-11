@@ -9,16 +9,16 @@ export const Stepper = ({ location }) => {
     <nav className={"stepper"}>
       <ul className={"navbar-nav"}>
         <li className={"step nav-item"}>
-          <span className={getLinkClass("form1")}>Registration</span>
+          <span className={getLinkClass("form1")}>Detalii personale</span>
         </li>
         <li className={"step nav-item"}>
-          <span className={getLinkClass("form2")}>Address</span>
+          <span className={getLinkClass("form2")}>Adresa</span>
         </li>
         <li className={"step nav-item"}>
-          <span className={getLinkClass("form3")}>Add CI photo</span>
+          <span className={getLinkClass("form3")}>Adauga poza cu CI</span>
         </li>
         <li className={"step nav-item"}>
-          <span className={getLinkClass("confirm")}>Confirm</span>
+          <span className={getLinkClass("confirm")}>Cofirmare</span>
         </li>
       </ul>
     </nav>
