@@ -1,9 +1,9 @@
 import { createContext, useContext, useState } from "react";
 
-export const AppStateContext = createContext({});
+export const AppStateContext = createContext([{}]);
 
 export function FormProvider({ children }) {
-  const value = useState({});
+  const value = useState([{}]);
   return (
     <AppStateContext.Provider value={value}>
       {children}

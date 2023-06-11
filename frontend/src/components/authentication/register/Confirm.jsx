@@ -1,38 +1,58 @@
 import { useForm } from "react-hook-form";
 import { useAppState } from "../../../context/form/state";
-import { Button, Form, Section, SectionRow } from "./fields/index.js";
+import {
+  Button,
+  Form,
+  Section,
+  SectionRow,
+  ImageLink,
+} from "./fields/index.js";
 import "./form.css";
-
-const Confirm = () => {
+import getS3UploadLink from "./utils/getS3UploadLink";
+import uploadFile from "./utils/uploadFile";
+import registerUser from "./utils/registerUser";
+import { NotificationManager } from "react-notifications";
+import "react-notifications/lib/notifications.css";
+import { useNavigate } from "react-router-dom";
+const Confirm = ({ changeLocation, file }) => {
   const [state] = useAppState();
   const { handleSubmit } = useForm({ defaultValues: state });
-
+  const navigate = useNavigate();
   const submitData = async (data) => {
     event.preventDefault();
-   
-    // const form = document.querySelector("form");
 
-    // const errors = getFormErrors(data);
-    // if (errors.length === 0) {
-    //   const bodyData = data;
-    //   delete bodyData.confirmPassword;
-    //   const result = await registerUser(data);
-    //   if (result.status === 200) {
-    //     NotificationManager.success(
-    //       " Your registration was successful. You can now log in to your account and start using our services.",
-    //       "Successful registration ",
-    //       5000
-    //     );
-    //     navigate("/login");
-    //   } else {
-    //     NotificationManager.error(
-    //       "We're sorry, but your registration was unsuccessful. If you already have an account go and log in.",
-    //       "Registration Failed",
-    //       5000
-    //     );
-    //   }
-  // }
-  console.log("hello")
+    const fileExtenstion = file.name.split(".").pop();
+    const result = await getS3UploadLink(fileExtenstion);
+    console.log(result);
+    if (result.status === 200) {
+      let url = await result.text();
+      const imageUrl = await uploadFile(url, file);
+      state.linkCIPhoto = imageUrl;
+
+      let stateCopy = { ...state };
+      delete stateCopy.file;
+      delete stateCopy.confirmPassword;
+
+      const userRegisterResponse = await registerUser(stateCopy);
+      if (userRegisterResponse.status === 200) {
+        NotificationManager.success(
+          "Your registration was successful. You can now log in to your account and start using our services. ",
+          "Successfully registered. ",
+          5000
+        );
+        navigate("/login");
+      } else {
+        NotificationManager.error(
+          "We're sorry, but your registration was unsuccessful. If you already have an account go and log in.",
+          "Registration Failed",
+          5000
+        );
+      }
+    }
+  };
+
+  const handleClick = (location) => {
+    changeLocation(location);
   };
 
   return (
@@ -40,7 +60,7 @@ const Confirm = () => {
       onSubmit={handleSubmit(submitData)}
       className="confirm-form-container"
     >
-      <Section title="Personal info" url="/register">
+      <Section title="Personal info" handleClick={() => handleClick("form1")}>
         <SectionRow>
           <p className="p-confirm">
             Full name: <span className="state-info">{state.fullName}</span>
@@ -64,7 +84,7 @@ const Confirm = () => {
           </p>
         </SectionRow>
       </Section>
-      <Section title="Form2" url="/register/form2">
+      <Section title="Form2" handleClick={() => handleClick("form2")}>
         <SectionRow>
           <p className="p-confirm">
             Address line 1: <span className="state-info">{state.address1}</span>{" "}
@@ -102,15 +122,20 @@ const Confirm = () => {
           </p>
         </SectionRow>
       </Section>
-      <Section title="Form3" url="/register/form3">
+      <Section title="Form3" handleClick={() => handleClick("form3")}>
         <SectionRow>
-          <p className="p-confirm">
-            About me: <span className="state-info">{state.about}</span>
-          </p>
+          <div className="p-confirm">
+            File name:{" "}
+            {state?.file?.name && (
+              <ImageLink imageName={state.file.name} imageUrl="">
+                {state.file.name}
+              </ImageLink>
+            )}
+          </div>
         </SectionRow>
       </Section>
       <div className="d-flex justify-content-start">
-        <Button>Submit</Button>
+        <button type="submit">Submit</button>
       </div>
     </Form>
   );

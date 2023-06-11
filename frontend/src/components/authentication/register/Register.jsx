@@ -1,4 +1,4 @@
-import React from "react";
+import { React, useState } from "react";
 import { FormProvider } from "../../../context/form/state";
 import Form1 from "./Form1";
 import Form2 from "./Form2";
@@ -10,7 +10,17 @@ import styles from "./register.module.css";
 import stylesAuth from "../../../shared/stylesheets/auth.module.css";
 
 const Register = () => {
-  // navigate("./register/form1");
+  const [location, setLocation] = useState("form1");
+  const [file, setFile] = useState(null);
+
+  const changeLocation = (newLocation) => {
+    setLocation(newLocation);
+  };
+
+  const handleFileUpate = (file) => {
+    setFile(file);
+  };
+
   return (
     <div className={stylesAuth["container"]}>
       <FormProvider>
@@ -18,7 +28,19 @@ const Register = () => {
           <img src={voteImage} alt="vote-image" />
         </div>
         <div className={styles["form-container"]}>
-          <Stepper />
+          <Stepper location={location} />
+          {location === "form1" ? (
+            <Form1 changeLocation={changeLocation} />
+          ) : location === "form2" ? (
+            <Form2 changeLocation={changeLocation} />
+          ) : location === "form3" ? (
+            <Form3
+              changeLocation={changeLocation}
+              handleFileUpate={handleFileUpate}
+            />
+          ) : (
+            <Confirm changeLocation={changeLocation} file={file} />
+          )}
         </div>
       </FormProvider>
     </div>

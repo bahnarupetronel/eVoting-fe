@@ -1,12 +1,11 @@
 import { useForm } from "react-hook-form";
-import { useNavigate } from "react-router-dom";
-import { useAppState } from "../../../context/form/state";
+import { useNavigate, useLocation } from "react-router-dom";
+import { useAppState } from "../../../context/form/state.jsx";
 import "./form.css";
 import { Button, Form, Field, Input } from "./fields/index.js";
 import {
   isNameValid,
   isPasswordValid,
-  isConfirmPasswordValid,
   isEmailValid,
 } from "../../../shared/utils/validateForm";
 // import { isCNPValid } from "../../../shared/utils/validateCNP";
@@ -17,7 +16,8 @@ const isCNPValid = (value) => {
   return true;
 };
 
-const Form1 = () => {
+const Form1 = ({ changeLocation }) => {
+  const location = useLocation();
   const [state, setState] = useAppState();
   const {
     handleSubmit,
@@ -30,11 +30,11 @@ const Form1 = () => {
     reValidateMode: "onChange",
   });
   const watchPassword = watch("password");
-  const navigate = useNavigate();
 
   const saveData = (data) => {
+    event.preventDefault();
     setState({ ...state, ...data });
-    navigate("/register/form2");
+    changeLocation("form2");
   };
 
   return (
@@ -45,7 +45,7 @@ const Form1 = () => {
           <Input
             placeholder="Enter your name"
             className={errors?.fullName ? "field-error" : "no-field-error"}
-            {...register("fullName", {
+            {...register("name", {
               required: "Full name is required",
               validate: (value) =>
                 isNameValid(value)
@@ -59,7 +59,7 @@ const Form1 = () => {
           <Input
             placeholder="Enter your CNP"
             className={errors?.CNP ? "field-error" : "no-field-error"}
-            {...register("CNP", {
+            {...register("cnp", {
               required: "CNP is required",
               validate: (value) =>
                 isCNPValid(value)
@@ -126,7 +126,7 @@ const Form1 = () => {
             id="password-confirm"
           />
         </Field>
-        <Button>Next {">"}</Button>
+        <Button onClick={handleSubmit(saveData)}>Next {">"}</Button>
       </fieldset>
     </Form>
   );
