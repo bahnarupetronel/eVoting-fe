@@ -14,6 +14,7 @@ import registerUser from "./utils/registerUser";
 import { NotificationManager } from "react-notifications";
 import "react-notifications/lib/notifications.css";
 import { useNavigate } from "react-router-dom";
+import CustomSpan from "../../../shared/components/CustomSpan";
 
 const Confirm = ({ changeLocation, file }) => {
   const [state] = useAppState();
@@ -67,62 +68,60 @@ const Confirm = ({ changeLocation, file }) => {
       >
         <SectionRow>
           <p className="p-confirm">
-            Nume: <span className="state-info">{state.name}</span>
+            Nume: <CustomSpan text={state.name} />
           </p>
         </SectionRow>
         <SectionRow>
           <p className="p-confirm">
-            Email: <span className="state-info">{state.email}</span>{" "}
+            Email: <CustomSpan text={state.email} />
           </p>
         </SectionRow>
         <SectionRow>
           <p className="p-confirm">
-            Codul numeric personal:{" "}
-            <span className="state-info">{state.cnp}</span>
+            Codul numeric personal: <CustomSpan text={state.cnp} />
           </p>
         </SectionRow>
         <SectionRow>
           <p className="p-confirm">
-            Seria si numarul:{" "}
-            <span className="state-info">{state.seriesAndNumber}</span>
+            Seria si numarul: <CustomSpan text={state.seriesAndNumber} />
           </p>
         </SectionRow>
       </Section>
       <Section title="Adresa" handleClick={() => handleClick("form2")}>
         <SectionRow>
           <p className="p-confirm">
-            Adresa 1: <span className="state-info">{state.addressLine1}</span>{" "}
+            Adresa 1: <CustomSpan text={state.addressLine1} />
           </p>
         </SectionRow>
         <SectionRow>
           <p className="p-confirm">
-            Adresa 2: <span className="state-info">{state.addressLine2}</span>
+            Adresa 2: <CustomSpan text={state.addressLine2} />
           </p>
         </SectionRow>
         <SectionRow>
           <p className="p-confirm">
-            Numarul de telefon:{" "}
-            <span className="state-info">{state.phoneNumber}</span>
+            Numarul de telefon:
+            <CustomSpan text={state.phoneNumber} />
           </p>
         </SectionRow>
         <SectionRow>
           <p className="p-confirm">
-            Cod postal: <span className="state-info">{state.postalCode}</span>
+            Cod postal: <CustomSpan text={state.postalCode} />
           </p>
         </SectionRow>
         <SectionRow>
           <p className="p-confirm">
-            Oras: <span className="state-info">{state.city}</span>
+            Oras: <CustomSpan text={state.city} />
           </p>
         </SectionRow>
         <SectionRow>
           <p className="p-confirm">
-            Judet: <span className="state-info">{state.state}</span>
+            Judet: <CustomSpan text={state.state} />
           </p>
         </SectionRow>
         <SectionRow>
           <p className="p-confirm">
-            Tara: <span className="state-info">{state.country}</span>
+            Tara: <CustomSpan text={state.country} />
           </p>
         </SectionRow>
       </Section>
