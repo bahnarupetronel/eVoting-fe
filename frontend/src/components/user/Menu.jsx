@@ -38,17 +38,21 @@ export default function MenuListComposition() {
     <Stack direction="row" spacing={2} className="sidebar">
       <Paper className="paper-container">
         <MenuList>
-          <MenuItem component={Link} to="/user">
+          <MenuItem component={Link} to="/user/:userId">
             <AccountBoxIcon className="icon-margin" />
-            Profile
+            Profil
           </MenuItem>
-          <MenuItem component={Link} to="/user/vote/history">
+          <MenuItem component={Link} to="/user/:userId/vote/history">
             <TimelineIcon className="icon-margin" />
-            Votes history
+            Istoricul voturilor
+          </MenuItem>
+          <MenuItem component={Link} to="/user/:userId/validate-account">
+            <AddBoxIcon className="icon-margin" />
+            Validare cont
           </MenuItem>
           <MenuItem component={Link} to="/logout">
             <LogoutIcon className="icon-margin" />
-            Logout
+            Delogare
           </MenuItem>
         </MenuList>
       </Paper>

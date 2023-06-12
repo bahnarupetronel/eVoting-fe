@@ -14,6 +14,7 @@ import registerUser from "./utils/registerUser";
 import { NotificationManager } from "react-notifications";
 import "react-notifications/lib/notifications.css";
 import { useNavigate } from "react-router-dom";
+import CustomSpan from "../../../shared/components/CustomSpan";
 
 const Confirm = ({ changeLocation, file }) => {
   const [state] = useAppState();
@@ -37,15 +38,15 @@ const Confirm = ({ changeLocation, file }) => {
       const userRegisterResponse = await registerUser(stateCopy);
       if (userRegisterResponse.status === 200) {
         NotificationManager.success(
-          "Your registration was successful. You can now log in to your account and start using our services. ",
-          "Successfully registered. ",
+          "Inregistrarea s-a realizat cu succes. Te poti conecta si poti incepe sa utilizezi serviciile noatre. Va multumim!",
+          "Inregistrare realizata cu succes! ",
           5000
         );
         navigate("/login");
       } else {
         NotificationManager.error(
-          "We're sorry, but your registration was unsuccessful. If you already have an account go and log in.",
-          "Registration Failed",
+          "Ne pare rau, inregistrarea nu s-a realizat cu succes. Daca aveti un cont, va puteti conecta. Email-ul sau parola sunt deja folosite.",
+          "Inregistrarea a esuat!",
           5000
         );
       }
@@ -61,72 +62,73 @@ const Confirm = ({ changeLocation, file }) => {
       onSubmit={handleSubmit(submitData)}
       className="confirm-form-container"
     >
-      <Section title="Personal info" handleClick={() => handleClick("form1")}>
+      <Section
+        title="Detalii personale"
+        handleClick={() => handleClick("form1")}
+      >
         <SectionRow>
           <p className="p-confirm">
-            Full name: <span className="state-info">{state.fullName}</span>
+            Nume: <CustomSpan text={state.name} />
           </p>
         </SectionRow>
         <SectionRow>
           <p className="p-confirm">
-            Email: <span className="state-info">{state.email}</span>{" "}
+            Email: <CustomSpan text={state.email} />
           </p>
         </SectionRow>
         <SectionRow>
           <p className="p-confirm">
-            Personal numeric code:{" "}
-            <span className="state-info">{state.CNP}</span>
+            Codul numeric personal: <CustomSpan text={state.cnp} />
           </p>
         </SectionRow>
         <SectionRow>
           <p className="p-confirm">
-            Series and number:{" "}
-            <span className="state-info">{state.seriesAndNumber}</span>
-          </p>
-        </SectionRow>
-      </Section>
-      <Section title="Form2" handleClick={() => handleClick("form2")}>
-        <SectionRow>
-          <p className="p-confirm">
-            Address line 1: <span className="state-info">{state.address1}</span>{" "}
-          </p>
-        </SectionRow>
-        <SectionRow>
-          <p className="p-confirm">
-            Address line 2: <span className="state-info">{state.address2}</span>
-          </p>
-        </SectionRow>
-        <SectionRow>
-          <p className="p-confirm">
-            Phone number:{" "}
-            <span className="state-info">{state.phoneNumber}</span>
-          </p>
-        </SectionRow>
-        <SectionRow>
-          <p className="p-confirm">
-            Zip/postal code: <span className="state-info">{state.zipCode}</span>
-          </p>
-        </SectionRow>
-        <SectionRow>
-          <p className="p-confirm">
-            City: <span className="state-info">{state.city}</span>
-          </p>
-        </SectionRow>
-        <SectionRow>
-          <p className="p-confirm">
-            State/Province: <span className="state-info">{state.state}</span>
-          </p>
-        </SectionRow>
-        <SectionRow>
-          <p className="p-confirm">
-            Country: <span className="state-info">{state.country}</span>
+            Seria si numarul: <CustomSpan text={state.seriesAndNumber} />
           </p>
         </SectionRow>
       </Section>
-      <Section title="Form3" handleClick={() => handleClick("form3")}>
+      <Section title="Adresa" handleClick={() => handleClick("form2")}>
+        <SectionRow>
+          <p className="p-confirm">
+            Adresa 1: <CustomSpan text={state.addressLine1} />
+          </p>
+        </SectionRow>
+        <SectionRow>
+          <p className="p-confirm">
+            Adresa 2: <CustomSpan text={state.addressLine2} />
+          </p>
+        </SectionRow>
+        <SectionRow>
+          <p className="p-confirm">
+            Numarul de telefon:
+            <CustomSpan text={state.phoneNumber} />
+          </p>
+        </SectionRow>
+        <SectionRow>
+          <p className="p-confirm">
+            Cod postal: <CustomSpan text={state.postalCode} />
+          </p>
+        </SectionRow>
+        <SectionRow>
+          <p className="p-confirm">
+            Oras: <CustomSpan text={state.city} />
+          </p>
+        </SectionRow>
+        <SectionRow>
+          <p className="p-confirm">
+            Judet: <CustomSpan text={state.state} />
+          </p>
+        </SectionRow>
+        <SectionRow>
+          <p className="p-confirm">
+            Tara: <CustomSpan text={state.country} />
+          </p>
+        </SectionRow>
+      </Section>
+      <Section title="Fisier" handleClick={() => handleClick("form3")}>
         <SectionRow>
           <div className="p-confirm">
-            File name:{" "}
+            Numele fisierului:{" "}
             {state?.file?.name && (
               <ImageLink imageName={state.file.name} imageUrl="">
                 {state.file.name}

@@ -16,8 +16,8 @@ const Form3 = ({ changeLocation, handleFileUpate }) => {
       changeLocation("confirm");
     } else
       NotificationManager.error(
-        "We're sorry, you have to upload your a photo of your CI",
-        "Upload photo",
+        "Ne pare rau, trebuie sa va introduceti poza de la cartea de identitate.",
+        "Incarca poza!",
         5000
       );
   };
@@ -29,18 +29,18 @@ const Form3 = ({ changeLocation, handleFileUpate }) => {
       changeLocation("form2");
     } else
       NotificationManager.error(
-        "We're sorry, you have to upload your a photo of your CI",
-        "Upload photo",
+        "Ne pare rau, trebuie sa va introduceti poza de la cartea de identitate.",
+        "Incarca poza!",
         5000
       );
   };
   return (
     <Form onSubmit={handleSubmit}>
       <fieldset>
-        <legend>Add CI photo</legend>
+        <legend>Adauga poza cu cartea de identitate</legend>
         <UploadFile setFile={setFile} file={file} setFileUrl={setFileUrl} />
-        <Button onClick={goToPrevious}>{"<"} Previous</Button>
-        <Button onClick={handleSubmit}>Next {">"}</Button>
+        <Button onClick={goToPrevious}>{"<"} Inapoi</Button>
+        <Button onClick={handleSubmit}>Urmatorul {">"}</Button>
       </fieldset>
     </Form>
   );

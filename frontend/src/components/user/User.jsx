@@ -1,11 +1,13 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
 import Menu from "./Menu";
+import UserContainer from "./UserContainer";
+import styles from "./user.module.css";
 
 const User = () => {
   return (
-    <div>
+    <div className={styles["container-user"]}>
       <Menu />
+      <UserContainer />
     </div>
   );
 };

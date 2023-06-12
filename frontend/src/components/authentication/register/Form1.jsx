@@ -40,93 +40,95 @@ const Form1 = ({ changeLocation }) => {
   return (
     <Form onSubmit={handleSubmit(saveData)}>
       <fieldset>
-        <legend>Personal details</legend>
-        <Field label="Full name*" error={errors?.fullName}>
+        <legend>Detalii</legend>
+        <Field label="Nume*" error={errors?.name}>
           <Input
-            placeholder="Enter your name"
+            placeholder="Introduceti numele"
             className={errors?.fullName ? "field-error" : "no-field-error"}
             {...register("name", {
-              required: "Full name is required",
+              required: "Numele e obligatoriu!",
               validate: (value) =>
                 isNameValid(value)
                   ? true
-                  : "Invalid name. It cannot contain numbers or special characters.",
+                  : "Nume invalid. Nu poate contine numere sau caractere speciale",
             })}
             id="full-name"
           />
         </Field>
-        <Field label="Personal numeric code*" error={errors?.CNP}>
+        <Field label="Codul numeric personal*" error={errors?.cnp}>
           <Input
-            placeholder="Enter your CNP"
-            className={errors?.CNP ? "field-error" : "no-field-error"}
+            placeholder="Introduceti CNP-ul"
+            className={errors?.cnp ? "field-error" : "no-field-error"}
             {...register("cnp", {
-              required: "CNP is required",
+              required: "CNP-ul e obligatoriu!",
               validate: (value) =>
                 isCNPValid(value)
                   ? true
-                  : "Invalid CNP format. It must have 13 numbers.",
+                  : "Formatul CNP-ului este invalid. Trebuie sa contina 13 numere.",
             })}
-            id="CNP"
+            id="cnp"
           />
         </Field>
-        <Field label="ID: Series and number*" error={errors?.seriesAndNumber}>
+        <Field label="ID: Seria si numarul*" error={errors?.seriesAndNumber}>
           <Input
-            placeholder="Enter your series and number"
+            placeholder="Introduceti seria si numarul"
             className={errors?.CNP ? "field-error" : "no-field-error"}
             {...register("seriesAndNumber", {
-              required: "Serie and number are mandatory",
+              required: "Seria si numarul sunt obligatorii!",
               validate: (value) =>
                 isSerieAndNumberValid(value)
                   ? true
-                  : "Invalid format.It must contain 2 letters and 6 numbers",
+                  : "Format invalid.Trebuie sa contina 2 litere si 6 numere. ex: AA123456",
             })}
             id="series-and-number"
           />
         </Field>
         <Field label="Email*" error={errors?.email}>
           <Input
-            placeholder="Enter your email"
+            placeholder="Introduceti email-ul"
             className={errors?.email ? "field-error" : "no-field-error"}
             {...register("email", {
-              required: "Email is required",
+              required: "Email este obligatoriu",
               validate: (value) =>
-                isEmailValid(value) ? true : "Invalid email format.",
+                isEmailValid(value)
+                  ? true
+                  : "Formatul email-ului este invalid.",
             })}
             type="email"
             id="email"
           />
         </Field>
-        <Field label="Password*" error={errors?.password}>
+        <Field label="Parola*" error={errors?.password}>
           <Input
-            placeholder="Enter your password"
+            placeholder="Introduceti parola"
             className={errors?.password ? "field-error" : "no-field-error"}
             {...register("password", {
-              required: "Password is required",
+              required: "Parola e obligatorie!",
               validate: (value) =>
                 isPasswordValid(value)
                   ? true
-                  : "The password must have at least 8 and maximum 20 characters,contain at least 1 uppercase letter, 1 lowercase letter, and 1 number.It can contain special characters",
+                  : "Parola trebuie sa aiba intre 8 si 20 de caractere, sa contina cel putin o litera mare, o litera mica si un numar.Poate contine caractere speciale.",
             })}
             type="password"
             id="password"
           />
         </Field>
-        <Field label="Confirm password*" error={errors?.confirmPassword}>
+        <Field label="Confirma parola*" error={errors?.confirmPassword}>
           <Input
-            placeholder="Reenter your password"
+            placeholder="Reintroduceti parola"
             className={
               errors?.confirmPassword ? "field-error" : "no-field-error"
             }
             {...register("confirmPassword", {
-              required: "Confirm the password",
+              required: "Confirmati parola!",
               validate: (value) =>
-                value === watchPassword || "The passwords do not match",
+                value === watchPassword || "Parolele nu sunt asemanatoare!",
             })}
             type="password"
             id="password-confirm"
           />
         </Field>
-        <Button onClick={handleSubmit(saveData)}>Next {">"}</Button>
+        <Button onClick={handleSubmit(saveData)}>Urmatorul {">"}</Button>
       </fieldset>
     </Form>
   );
