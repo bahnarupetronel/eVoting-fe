@@ -10,7 +10,7 @@ img {
 }
 
 .card {
-  flex: 1 0 20%; /* explanation below */
+  flex: 1 0 20%;
   width: 20%;
   min-width: 200px;
   margin: 5px;
