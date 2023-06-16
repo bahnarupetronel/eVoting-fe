@@ -8,13 +8,9 @@ import {
   isPasswordValid,
   isEmailValid,
 } from "../../../shared/utils/validateForm";
-// import { isCNPValid } from "../../../shared/utils/validateCNP";
+import { isCNPValid } from "../../../shared/utils/validateCNP";
 import { isSerieAndNumberValid } from "../../../shared/utils/validateSeriesAndNumber";
 import styles from "../../../shared/stylesheets/auth.module.css";
-
-const isCNPValid = (value) => {
-  return true;
-};
 
 const Form1 = ({ changeLocation }) => {
   const location = useLocation();
@@ -64,7 +60,7 @@ const Form1 = ({ changeLocation }) => {
               validate: (value) =>
                 isCNPValid(value)
                   ? true
-                  : "Formatul CNP-ului este invalid. Trebuie sa contina 13 numere.",
+                  : "CNP-ul rebuie sa contina 13 numere. CNP-ul este invalid sau formatul este gresit. ",
             })}
             id="cnp"
           />

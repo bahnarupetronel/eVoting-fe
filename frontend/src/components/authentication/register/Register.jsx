@@ -10,7 +10,7 @@ import styles from "./register.module.css";
 import stylesAuth from "../../../shared/stylesheets/auth.module.css";
 
 const Register = () => {
-  const [location, setLocation] = useState("form1");
+  const [location, setLocation] = useState("form2");
   const [file, setFile] = useState(null);
 
   const changeLocation = (newLocation) => {

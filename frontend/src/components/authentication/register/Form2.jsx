@@ -1,10 +1,19 @@
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
+import { useEffect, useState, useRef } from "react";
 import { useAppState } from "../../../context/form/state";
 import { Button, Form, Field, Input } from "./fields/index.js";
+import { phoneNumberValidation } from "../../../shared/utils/phoneNumberValidation.js";
+import { getCounties } from "./utils/getCounties.js";
+import { getLocalities } from "./utils/getLocalities.js";
+import { SlOption, SlSelect } from "@shoelace-style/shoelace/dist/react";
 
 const Form2 = ({ changeLocation }) => {
+  const localityRef = useRef();
   const [state, setState] = useAppState();
+  const [counties, setCounties] = useState([]);
+  const [localities, setLocalities] = useState([]);
+  const [localitiesPerCounty, setLocalitiesPerCounty] = useState([]);
   const {
     handleSubmit,
     register,
@@ -14,7 +23,30 @@ const Form2 = ({ changeLocation }) => {
     mode: "onSubmit",
     reValidateMode: "onChange",
   });
-  const navigate = useNavigate();
+
+  const handleCountyChange = (event) => {
+    setState({ ...state, countyId: event.target.value, localityId: null });
+    localityRef.current.value = "default";
+
+    const county = counties.filter((county) => county.id == event.target.value);
+    let newLocalities = localities.filter(
+      (locality) => locality.county === county[0].name
+    );
+
+    newLocalities.sort((a, b) => {
+      const nameA = a.name.toUpperCase();
+      const nameB = b.name.toUpperCase();
+      if (nameA < nameB) return -1;
+      if (nameA > nameB) return 1;
+      return 0;
+    });
+
+    setLocalitiesPerCounty(newLocalities);
+  };
+
+  const handleLocalityChange = (event) => {
+    setState({ ...state, localityId: event.target.value });
+  };
 
   const saveData = (data) => {
     setState({ ...state, ...data });
@@ -25,6 +57,11 @@ const Form2 = ({ changeLocation }) => {
     data ? setState({ ...state, ...data }) : "";
     changeLocation("form1");
   };
+
+  useEffect(() => {
+    getCounties().then((data) => setCounties(data));
+    getLocalities().then((data) => setLocalities(data));
+  }, []);
 
   return (
     <Form onSubmit={handleSubmit(saveData)}>
@@ -48,34 +85,49 @@ const Form2 = ({ changeLocation }) => {
             id="addressLine2"
           />
         </Field>
+        <SlSelect
+          label="Judet:"
+          className="county"
+          placeholder="Selecteaza o varianta!"
+          onSlChange={handleCountyChange}
+        >
+          {counties &&
+            counties.map((county) => (
+              <SlOption value={county.id} key={county.id} data-key={county.id}>
+                {county.name}
+              </SlOption>
+            ))}
+        </SlSelect>
+        <SlSelect
+          label="Localitate:"
+          className="locality"
+          placeholder="Selecteaza o varianta!"
+          onSlChange={handleLocalityChange}
+          ref={localityRef}
+        >
+          {localitiesPerCounty &&
+            localitiesPerCounty.map((locality) => (
+              <SlOption
+                value={locality.id}
+                key={locality.id}
+                data-key={locality.id}
+              >
+                {locality.name}
+              </SlOption>
+            ))}
+        </SlSelect>
         <Field label="Numarul de telefon*" error={errors?.phoneNumber}>
           <Input
             placeholder="Numarul de telefon"
-            className={errors?.zip ? "field-error" : "no-field-error"}
+            className={errors?.phoneNumber ? "field-error" : "no-field-error"}
             {...register("phoneNumber", {
               required: "Numarul de telefon este obligatoriu!",
+              validate: (value) =>
+                phoneNumberValidation(value)
+                  ? true
+                  : "Numar de telefon invalid.",
             })}
             id="phoneNumber"
-          />
-        </Field>
-        <Field label="Zip/Postal code*" error={errors?.postalCode}>
-          <Input
-            placeholder="Cod postal"
-            className={errors?.postalCode ? "field-error" : "no-field-error"}
-            {...register("postalCode", {
-              required: "Cod postal",
-            })}
-            id="postalCode"
-          />
-        </Field>
-        <Field label="Oras*" error={errors?.city}>
-          <Input
-            placeholder="Oras"
-            className={errors?.city ? "field-error" : "no-field-error"}
-            {...register("city", {
-              required: "Orasul este obligatoriu!",
-            })}
-            id="city"
           />
         </Field>
         <Field label="Judet*" error={errors?.state}>
@@ -88,6 +140,27 @@ const Form2 = ({ changeLocation }) => {
             id="state"
           />
         </Field>
+        <Field label="Oras*" error={errors?.city}>
+          <Input
+            placeholder="Oras"
+            className={errors?.city ? "field-error" : "no-field-error"}
+            {...register("city", {
+              required: "Orasul este obligatoriu!",
+            })}
+            id="city"
+          />
+        </Field>
+        <Field label="Zip/Postal code*" error={errors?.postalCode}>
+          <Input
+            placeholder="Cod postal"
+            className={errors?.postalCode ? "field-error" : "no-field-error"}
+            {...register("postalCode", {
+              required: "Cod postal",
+            })}
+            id="postalCode"
+          />
+        </Field>
+
         <Field label="Tara*" error={errors?.country}>
           <Input
             placeholder="Tara"
