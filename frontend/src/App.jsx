@@ -17,6 +17,7 @@ import UserVoteHistory from "./components/vote/UserVoteHistory";
 import LiveResultsMap from "./components/results/LiveResultsMap";
 import ValidateAccountPage from "./components/user/ValidateAccountPage";
 import UserContainer from "./components/user/UserContainer";
+import News from "./components/news/News";
 
 import { ProtectedRoute } from "./shared/context/ProtectedRoute";
 import "./App.css";
@@ -41,6 +42,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/about" element={<About />} />
+          <Route path="/news" element={<News />} />
           <Route path="/vote/locations" element={<VoteLocations />} />
           <Route
             path="/reset-password"
