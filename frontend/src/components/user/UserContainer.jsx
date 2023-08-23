@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import styles from "./user.module.css";
 import CustomSpan from "../../shared/components/CustomSpan";
+import axios from "../../api/axios.js";
 
 const UserContainer = () => {
   const [user, setUser] = useState(null);
@@ -8,18 +9,29 @@ const UserContainer = () => {
   useEffect(() => {
     // Fetch user data from an API or other data source
     // For simplicity, let's assume the data is retrieved and stored in the state
-    const userData = {
-      name: "John Doe",
-      email: "johndoe@example.com",
-      addressLine1: "Adresa 1",
-      addressLine2: "Adresa 2",
-      state: "judet",
-      city: "Oras",
-      country: "Tara",
-      cnp: "CNP",
-      postalCode: "Cod postal",
+    let isMounted = true;
+    const controller = new AbortController();
+
+    const getUserDetails = async () => {
+      try {
+        const token = localStorage.getItem("token");
+        const headers = { Authorization: `Bearer ${token}` };
+        const response = await axios.get("/user/details", {
+          headers: headers,
+          signal: controller.signal,
+        });
+        console.log(response.data);
+        isMounted && setUser(response.data);
+      } catch (err) {
+        console.log(err);
+      }
     };
-    setUser(userData);
+
+    getUserDetails();
+    return () => {
+      isMounted = false;
+      controller.abort();
+    };
   }, []);
 
   return (
@@ -49,7 +61,7 @@ const UserContainer = () => {
             Cod postal: <CustomSpan text={user.postalCode} />
           </p>
           <p>
-            Oras: <CustomSpan text={user.city} />
+            Localitate: <CustomSpan text={user.localityId} />
           </p>
           <p>
             Judet:

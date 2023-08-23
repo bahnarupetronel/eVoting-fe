@@ -130,26 +130,6 @@ const Form2 = ({ changeLocation }) => {
             id="phoneNumber"
           />
         </Field>
-        <Field label="Judet*" error={errors?.state}>
-          <Input
-            placeholder="State"
-            className={errors?.state ? "field-error" : "no-field-error"}
-            {...register("state", {
-              required: "Judetul este obligatoriu",
-            })}
-            id="state"
-          />
-        </Field>
-        <Field label="Oras*" error={errors?.city}>
-          <Input
-            placeholder="Oras"
-            className={errors?.city ? "field-error" : "no-field-error"}
-            {...register("city", {
-              required: "Orasul este obligatoriu!",
-            })}
-            id="city"
-          />
-        </Field>
         <Field label="Zip/Postal code*" error={errors?.postalCode}>
           <Input
             placeholder="Cod postal"
@@ -160,7 +140,16 @@ const Form2 = ({ changeLocation }) => {
             id="postalCode"
           />
         </Field>
-
+        <Field label="Zip/Postal code*" error={errors?.postalCode}>
+          <Input
+            placeholder="State"
+            className={errors?.state ? "field-error" : "no-field-error"}
+            {...register("state", {
+              required: "Judetul este obligatoriu",
+            })}
+            id="postalCode"
+          />
+        </Field>
         <Field label="Tara*" error={errors?.country}>
           <Input
             placeholder="Tara"
