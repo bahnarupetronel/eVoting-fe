@@ -1,0 +1,14 @@
+#Fixes
+Fix interceptor login. I put the return 200
+Fix image news
+Register page
+
+----------------------------------------------------------------
+#TO DO
+Aborts in useEffects
+Persistent Login
+geById localities and counties to return data without political parties
+
+----------------------------------------------------------------
+#Doing
+User page 

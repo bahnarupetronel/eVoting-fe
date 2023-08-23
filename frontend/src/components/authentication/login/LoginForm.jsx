@@ -1,4 +1,4 @@
-import { useState, useRef, useReducer } from "react";
+import { useState, useRef, useReducer, useContext } from "react";
 import { SlButton, SlInput } from "@shoelace-style/shoelace/dist/react";
 import btn from "../../../shared/stylesheets/button-auth.module.css";
 import styles from "../../../shared/stylesheets/auth.module.css";
@@ -11,8 +11,11 @@ import loginUser from "./loginUser";
 import { NotificationManager } from "react-notifications";
 import "react-notifications/lib/notifications.css";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../../../context/user/UserContext";
 
 const LoginForm = () => {
+  const { user, setUser, loading, setLoading, isLoggedIn, setIsLoggedIn } =
+    useAuth();
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
   const navigate = useNavigate();
@@ -68,8 +71,16 @@ const LoginForm = () => {
           5000
         );
         const data = await response.text();
-        localStorage.setItem("isUserLoggedIn", true);
+        const user = {
+          email: email,
+          password: password,
+          token: data,
+        };
+        setUser(user);
+        setIsLoggedIn(true);
         navigate("/");
+        localStorage.setItem("isUserLoggedIn", true);
+        localStorage.setItem("token", user.token);
       } else {
         NotificationManager.error(
           "We're sorry, but your login was unsuccessful. Incorrect email or password",
@@ -101,6 +112,7 @@ const LoginForm = () => {
           className="password"
           placeholder="Introduceti parola"
           password-toggle
+          autocomplete
           onSlChange={handlePasswordChange}
         />
         <span id="invalid-entries" aria-hidden="true" hidden>

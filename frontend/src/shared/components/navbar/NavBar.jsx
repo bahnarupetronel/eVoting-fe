@@ -16,12 +16,13 @@ import Button from "@mui/material/Button";
 import { useState } from "react";
 
 const drawerWidth = 240;
-const navItems = ["Acasa", "Voteaza", "FAQ", "Contul meu"];
+const navItems = ["Acasa", "Voteaza", "FAQ", "Contul meu", "Login"];
 const hrefItem = {
   Acasa: "/",
   Voteaza: "/vote",
   FAQ: "/faq",
   "Contul meu": "/user/:userId",
+  Login: "/login",
 };
 
 export default function NavBar(props) {
@@ -30,6 +31,11 @@ export default function NavBar(props) {
 
   const handleDrawerToggle = () => {
     setMobileOpen((prevState) => !prevState);
+  };
+
+  const navTo = (link) => {
+    console.log("HELLLLLLLLLOOOOOOOO");
+    console.log(link);
   };
 
   const drawer = (
@@ -41,9 +47,9 @@ export default function NavBar(props) {
       <List>
         {navItems.map((item) => (
           <ListItem key={item} disablePadding>
-            <ListItemButton sx={{ textAlign: "center" }}>
-              <ListItemText primary={item} />
-            </ListItemButton>
+            <div primary={item} onClick={() => navTo(navItems[item])}>
+              {item}
+            </div>
           </ListItem>
         ))}
       </List>
