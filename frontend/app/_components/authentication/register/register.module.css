@@ -1,0 +1,90 @@
+.fieldset {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: 12px;
+}
+
+.section-row {
+  display: flex;
+  width: 100%;
+}
+
+.section-row div {
+  display: flex;
+  margin-bottom: 0.5rem;
+}
+
+.section-row div:first-child {
+  width: 50%;
+}
+
+.section-row div:last-child {
+  width: 50%;
+}
+
+.title-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.submit-form {
+  display: flex;
+  margin: 24px 0 auto 0;
+}
+
+/* a.active {
+  color: red;
+} */
+
+/* label {
+  display: flex;
+} */
+
+.button-row {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+/* asafaf */
+
+/* ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+} */
+/* 
+li {
+  display: inline;
+} */
+
+.form-container {
+  display: grid;
+  width: 48%;
+  min-height: 91vh;
+}
+
+.form {
+  margin: 0 11%;
+}
+
+@media only screen and (max-width: 600px) {
+  /* nav {
+    flex-direction: column;
+  }
+  nav ul {
+    flex-direction: column;
+    padding-top: 0.5rem;
+  }
+  nav li {
+    padding: 0.5rem 0;
+  } */
+}
