@@ -1,30 +1,15 @@
 "use client";
 
-import * as React from "react";
-import AppBar from "@mui/material/AppBar";
-import Box from "@mui/material/Box";
-import CssBaseline from "@mui/material/CssBaseline";
-import Divider from "@mui/material/Divider";
+import { useState } from "react";
 import Drawer from "@mui/material/Drawer";
 import IconButton from "@mui/material/IconButton";
-import List from "@mui/material/List";
-import ListItem from "@mui/material/ListItem";
 import MenuIcon from "@mui/icons-material/Menu";
-import Toolbar from "@mui/material/Toolbar";
-import Typography from "@mui/material/Typography";
-import { useState } from "react";
 import { useAuth } from "../../../_context/user/UserContext";
 import Link from "next/link";
-
+import styles from "./nav.module.css";
+import { AppBar, CssBaseline, Typography, Toolbar } from "@mui/material";
+import useLocalStorage from "../../../_hooks/useLocalStorage";
 const drawerWidth = 240;
-const navItems = ["Home", "Vote", "Results", "About", "Account"];
-const hrefItem = {
-  Home: "/",
-  Vote: "/vote",
-  Results: "/results/live",
-  About: "/about",
-  Account: "/user/:userId",
-};
 
 export default function NavBar(props) {
   const { isLoggedIn } = useAuth();
@@ -35,145 +20,124 @@ export default function NavBar(props) {
     setMobileOpen((prevState) => !prevState);
   };
 
-  const navTo = (link) => {
-    console.log("HELLLLLLLLLOOOOOOOO");
-    console.log(link);
-  };
-
   const drawer = (
-    <Box
+    <Toolbar
+      className={`${styles["nav-mobile"]}`}
       onClick={handleDrawerToggle}
-      sx={{ textAlign: "center" }}
+      role="navigation"
     >
-      <Typography
-        variant="h6"
-        sx={{ my: 2 }}
-      >
-        eVoting
-      </Typography>
-      <Divider />
-      <List>
-        <ListItem
+      <ul className={styles["nav-box"]}>
+        <Link
           key="acasa"
-          disablePadding
+          href="/"
+          className={styles["nav-btn-mobile"]}
         >
-          <div onClick={() => navTo("/home")}>Acasa</div>
-        </ListItem>
+          Acasa
+        </Link>
         {isLoggedIn ? (
-          <ListItem
+          <Link
             key="voteaza"
-            disablePadding
+            href="/vote"
+            className={styles["nav-btn-mobile"]}
           >
-            <div onClick={() => navTo("/vote")}>Voteaza</div>
-          </ListItem>
+            Voteaza
+          </Link>
         ) : (
           <></>
         )}
         {isLoggedIn ? (
-          <ListItem
+          <Link
             key="contul-meu"
-            disablePadding
+            href="/user/account"
+            className={styles["nav-btn-mobile"]}
           >
-            <div onClick={() => navTo("/user/account")}>Contul meu</div>
-          </ListItem>
+            Contul meu
+          </Link>
         ) : (
-          <ListItem
+          <Link
             key="login"
-            disablePadding
+            href="/login"
+            className={styles["nav-btn-mobile"]}
           >
-            <div onClick={() => navTo("/login")}>Login</div>
-          </ListItem>
+            Login
+          </Link>
         )}
-      </List>
-    </Box>
+      </ul>
+    </Toolbar>
   );
 
   const container =
     window !== undefined ? () => window().document.body : undefined;
 
   return (
-    <Box sx={{ display: "flex" }}>
+    <AppBar className={styles["nav-header"]}>
       <CssBaseline />
-      <AppBar
-        component="nav"
-        sx={{ bgcolor: "#03001C" }}
+      <IconButton
+        color="inherit"
+        aria-label="open drawer"
+        edge="start"
+        onClick={handleDrawerToggle}
+        className={styles["nav-open-icon"]}
       >
-        <Toolbar>
-          <IconButton
-            color="inherit"
-            aria-label="open drawer"
-            edge="start"
-            onClick={handleDrawerToggle}
-            sx={{ mr: 2, display: { sm: "none" } }}
-          >
-            <MenuIcon />
-          </IconButton>
-          <Typography
-            variant="h6"
-            component="div"
-            sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}
-          >
-            eVoting
-          </Typography>
-          <Box sx={{ display: { xs: "none", sm: "block" } }}>
-            <Link
-              key="acasa"
-              sx={{ color: "#fff" }}
-              href="/"
-            >
-              Acasa
-            </Link>
-            {isLoggedIn ? (
-              <Link
-                key="voteaza"
-                sx={{ color: "#fff" }}
-                href="/vote"
-              >
-                Voteaza
-              </Link>
-            ) : (
-              <></>
-            )}
-            {isLoggedIn ? (
-              <Link
-                key="contul-meu"
-                sx={{ color: "#fff" }}
-                href="/user/account"
-              >
-                Contul meu
-              </Link>
-            ) : (
-              <Link
-                key="login"
-                sx={{ color: "#fff" }}
-                href={"/login"}
-              >
-                Login
-              </Link>
-            )}
-          </Box>
-        </Toolbar>
-      </AppBar>
-      <Box component="nav">
-        <Drawer
-          container={container}
-          variant="temporary"
-          open={mobileOpen}
-          onClose={handleDrawerToggle}
-          ModalProps={{
-            keepMounted: true, // Better open performance on mobile.
-          }}
-          sx={{
-            display: { xs: "block", sm: "none" },
-            "& .MuiDrawer-paper": {
-              boxSizing: "border-box",
-              width: drawerWidth,
-            },
-          }}
+        <MenuIcon />
+      </IconButton>
+      <nav
+        className={styles["nav-box"]}
+        sx={{ display: { xs: "none" } }}
+      >
+        <Typography className={styles["nav-logo"]}>eVoting</Typography>
+        <ul
+          sx={{ display: { xs: "none" } }}
+          className={styles["nav-box"]}
         >
-          {drawer}
-        </Drawer>
-      </Box>
-    </Box>
+          <Link
+            key="acasa"
+            href="/"
+            className={styles["nav-btn"]}
+          >
+            Acasa
+          </Link>
+          {isLoggedIn ? (
+            <Link
+              key="voteaza"
+              href="/vote"
+              className={styles["nav-btn"]}
+            >
+              Voteaza
+            </Link>
+          ) : (
+            <></>
+          )}
+          {isLoggedIn ? (
+            <Link
+              key="contul-meu"
+              href="/user/account"
+              className={styles["nav-btn"]}
+            >
+              Contul meu
+            </Link>
+          ) : (
+            <Link
+              key="login"
+              href={"/login"}
+              className={styles["nav-btn"]}
+            >
+              Login
+            </Link>
+          )}
+        </ul>
+      </nav>
+      <Drawer
+        container={container}
+        variant="temporary"
+        open={mobileOpen}
+        onClose={handleDrawerToggle}
+        ModalProps={{
+          keepMounted: true, // Better open performance on mobile.
+        }}
+      >
+        {drawer}
+      </Drawer>
+    </AppBar>
   );
 }

@@ -1,13 +1,17 @@
 "use client";
 
 import "./globals.css";
-import { Inter } from "next/font/google";
-
 import { UserContextProvider } from "./_context/user/UserContext.jsx";
 import { NotificationContainer } from "react-notifications";
+import dynamic from "next/dynamic";
 import Navbar from "./_shared/components/navbar/NavBar.jsx";
 
-const inter = Inter({ subsets: ["latin"] });
+const DynamicNavbar = dynamic(
+  () => import("./_shared/components/navbar/NavBar.jsx"),
+  {
+    ssr: false,
+  }
+);
 
 export const metadata = {
   title: "Evoting",
@@ -17,7 +21,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body>
         <NotificationContainer />
         <UserContextProvider>
           <Navbar />

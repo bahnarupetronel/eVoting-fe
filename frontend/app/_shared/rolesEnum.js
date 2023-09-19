@@ -1,5 +1,7 @@
-export default Roles = {
-  ROLE_USER,
-  ROLE_MODERATOR,
-  ROLE_ADMIN,
+export const Roles = {
+  ROLE_USER: "user",
+  ROLE_MODERATOR: "moderator",
+  ROLE_ADMIN: "admin",
 };
+
+export default Roles;

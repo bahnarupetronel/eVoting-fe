@@ -4,7 +4,10 @@
 }
 
 .paper-container {
-  background-color: antiquewhite;
+  background-color: #6e6c7f;
+  color: #ffe4fa;
+  border: 1px solid black;
+  padding: 10px 0 10px 10px;
 }
 
 .icon-margin {

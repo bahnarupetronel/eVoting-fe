@@ -1,6 +1,9 @@
+"use client";
+
 import LoginForm from "../../_components/authentication/login/LoginForm.jsx";
 import styles from "../../_shared/stylesheets/auth.module.css";
 import Image from "next/image";
+import WithAuthentication from "../../_hooks/WithAuthentication.jsx";
 
 const LoginPage = () => {
   return (
@@ -17,4 +20,4 @@ const LoginPage = () => {
   );
 };
 
-export default LoginPage;
+export default WithAuthentication(LoginPage);

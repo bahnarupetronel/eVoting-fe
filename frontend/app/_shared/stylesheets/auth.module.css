@@ -9,14 +9,14 @@
 .form-container {
   display: grid;
   width: 48%;
-  min-height: 91vh;
+  min-height: 92vh;
 }
 
 .img-container {
   position: relative;
   width: 52%;
-  height: 91vh;
-  margin-top: 9vh;
+  height: 92vh;
+  margin-top: 8vh;
 }
 
 .form-default {
@@ -86,11 +86,25 @@
 
 /*Mobile devices*/
 @media only screen and (max-width: 600px) {
+  /* .container {
+    display: grid;
+    width: 48%;
+    min-height: 92vh;
+  } */
+
+  /* .img-container {
+    position: relative;
+    width: 52%;
+    height: 91vh;
+    margin-top: 9vh;
+  }
+   */
   .img-container {
     display: none;
   }
 
   .form-container {
+    margin-top: 6vh;
     width: 100%;
   }
 

@@ -10,6 +10,7 @@ import Stepper from "../../_components/authentication/form-components/Stepper";
 import styles from "../../_components/authentication/register/register.module.css";
 import stylesAuth from "../../_shared/stylesheets/auth.module.css";
 import Image from "next/image";
+import WithAuthentication from "../../_hooks/WithAuthentication.jsx";
 
 const Register = () => {
   const [location, setLocation] = useState("form2");
@@ -56,4 +57,4 @@ const Register = () => {
   );
 };
 
-export default Register;
+export default WithAuthentication(Register);

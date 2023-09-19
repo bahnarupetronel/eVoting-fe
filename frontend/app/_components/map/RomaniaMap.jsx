@@ -1,4 +1,7 @@
+"use client";
+
 import { useRef, useEffect, useState } from "react";
+import "mapbox-gl/dist/mapbox-gl.css";
 import mapboxgl from "mapbox-gl";
 import "./map.css";
 import getLocations from "./getLocations.js";
@@ -72,7 +75,10 @@ const RomaniaMap = () => {
 
   return (
     <div>
-      <div ref={mapContainer} className="map-container" />
+      <div
+        ref={mapContainer}
+        className="map-container"
+      />
     </div>
   );
 };
