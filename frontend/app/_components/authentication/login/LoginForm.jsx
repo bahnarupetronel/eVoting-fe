@@ -35,7 +35,6 @@ const LoginForm = () => {
   const loginUser = async (inputData) => {
     const response = await useLogin(inputData);
 
-    console.log(response);
     if (response.status === 200) {
       NotificationManager.success(
         "Your login was successful.",
@@ -58,7 +57,6 @@ const LoginForm = () => {
         5000
       );
     }
-    // }
   };
   return (
     <div className={styles["form-container"]}>

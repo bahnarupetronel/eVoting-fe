@@ -28,7 +28,7 @@ const cards = [
   },
   {
     iconSrc: "/assets/icons/location.jpg",
-    title: "Unde sa votezi in persoana",
+    title: "Locatii",
     imageAlt: "locationIcon",
     href: "/vote/locations",
   },

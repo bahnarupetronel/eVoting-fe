@@ -1,22 +1,23 @@
-import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
-import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import styles from "./home.module.css";
-import { CardActionArea } from "@mui/material";
 import Link from "next/link";
+import Image from "next/image";
 
 export default function InfoCard({ props }) {
   return (
-    <Card
+    <div
       className={styles["card"]}
       sx={{ boxShadow: 4 }}
     >
       <Link href={props.href}>
-        <CardMedia
-          sx={{ height: 150 }}
-          image={props.iconSrc}
-          title={props.imageAlt}
+        <Image
+          className={styles["image-card"]}
+          width="200"
+          height="200"
+          sizes="(min-width: 200px) 100%"
+          src={props.iconSrc}
+          alt={props.imageAlt}
         />
         <CardContent>
           <Typography
@@ -28,6 +29,6 @@ export default function InfoCard({ props }) {
           </Typography>
         </CardContent>
       </Link>
-    </Card>
+    </div>
   );
 }

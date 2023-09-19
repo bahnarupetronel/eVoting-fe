@@ -16,10 +16,8 @@ const UserContainer = () => {
       try {
         const response = await axios.get("/user/details", {
           signal: controller.signal,
-          headers: { "Content-Type": "application/json; charset=UTF-8" },
           withCredentials: true,
         });
-        console.log(response.data);
         isMounted && setUser(response.data);
       } catch (err) {
         console.log(err);

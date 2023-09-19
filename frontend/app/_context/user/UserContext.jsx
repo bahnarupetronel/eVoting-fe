@@ -1,6 +1,7 @@
 "use client";
 
 import { createContext, useEffect, useState, useContext } from "react";
+import { useLocalStorage } from "../../_hooks/useLocalStorage";
 
 export const UserContext = createContext({});
 
@@ -12,13 +13,12 @@ export function UserContextProvider({ children }) {
   const [user, setUser] = useState(null);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [loading, setLoading] = useState(false);
-  // useEffect(() => {
-  //   setLoading(true);
-  // fetch().then((data) => {
-  //   setLoading(false);
-  //   setUser(data);
-  // });
-  // }, []);
+  useEffect(() => {
+    setLoading(true);
+    setUser(localStorage.getItem("user"));
+    setIsLoggedIn(localStorage.getItem("isUserLoggedIn"));
+    setLoading(false);
+  }, []);
 
   const value = {
     user,

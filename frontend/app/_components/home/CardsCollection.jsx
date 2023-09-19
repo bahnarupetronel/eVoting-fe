@@ -1,13 +1,13 @@
 import React from "react";
 import cards from "./getCards";
 import styles from "./home.module.css";
-import InfoCard from "./InfoCard";
+import Card from "./Card";
 
 const CardsCollection = () => {
   return (
     <div className={styles["cards-container"]}>
       {cards.map((card, index) => (
-        <InfoCard
+        <Card
           props={card}
           key={index}
         />
