@@ -8,6 +8,7 @@ import Link from "next/link";
 
 import btn from "../../../_shared/stylesheets/button-auth.module.css";
 import styles from "../../../_shared/stylesheets/auth.module.css";
+import { useCookies } from "../../../_hooks/useCookies.js";
 
 import {
   isEmailValid,
@@ -16,12 +17,12 @@ import {
 } from "../../../_shared/utils/validateForm";
 import useLogin from "./useLogin";
 import { useAuth } from "../../../_context/user/UserContext";
-import { Input } from "../form-components/Input";
+import { Input } from "../../form/Input";
 
 const LoginForm = () => {
+  const { setCookie } = useCookies();
   const router = useRouter();
-  const { user, setUser, loading, setLoading, isLoggedIn, setIsLoggedIn } =
-    useAuth();
+  const { setUser, setIsLoggedIn } = useAuth();
   const {
     handleSubmit,
     register,
@@ -46,7 +47,8 @@ const LoginForm = () => {
         email: inputData.email,
         ...data,
       };
-      window?.localStorage.setItem("isUserLoggedIn", true);
+      setCookie("isUserLoggedIn", true);
+      setCookie("user", user);
       setUser(user);
       setIsLoggedIn(true);
       router.push("/");

@@ -1,4 +1,4 @@
-import "./form.css";
+import styles from "./form.module.css";
 
 export const Section = ({ title, children, handleClick }) => {
   return (
@@ -6,19 +6,19 @@ export const Section = ({ title, children, handleClick }) => {
       <div className="title-row mb-4">
         <h4>{title}</h4>
         <button
-          className={`btn-edit`}
+          className={styles["btn-edit"]}
           onClick={handleClick}
         >
           Editeaza
         </button>
       </div>
-      <div className="content">{children}</div>
+      <div className={styles["content"]}>{children}</div>
     </div>
   );
 };
 
 export const SectionRow = ({ children }) => {
-  return <div className="section-row">{children}</div>;
+  return <div className={styles["section-row"]}>{children}</div>;
 };
 
 export default Section;

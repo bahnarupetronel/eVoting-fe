@@ -1,19 +1,19 @@
 import React from "react";
-import "./form.css";
+import styles from "./form.module.css";
 
 export const Field = ({ children, label, error }) => {
   const id = getChildId(children);
 
   return (
-    <div className="field-container">
+    <div className={styles["field-container"]}>
       <label
         htmlFor={id}
-        className="form-label"
+        className={styles["form-label"]}
       >
         {label}
       </label>
       {children}
-      {error && <small className="error">{error.message}</small>}
+      {error && <small className={styles["error"]}>{error.message}</small>}
     </div>
   );
 };

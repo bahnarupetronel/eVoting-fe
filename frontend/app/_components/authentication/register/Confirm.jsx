@@ -6,15 +6,15 @@ import {
   Section,
   SectionRow,
   ImageLink,
-} from "../form-components/index.js";
-import "../form-components/form.css";
+} from "../../form/getFormComponents.js";
+import styles from "../../form/form.module.css";
 import getS3UploadLink from "./utils/getS3UploadLink";
 import uploadFile from "./utils/uploadFile";
 import registerUser from "./utils/registerUser";
 import { NotificationManager } from "react-notifications";
 import "react-notifications/lib/notifications.css";
 import { useNavigate } from "react-router-dom";
-import CustomSpan from "../../../_shared/components/CustomSpan";
+import CustomSpan from "../../../_shared/components/customSpan/CustomSpan";
 
 const Confirm = ({ changeLocation, file }) => {
   const [state] = useRegisterFormState();
@@ -60,29 +60,29 @@ const Confirm = ({ changeLocation, file }) => {
   return (
     <Form
       onSubmit={handleSubmit(submitData)}
-      className="confirm-form-container"
+      className={styles["confirm-form-container"]}
     >
       <Section
         title="Detalii personale"
         handleClick={() => handleClick("form1")}
       >
         <SectionRow>
-          <p className="p-confirm">
+          <p className={styles["p-confirm"]}>
             Nume: <CustomSpan text={state.name} />
           </p>
         </SectionRow>
         <SectionRow>
-          <p className="p-confirm">
+          <p className={styles["p-confirm"]}>
             Email: <CustomSpan text={state.email} />
           </p>
         </SectionRow>
         <SectionRow>
-          <p className="p-confirm">
+          <p className={styles["p-confirm"]}>
             Codul numeric personal: <CustomSpan text={state.cnp} />
           </p>
         </SectionRow>
         <SectionRow>
-          <p className="p-confirm">
+          <p className={styles["p-confirm"]}>
             Seria si numarul: <CustomSpan text={state.seriesAndNumber} />
           </p>
         </SectionRow>
@@ -92,38 +92,38 @@ const Confirm = ({ changeLocation, file }) => {
         handleClick={() => handleClick("form2")}
       >
         <SectionRow>
-          <p className="p-confirm">
+          <p className={styles["p-confirm"]}>
             Adresa 1: <CustomSpan text={state.addressLine1} />
           </p>
         </SectionRow>
         <SectionRow>
-          <p className="p-confirm">
+          <p className={styles["p-confirm"]}>
             Adresa 2: <CustomSpan text={state.addressLine2} />
           </p>
         </SectionRow>
         <SectionRow>
-          <p className="p-confirm">
+          <p className={styles["p-confirm"]}>
             Numarul de telefon:
             <CustomSpan text={state.phoneNumber} />
           </p>
         </SectionRow>
         <SectionRow>
-          <p className="p-confirm">
+          <p className={styles["p-confirm"]}>
             Cod postal: <CustomSpan text={state.postalCode} />
           </p>
         </SectionRow>
         <SectionRow>
-          <p className="p-confirm">
+          <p className={styles["p-confirm"]}>
             Oras: <CustomSpan text={state.city} />
           </p>
         </SectionRow>
         <SectionRow>
-          <p className="p-confirm">
+          <p className={styles["p-confirm"]}>
             Judet: <CustomSpan text={state.state} />
           </p>
         </SectionRow>
         <SectionRow>
-          <p className="p-confirm">
+          <p className={styles["p-confirm"]}>
             Tara: <CustomSpan text={state.country} />
           </p>
         </SectionRow>
@@ -133,7 +133,7 @@ const Confirm = ({ changeLocation, file }) => {
         handleClick={() => handleClick("form3")}
       >
         <SectionRow>
-          <div className="p-confirm">
+          <div className={styles["p-confirm"]}>
             Numele fisierului:{" "}
             {state?.file?.name && (
               <ImageLink

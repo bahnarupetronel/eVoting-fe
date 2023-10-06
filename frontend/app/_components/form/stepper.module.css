@@ -13,17 +13,21 @@
   width: 100%;
   justify-content: space-between;
 }
-nav span {
+.nav-span {
   color: black;
 }
 
-span.nav-link.disabled {
+.nav-link-disabled {
   pointer-events: none;
   opacity: 0.5;
 }
 
-span.nav-link.active {
+.nav-link-active {
   border-bottom: 3px solid #19376d;
+}
+
+.navbar-nav {
+  list-style-type: none;
 }
 
 .error {

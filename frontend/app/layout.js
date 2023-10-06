@@ -9,7 +9,7 @@ import Navbar from "./_shared/components/navbar/NavBar.jsx";
 const DynamicNavbar = dynamic(
   () => import("./_shared/components/navbar/NavBar.jsx"),
   {
-    ssr: false,
+    ssr: true,
   }
 );
 
@@ -24,7 +24,7 @@ export default function RootLayout({ children }) {
       <body>
         <NotificationContainer />
         <UserContextProvider>
-          <Navbar />
+          <DynamicNavbar />
           {children}
         </UserContextProvider>
       </body>

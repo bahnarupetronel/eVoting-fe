@@ -1,11 +1,11 @@
 import { forwardRef } from "react";
-import "./form.css";
+import styles from "./form.module.css";
 
 export const Input = forwardRef((props, ref) => {
   return (
     <input
       ref={ref}
-      className="form-input"
+      className={styles["form-input"]}
       {...props}
     />
   );
