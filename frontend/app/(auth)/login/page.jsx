@@ -12,6 +12,8 @@ const LoginPage = () => {
         <Image
           src="/assets/vote.jpg"
           alt="vote-image"
+          // width={"auto"}
+          // height={"auto"}
           fill={true}
         />
       </div>

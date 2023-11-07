@@ -14,16 +14,18 @@ axiosInstance.interceptors.response.use(
     if (
       (error.response &&
         error.response.status >= 400 &&
-        error.response.status < 500) ||
+        error.response.status < 500 &&
+        error.response.status !== 404) ||
       error.response.status === null
     ) {
       const { removeCookie } = useCookies();
       console.log("go to login");
       removeCookie("user");
       removeCookie("isUserLoggedIn");
-      window.location.href = "/login";
+      // window.location.href = "/login";
+    } else if (error.response.status === 404) {
+      window.location.href = "/not-found";
     }
-
     return Promise.reject(error);
   }
 );

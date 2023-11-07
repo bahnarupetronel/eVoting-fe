@@ -1,7 +1,11 @@
-import React from "react";
+import LiveElections from "../election/live/LiveElections";
 
 const Vote = () => {
-  return <div>Vote</div>;
+  return (
+    <div>
+      <LiveElections />
+    </div>
+  );
 };
 
 export default Vote;

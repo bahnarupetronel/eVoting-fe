@@ -23,8 +23,6 @@ export const useUserDetails = () => {
         const response = await getDetails(controller);
         isMounted && setUser(response);
       } catch (err) {
-        localStorage.removeItem("user");
-        localStorage.removeItem("isUserLoggedIn");
         console.log(err);
       }
     };
