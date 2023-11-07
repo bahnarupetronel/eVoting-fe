@@ -15,6 +15,10 @@
   transition: background 0.25s, box-shadow 0.15s;
 }
 
+.card-link {
+  text-decoration: none;
+}
+
 .card:hover {
   color: #4a4860;
   background: #ffc4eb;

@@ -2,17 +2,20 @@
   border-color: red;
 }
 
-input {
+/* input {
   width: 100%;
   height: 25px;
-}
+} */
 
 .form-input {
   width: 100%;
+  height: 25px;
+  gap: 20px;
 }
 
 .field-container {
   width: 100%;
+  margin-bottom: 10px;
 }
 
 .confirm-form-container {
@@ -25,9 +28,9 @@ input {
   overflow-wrap: break-word;
 }
 
-h4 {
+/* h4 {
   border-bottom: 3px solid #19376d;
-}
+} */
 
 .btn-edit {
   background-color: #19376d;

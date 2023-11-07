@@ -1,78 +1,60 @@
 "use client";
 
-import { useState, useEffect } from "react";
 import styles from "./user.module.css";
-import CustomSpan from "../../_shared/components/CustomSpan";
-import axios from "../../_api/axios.js";
+import CustomSpan from "../../_shared/components/customSpan/CustomSpan";
+import { useUserDetails } from "./useUserDetails.js";
+import Link from "next/link";
 
 const UserContainer = () => {
-  const [user, setUser] = useState(null);
-
-  useEffect(() => {
-    let isMounted = true;
-    const controller = new AbortController();
-
-    const getUserDetails = async () => {
-      try {
-        const response = await axios.get("/user/details", {
-          signal: controller.signal,
-          withCredentials: true,
-        });
-        isMounted && setUser(response.data);
-      } catch (err) {
-        console.log(err);
-      }
-    };
-
-    getUserDetails();
-    return () => {
-      isMounted = false;
-      controller.abort();
-    };
-  }, []);
-
+  const userDetails = useUserDetails();
   return (
     <div className={styles["container-user-details"]}>
-      {user ? (
-        <div>
+      {userDetails ? (
+        <ul className={styles["user-details-list"]}>
           <h2>Profilul meu</h2>
           <hr />
-          <p>
-            Nume: <CustomSpan text={user.name} />
-          </p>
-          <p>
-            Email: <CustomSpan text={user.email} />
-          </p>
-          <p>
-            CNP: <CustomSpan text={user.cnp} />
-          </p>
-          <p>
+          <li>
+            Nume: <CustomSpan text={userDetails.name} />
+          </li>
+          <li>
+            Email: <CustomSpan text={userDetails.email} />
+          </li>
+          <li>
+            CNP: <CustomSpan text={userDetails.cnp} />
+          </li>
+          <li>
+            Seria si numarul: <CustomSpan text={userDetails.seriesAndNumber} />
+          </li>
+          <li>
             Adresa 1:
-            <CustomSpan text={user.addressLine1} />
-          </p>
-          <p>
+            <CustomSpan text={userDetails.addressLine1} />
+          </li>
+          <li>
             Adresa 2:
-            <CustomSpan text={user.addressLine2} />
-          </p>
-          <p>
-            Cod postal: <CustomSpan text={user.postalCode} />
-          </p>
-          <p>
-            Localitate: <CustomSpan text={user.localityId} />
-          </p>
-          <p>
+            <CustomSpan text={userDetails.addressLine2} />
+          </li>
+          <li>
+            Cod postal: <CustomSpan text={userDetails.postalCode} />
+          </li>
+          <li>
+            Localitate: <CustomSpan text={userDetails.localityId} />
+          </li>
+          <li>
             Judet:
-            <CustomSpan text={user.state} />
-          </p>
-          <p>
+            <CustomSpan text={userDetails.countyId} />
+          </li>
+          <li>
             Tara:
-            <CustomSpan text={user.country} />
-          </p>
-
-          <button className={styles["btn-edit-user-profile"]}>
+            <CustomSpan text={userDetails.country} />
+          </li>
+          <Link
+            className={styles["btn-edit"]}
+            href="/user/edit-profile"
+            key="edit-profile"
+          >
             Editeaza profilul
-          </button>
-        </div>
+          </Link>
+        </ul>
       ) : (
         <p>Loading user data...</p>
       )}

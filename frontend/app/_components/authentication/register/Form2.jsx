@@ -1,7 +1,7 @@
 import { useForm } from "react-hook-form";
 import { useEffect, useState, useRef } from "react";
 import { useRegisterFormState } from "../../../_context/form/state";
-import { Button, Form, Field, Input } from "../form-components/index.js";
+import { Button, Form, Field, Input } from "../../form/getFormComponents.js";
 import { phoneNumberValidation } from "../../../_shared/utils/phoneNumberValidation.js";
 import { getCounties } from "./utils/getCounties.js";
 import { getLocalities } from "./utils/getLocalities.js";

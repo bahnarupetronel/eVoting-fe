@@ -1,8 +1,7 @@
 "use client";
 
 import { createContext, useEffect, useState, useContext } from "react";
-import { useLocalStorage } from "../../_hooks/useLocalStorage";
-
+import { useCookies } from "../../_hooks/useCookies";
 export const UserContext = createContext({});
 
 export const useAuth = () => {
@@ -10,13 +9,14 @@ export const useAuth = () => {
 };
 
 export function UserContextProvider({ children }) {
+  const { getCookie } = useCookies();
   const [user, setUser] = useState(null);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [loading, setLoading] = useState(false);
   useEffect(() => {
     setLoading(true);
-    setUser(localStorage.getItem("user"));
-    setIsLoggedIn(localStorage.getItem("isUserLoggedIn"));
+    setUser(getCookie("user"));
+    setIsLoggedIn(getCookie("isUserLoggedIn"));
     setLoading(false);
   }, []);
 

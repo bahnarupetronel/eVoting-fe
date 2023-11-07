@@ -1,17 +1,13 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import Paper from "@mui/material/Paper";
-import MenuItem from "@mui/material/MenuItem";
-import MenuList from "@mui/material/MenuList";
-import Stack from "@mui/material/Stack";
 import AddBoxIcon from "@mui/icons-material/AddBox";
 import TimelineIcon from "@mui/icons-material/Timeline";
 import AccountBoxIcon from "@mui/icons-material/AccountBox";
 import LogoutIcon from "@mui/icons-material/Logout";
 import Link from "next/link";
 
-import "./menu.css";
+import styles from "./menu.module.css";
 export default function MenuListComposition() {
   const [open, setOpen] = useState(false);
   const anchorRef = useRef(null);
@@ -36,31 +32,37 @@ export default function MenuListComposition() {
   }, [open]);
 
   return (
-    <Stack
-      direction="row"
-      spacing={2}
-      className="sidebar"
-    >
-      <Paper className="paper-container">
-        <MenuList>
-          <Link href="/user/:userId">
-            <AccountBoxIcon className="icon-margin" />
-            Profil
-          </Link>
-          <Link href="/user/:userId/vote/history">
-            <TimelineIcon className="icon-margin" />
-            Istoricul voturilor
-          </Link>
-          <Link href="/user/:userId/validate-account">
-            <AddBoxIcon className="icon-margin" />
-            Validare cont
-          </Link>
-          <Link href="/logout">
-            <LogoutIcon className="icon-margin" />
-            Delogare
-          </Link>
-        </MenuList>
-      </Paper>
-    </Stack>
+    <nav className={styles["container"]}>
+      <ul className={styles["nav-list"]}>
+        <Link
+          href="/user/account"
+          className={styles["nav-link"]}
+        >
+          <AccountBoxIcon className={styles["icon"]} />
+          Contul meu
+        </Link>
+        <Link
+          href="/user/validate-account"
+          className={styles["nav-link"]}
+        >
+          <AddBoxIcon className={styles["icon"]} />
+          Validare cont
+        </Link>
+        <Link
+          href="/user/vote/history"
+          className={styles["nav-link"]}
+        >
+          <TimelineIcon className={styles["icon"]} />
+          Istoricul voturilor
+        </Link>
+        <Link
+          href="/logout"
+          className={styles["nav-link"]}
+        >
+          <LogoutIcon className={styles["icon"]} />
+          Delogare
+        </Link>
+      </ul>
+    </nav>
   );
 }

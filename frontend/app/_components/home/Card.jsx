@@ -10,7 +10,10 @@ export default function InfoCard({ props }) {
       className={styles["card"]}
       sx={{ boxShadow: 4 }}
     >
-      <Link href={props.href}>
+      <Link
+        href={props.href}
+        className={styles["card-link"]}
+      >
         <Image
           className={styles["image-card"]}
           width="200"

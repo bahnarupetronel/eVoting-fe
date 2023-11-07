@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useRegisterFormState } from "../../../_context/form/state";
-import { Button, Form } from "../form-components/index.js";
+import { Button, Form } from "../../form/getFormComponents.js";
 import { UploadFile } from "./UploadFile";
 import "react-notifications/lib/notifications.css";
 import { NotificationManager } from "react-notifications";

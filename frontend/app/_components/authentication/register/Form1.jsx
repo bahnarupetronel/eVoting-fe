@@ -1,7 +1,7 @@
 import { useForm } from "react-hook-form";
 import { useRegisterFormState } from "../../../_context/form/state.jsx";
-import "../form-components/form.css";
-import { Button, Form, Field, Input } from "../form-components/index.js";
+import styles from "../../form/form.module.css";
+import { Button, Form, Field, Input } from "../../form/getFormComponents.js";
 import {
   isNameValid,
   isPasswordValid,

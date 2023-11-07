@@ -6,7 +6,7 @@ import Form1 from "../../_components/authentication/register/Form1";
 import Form2 from "../../_components/authentication/register/Form2";
 import Form3 from "../../_components/authentication/register/Form3";
 import Confirm from "../../_components/authentication/register/Confirm";
-import Stepper from "../../_components/authentication/form-components/Stepper";
+import Stepper from "../../_components//form/Stepper";
 import styles from "../../_components/authentication/register/register.module.css";
 import stylesAuth from "../../_shared/stylesheets/auth.module.css";
 import Image from "next/image";

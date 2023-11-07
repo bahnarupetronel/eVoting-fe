@@ -1,0 +1,39 @@
+.container {
+  margin: 0 auto 2vh;
+  padding: 10px 20px;
+  display: flex;
+  border: 1px solid black;
+  width: 80%;
+  flex-direction: column;
+}
+
+.container-dates {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.p-info {
+  margin: 5px 0;
+  font-weight: bold;
+}
+
+.span-info {
+  font-weight: normal;
+}
+
+.p-inline {
+  display: inline-block;
+}
+
+.title {
+  margin: 0;
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+  font-size: larger;
+}
+
+.title:hover {
+  text-decoration: underline;
+}
