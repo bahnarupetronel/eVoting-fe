@@ -1,7 +1,7 @@
 "use client";
 
 import styles from "../election.module.css";
-import Card from "../Card";
+import { ElectionCard } from "../ElectionCard";
 import { useState, useEffect } from "react";
 import { getFinishedElections } from "./getFinishedElections.js";
 
@@ -14,7 +14,7 @@ const UpcomingElections = () => {
     <main className={styles["container"]}>
       <p>Finished voting sessions</p>
       {elections?.map((election) => (
-        <Card
+        <ElectionCard
           election={election}
           key={election.electionId}
         />

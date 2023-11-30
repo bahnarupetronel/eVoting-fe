@@ -13,7 +13,7 @@ const DynamicNavbar = dynamic(
   }
 );
 
-export const metadata = {
+const metadata = {
   title: "Evoting",
   description: "Evoting description",
 };
