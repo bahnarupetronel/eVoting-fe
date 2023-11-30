@@ -1,4 +1,4 @@
-export const registerUser = async data => {
+export const registerUser = async (data) => {
   try {
     const response = await fetch("http://localhost:5173/api/user/register", {
       method: "POST",

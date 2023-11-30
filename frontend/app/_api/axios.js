@@ -12,12 +12,12 @@ axiosInstance.interceptors.response.use(
   },
   (error) => {
     if (
-      (error.response &&
-        error.response.status >= 400 &&
-        error.response.status < 500 &&
-        error.response.status !== 404) ||
-      error.response.status === null
+      error.response &&
+      error.response.status >= 400 &&
+      error.response.status < 500 &&
+      error.response.status !== 404
     ) {
+      console.log(error.response.status);
       const { removeCookie } = useCookies();
       console.log("go to login");
       removeCookie("user");

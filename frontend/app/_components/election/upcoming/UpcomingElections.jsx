@@ -1,7 +1,7 @@
 "use client";
 
 import styles from "../election.module.css";
-import Card from "../Card";
+import { ElectionCard } from "../ElectionCard";
 import { useState, useEffect } from "react";
 import { getUpcomingElections } from "./getUpcomingElections.js";
 
@@ -18,7 +18,7 @@ const UpcomingElections = () => {
       <p>Upcoming voting sessions</p>
       {elections?.length > 0 ? (
         elections.map((election) => (
-          <Card
+          <ElectionCard
             election={election}
             key={election.electionId}
           />

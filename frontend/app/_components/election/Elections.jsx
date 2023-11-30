@@ -1,18 +1,18 @@
 "use client";
 
-import styles from "../election.module.css";
-import { ElectionCard } from "../ElectionCard";
 import { useState, useEffect } from "react";
-import { getLiveElections } from "./getLiveElections.js";
+import { getElections } from "./getElections.js";
+import { ElectionCard } from "./ElectionCard.jsx";
+import styles from "./election.module.css";
 
-const Vote = () => {
+const Elections = () => {
   const [elections, setElections] = useState(null);
+
   useEffect(() => {
-    getLiveElections().then((data) => setElections(data));
+    getElections().then((data) => setElections(data));
   }, []);
   return (
-    <main className={styles["container"]}>
-      <p>Ongoing voting sessions</p>
+    <div className={styles["container"]}>
       {elections?.length > 0 ? (
         elections.map((election) => (
           <ElectionCard
@@ -23,8 +23,7 @@ const Vote = () => {
       ) : (
         <div>No elections</div>
       )}
-    </main>
+    </div>
   );
 };
-
-export default Vote;
+export default Elections;

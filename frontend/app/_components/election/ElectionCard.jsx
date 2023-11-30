@@ -15,11 +15,11 @@ const formatDate = (date) => {
   return formattedDate;
 };
 
-const Card = ({ election }) => {
+export const ElectionCard = ({ election }) => {
   const startDate = formatDate(election?.startDate);
   const endDate = formatDate(election?.endDate);
 
-  // if (election == null) return <div>Loading</div>;
+  if (election == null) return <div>Loading</div>;
   return (
     <div className={styles["container"]}>
       <Link
@@ -44,4 +44,4 @@ const Card = ({ election }) => {
     </div>
   );
 };
-export default Card;
+export default ElectionCard;

@@ -23,7 +23,7 @@ const cards = [
     iconSrc: "/assets/icons/unknown.jpg",
     title: "Alegeri in derulare",
     imageAlt: "unknownIcon",
-    href: "/unknown",
+    href: "/election",
     target: "_blank",
   },
   {

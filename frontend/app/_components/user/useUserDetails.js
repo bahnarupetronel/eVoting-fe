@@ -5,7 +5,7 @@ import axios from "../../_api/axios.js";
 
 export const revalidate = 3600;
 export const getDetails = cache(async (controller) => {
-  const response = await axios.get("/user/details", {
+  const response = await axios.get("/api/user/details", {
     signal: controller.signal,
     withCredentials: true,
   });
@@ -23,7 +23,7 @@ export const useUserDetails = () => {
         const response = await getDetails(controller);
         isMounted && setUser(response);
       } catch (err) {
-        console.log(err);
+        // console.log(err);
       }
     };
 
