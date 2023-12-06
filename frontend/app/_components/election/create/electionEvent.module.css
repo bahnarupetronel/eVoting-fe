@@ -1,0 +1,13 @@
+.container {
+  margin-top: 7vh;
+}
+
+.title {
+  margin: 1vh 0;
+  text-align: center;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+}

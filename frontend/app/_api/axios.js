@@ -22,7 +22,7 @@ axiosInstance.interceptors.response.use(
       console.log("go to login");
       removeCookie("user");
       removeCookie("isUserLoggedIn");
-      // window.location.href = "/login";
+      window.location.href = "/login";
     } else if (error.response.status === 404) {
       window.location.href = "/not-found";
     }
