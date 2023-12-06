@@ -9,9 +9,8 @@ import { useAuth } from "../../_context/user/UserContext.jsx";
 import { useCookies } from "../../_hooks/useCookies.js";
 
 export const logout = async (controller) => {
-  const response = await axios.post("/user/signout", {
+  const response = await axios.post("/api/user/signout", {
     signal: controller.signal,
-    withCredentials: true,
   });
   return response.data;
 };
