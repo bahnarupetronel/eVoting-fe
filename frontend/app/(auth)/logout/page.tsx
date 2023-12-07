@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import axios from "../../_api/axios";
+import axios from "../../_api/axios.ts";
 import "react-notifications/lib/notifications.css";
 import { NotificationManager } from "react-notifications";
 import { useRouter } from "next/navigation";

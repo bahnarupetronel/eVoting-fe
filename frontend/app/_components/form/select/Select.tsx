@@ -1,13 +1,14 @@
+import { ElectionType } from "../../../_interfaces/electionType.model";
 import styles from "./select.module.css";
 
 const Select = ({
   name,
   handleChange,
-  options,
+  types,
 }: {
   name: string;
   handleChange: Function;
-  options: [];
+  types: ElectionType[];
 }) => {
   return (
     <div>
@@ -25,14 +26,14 @@ const Select = ({
         >
           Alege o varianta
         </option>
-        {options &&
-          options.map((option, id) => (
+        {types &&
+          types.map((option) => (
             <option
-              value={option}
-              key={id}
-              data-key={id}
+              value={option.type}
+              key={option.typeId}
+              data-key={option.typeId}
             >
-              {option}
+              {option.type}
             </option>
           ))}
       </select>
