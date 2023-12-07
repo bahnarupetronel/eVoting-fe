@@ -1,5 +1,8 @@
 import Link from "next/link";
 import styles from "./card.module.css";
+import { Election } from "../../_interfaces/election.model";
+import { TypeTag } from "./utils/TypeTag";
+import { StatusBanner } from "./utils/StatusBanner";
 
 const formatDate = (date) => {
   const dateObject = new Date(date);
@@ -15,13 +18,16 @@ const formatDate = (date) => {
   return formattedDate;
 };
 
-export const ElectionCard = ({ election }) => {
-  const startDate = formatDate(election?.startDate);
-  const endDate = formatDate(election?.endDate);
-
+export const ElectionCard = ({ election }: { election: Election }) => {
+  const startDate: string = formatDate(election?.startDate);
+  const endDate: string = formatDate(election?.endDate);
   if (election == null) return <div>Loading</div>;
   return (
     <div className={styles["container"]}>
+      <StatusBanner
+        startDate={election?.startDate}
+        endDate={election?.endDate}
+      />
       <Link
         className={styles["title"]}
         href={`/election/${election.electionId}`}
@@ -36,10 +42,10 @@ export const ElectionCard = ({ election }) => {
         <p className={`${styles["p-info"]} ${styles["p-inline"]}`}>
           Start date: <span className={styles["span-info"]}>{startDate}</span>
         </p>
-
         <p className={`${styles["p-info"]} ${styles["p-inline"]}`}>
           End date: <span className={styles["span-info"]}>{endDate}</span>
         </p>
+        <TypeTag type={election.type.name} />
       </div>
     </div>
   );

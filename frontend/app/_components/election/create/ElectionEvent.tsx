@@ -3,11 +3,11 @@
 import { useEffect, useState } from "react";
 import DatePickerMinDate from "../../form/datePicker/DatePickerMinDate";
 import styles from "./electionEvent.module.css";
-import { getEventTypes } from "./getEventTypes";
+import { getElectionTypes } from "../utils/getElectionTypes";
 import Select from "../../form/select/Select";
 
 export const ElectionEvent = () => {
-  const [eventTypes, setEventTypes] = useState(null);
+  const [electionTypes, setElectionTypes] = useState(null);
   const [event, setEvent] = useState({
     type: null,
     startDate: null,
@@ -26,8 +26,7 @@ export const ElectionEvent = () => {
   };
 
   useEffect(() => {
-    setEventTypes(getEventTypes());
-    // getEventTypes().then((data) => setEventTypes(data));
+    getElectionTypes().then((data) => setElectionTypes(data));
   }, []);
 
   return (
@@ -37,7 +36,7 @@ export const ElectionEvent = () => {
         <Select
           name={"event"}
           handleChange={handleTypeChange}
-          options={eventTypes}
+          types={electionTypes}
         />
 
         <DatePickerMinDate

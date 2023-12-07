@@ -18,8 +18,8 @@ import {
 import useLogin from "./useLogin";
 import { useAuth } from "../../../_context/user/UserContext";
 import { Input } from "../../form/Input";
-import { UserLogin } from "../../../_interfaces/userLogin.model";
-import { UserLoginResponse } from "../../../_interfaces/userLoginResponse.model";
+import { UserLogin } from "../../../_interfaces/userLogin.model.ts";
+import { UserLoginResponse } from "../../../_interfaces/userLoginResponse.model.ts";
 
 const LoginForm = () => {
   const { setCookie } = useCookies();

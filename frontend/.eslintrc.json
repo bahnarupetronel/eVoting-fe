@@ -29,7 +29,7 @@
     "react-hooks/exhaustive-deps": "error",
     "react/prop-types": 0,
     "react/react-in-jsx-scope": 0,
-    "no-undef-init": "warning",
+    "no-undef-init": 1,
     "no-undef": "error"
   },
   "settings": {
