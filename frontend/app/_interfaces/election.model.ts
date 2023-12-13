@@ -1,6 +1,6 @@
 import { ElectionType } from "./electionType.model";
 
-export interface Election {
+export interface ElectionModel {
   electionId: number;
   title: string;
   description: string;

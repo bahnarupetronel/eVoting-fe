@@ -1,14 +1,14 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {
-  //   async redirects() {
-  //     return [
-  //       {
-  //         source: "/Home",
-  //         destination: "/",
-  //         permanent: true,
-  //       },
-  //     ];
-  //   },
+
+module.exports = {
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "evoting-licenta.s3.eu-central-1.amazonaws.com",
+      },
+    ],
+  },
 };
 
-module.exports = nextConfig;
+// module.exports = nextConfig;

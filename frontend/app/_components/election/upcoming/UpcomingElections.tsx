@@ -4,9 +4,10 @@ import styles from "../election.module.css";
 import { ElectionCard } from "../ElectionCard";
 import { useState, useEffect } from "react";
 import { getUpcomingElections } from "./getUpcomingElections";
+import { ElectionModel } from "../../../_interfaces/election.model";
 
 const UpcomingElections = () => {
-  const [elections, setElections] = useState(null);
+  const [elections, setElections] = useState<Array<ElectionModel>>(null);
   useEffect(() => {
     getUpcomingElections().then((data) => {
       console.log(data.length);
