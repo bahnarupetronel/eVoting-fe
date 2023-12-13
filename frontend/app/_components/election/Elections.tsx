@@ -4,11 +4,10 @@ import { useState, useEffect } from "react";
 import { getElections } from "./getElections";
 import { ElectionCard } from "./ElectionCard";
 import styles from "./election.module.css";
-import { Election } from "../../_interfaces/election.model";
-import getElectionTypes from "./utils/getElectionTypes";
+import { ElectionModel } from "../../_interfaces/election.model";
 
 const Elections = () => {
-  const [elections, setElections] = useState(null);
+  const [elections, setElections] = useState<Array<ElectionModel>>(null);
 
   useEffect(() => {
     getElections().then((data) => setElections(data));
@@ -16,7 +15,7 @@ const Elections = () => {
   return (
     <div className={styles["container"]}>
       {elections?.length > 0 ? (
-        elections.map((election: Election) => (
+        elections.map((election: ElectionModel) => (
           <ElectionCard
             election={election}
             key={election.electionId}

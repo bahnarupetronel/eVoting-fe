@@ -8,8 +8,6 @@ import { useAuth } from "../../../_context/user/UserContext";
 import Link from "next/link";
 import styles from "./nav.module.css";
 import { AppBar, CssBaseline, Typography, Toolbar } from "@mui/material";
-import useLocalStorage from "../../../_hooks/useLocalStorage";
-const drawerWidth = 240;
 
 export default function NavBar(props) {
   const { isLoggedIn } = useAuth();

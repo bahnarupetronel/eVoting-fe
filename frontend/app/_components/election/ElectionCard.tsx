@@ -1,24 +1,11 @@
 import Link from "next/link";
 import styles from "./card.module.css";
-import { Election } from "../../_interfaces/election.model";
+import { ElectionModel } from "../../_interfaces/election.model";
 import { TypeTag } from "./utils/TypeTag";
 import { StatusBanner } from "./utils/StatusBanner";
+import { formatDate } from "./utils/formatDate";
 
-const formatDate = (date) => {
-  const dateObject = new Date(date);
-  const options = {
-    year: "numeric",
-    month: "long",
-    day: "numeric",
-    hour: "numeric",
-    minute: "numeric",
-  };
-
-  const formattedDate = dateObject.toLocaleDateString("en-US", options);
-  return formattedDate;
-};
-
-export const ElectionCard = ({ election }: { election: Election }) => {
+export const ElectionCard = ({ election }: { election: ElectionModel }) => {
   const startDate: string = formatDate(election?.startDate);
   const endDate: string = formatDate(election?.endDate);
   if (election == null) return <div>Loading</div>;
