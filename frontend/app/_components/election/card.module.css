@@ -1,10 +1,10 @@
 .container {
-  margin: 0 auto 2vh;
-  padding: 10px 20px;
+  margin-bottom: 2vh;
+  padding: 0 20px 10px;
   display: flex;
   border: 1px solid black;
-  width: 80%;
   flex-direction: column;
+  position: relative;
 }
 
 .container-dates {
@@ -36,4 +36,51 @@
 
 .title:hover {
   text-decoration: underline;
+}
+
+.tag {
+  position: absolute;
+  top: -1px;
+  right: -20px;
+  background-color: #3498db; /* Change this to the desired color */
+  color: #ffffff; /* Change this to the desired text color */
+  padding: 5px 10px;
+  border-radius: 5px;
+  transform: skewX(20deg);
+}
+
+.tag-text {
+  transform: skewX(100deg);
+}
+
+.banner {
+  font-family: Roboto;
+  color: white;
+  margin: 0;
+  padding-left: 10px;
+  width: 100%;
+}
+
+.green {
+  background-color: green;
+}
+
+.blue {
+  background-color: blue;
+}
+
+.yellow {
+  background-color: yellow;
+}
+
+.purple {
+  background-color: purple;
+}
+
+.pink {
+  background-color: pink;
+}
+
+.brown {
+  background-color: brown;
 }
