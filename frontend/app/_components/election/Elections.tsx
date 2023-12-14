@@ -103,7 +103,7 @@ const Elections = () => {
             />
           ))
         ) : (
-          <div>No elections</div>
+          <div>Niciun eveniment disponibil</div>
         )}
       </div>
 

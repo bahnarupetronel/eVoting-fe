@@ -16,11 +16,11 @@
   width: 100%;
   color: white;
   list-style: none;
-  display: flex;
-  flex-direction: column;
   margin-top: 6.9vh;
+  padding: 0;
   @media all and (min-width: 600px) {
     margin: 0 0 0 5vw;
+    display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
@@ -64,6 +64,7 @@
 }
 
 .nav-btn-mobile {
+  color: white;
   display: block;
   text-align: center;
 }
