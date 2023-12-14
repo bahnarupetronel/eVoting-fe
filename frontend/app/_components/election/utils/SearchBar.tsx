@@ -3,8 +3,10 @@ import { IconButton, InputBase, List, ListItem, Paper } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import styles from "../election.module.css";
 import { ElectionModel } from "../../../_interfaces/election.model";
+import { useRouter } from "next/navigation";
 
 const SearchBar = ({ elections }: { elections: Array<ElectionModel> }) => {
+  const router = useRouter();
   const searchList = useRef(null);
   const [openSearchList, setOpenSearchList] = useState<boolean>(false);
   const [searchTerm, setSearchTerm] = useState<string>("");
@@ -33,6 +35,10 @@ const SearchBar = ({ elections }: { elections: Array<ElectionModel> }) => {
 
   const handleFocus = () => {
     handleSearch(null);
+  };
+
+  const handleOnClick = (electionId: number) => {
+    router.push(`/election/${electionId}`);
   };
 
   const closeSearchList = (e: MouseEvent): void => {
@@ -87,6 +93,7 @@ const SearchBar = ({ elections }: { elections: Array<ElectionModel> }) => {
             <ListItem
               key={election.title + election.electionId}
               className={styles["search-list-item"]}
+              onClick={() => handleOnClick(election.electionId)}
             >
               {election.title}
             </ListItem>
