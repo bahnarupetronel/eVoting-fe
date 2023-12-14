@@ -1,3 +1,85 @@
 .container {
-  margin-top: 10vh;
+  margin: 10vh 5vw 5vh 2vw;
+}
+
+.container-header {
+  margin-bottom: 2vh;
+}
+
+.cards-container {
+  min-height: 45vh;
+}
+
+.title-header {
+  font-size: 1.5rem;
+  margin: 0 0 1rem;
+}
+
+.pagination {
+  align-items: center;
+  max-height: 50vh;
+}
+
+.container-flex {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.filter {
+  width: 150px;
+  margin: 2vh 1vh 0 0;
+}
+
+.search-list {
+  background-color: white;
+  border: 1px solid lightgrey;
+  border-radius: 5px;
+  width: 500px;
+  display: block;
+  position: absolute;
+  z-index: 9999;
+}
+
+.search-list-item {
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  padding: 5px 20px;
+  color: black;
+}
+
+.search-list-item:hover {
+  background-color: lightgrey;
+}
+
+.search-box {
+  display: block;
+}
+
+@media only screen and (max-width: 650px) {
+  .search-bar {
+    width: auto;
+  }
+
+  .container-flex {
+    flex-direction: column;
+  }
+}
+
+@media only screen and (min-width: 800px) {
+  .container {
+    margin: 10vh 10vw;
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  .container {
+    margin: 10vh 15vw;
+  }
+
+  .search-bar {
+    width: 500px;
+  }
 }
