@@ -79,15 +79,9 @@ export default function NavBar(props) {
       >
         <MenuIcon />
       </IconButton>
-      <nav
-        className={styles["nav-box"]}
-        sx={{ display: { xs: "none" } }}
-      >
+      <nav className={styles["nav-box"]}>
         <Typography className={styles["nav-logo"]}>eVoting</Typography>
-        <ul
-          sx={{ display: { xs: "none" } }}
-          className={styles["nav-box"]}
-        >
+        <ul className={styles["nav-box"]}>
           <Link
             key="acasa"
             href="/"
