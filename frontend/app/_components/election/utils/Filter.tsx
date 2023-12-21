@@ -8,15 +8,20 @@ const Filter = ({
   label,
   id,
   handleChange,
+  size,
 }: {
   options: Array<option>;
   value: string;
   label: string;
   id: string;
   handleChange;
+  size?: string;
 }) => {
   return (
-    <FormControl className={styles["filter"]}>
+    <FormControl
+      className={styles["filter"]}
+      size={size ?? "default"}
+    >
       <InputLabel id={id}>{label}</InputLabel>
       <Select
         labelId={id}
@@ -25,14 +30,15 @@ const Filter = ({
         label={label}
         onChange={(e) => handleChange(e, id)}
       >
-        {options.map((option: option) => (
-          <MenuItem
-            key={option.value}
-            value={option.value}
-          >
-            {option.placeholder}
-          </MenuItem>
-        ))}
+        {options.length > 0 &&
+          options.map((option: option) => (
+            <MenuItem
+              key={option.value}
+              value={option.value}
+            >
+              {option.placeholder}
+            </MenuItem>
+          ))}
       </Select>
     </FormControl>
   );

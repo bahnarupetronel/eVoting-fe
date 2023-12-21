@@ -3,7 +3,7 @@
 import "./globals.css";
 import { UserContextProvider } from "./_context/user/UserContext";
 import { NotificationContainer } from "react-notifications";
-import Navbar from "./_shared/components/navbar/NavBar";
+import Navbar from "./_components/navbar/NavBar";
 
 const metadata = {
   title: "Evoting",

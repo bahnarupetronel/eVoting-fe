@@ -1,6 +1,8 @@
 import "react-datepicker/dist/react-datepicker.css";
 import DatePicker from "react-datepicker";
 import { subDays } from "date-fns";
+import { InputLabel } from "@mui/material";
+import styles from "./electionEvent.module.css";
 
 const DatePickerMinDate = ({
   startDate,
@@ -9,10 +11,22 @@ const DatePickerMinDate = ({
   minDate,
   htmlFor,
   labelText,
+}: {
+  startDate: Date;
+  timeInterval: number;
+  handleChange: Function;
+  minDate: number;
+  htmlFor: string;
+  labelText: string;
 }) => {
   return (
     <div>
-      <label htmlFor={htmlFor}>{labelText}</label>
+      <InputLabel
+        htmlFor={htmlFor}
+        className={styles["label-event"]}
+      >
+        {labelText}
+      </InputLabel>
       <DatePicker
         showIcon
         selected={startDate}

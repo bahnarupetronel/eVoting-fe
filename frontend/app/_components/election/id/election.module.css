@@ -7,3 +7,9 @@
 .title {
   text-align: center;
 }
+
+.container-btn {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 2vh;
+}

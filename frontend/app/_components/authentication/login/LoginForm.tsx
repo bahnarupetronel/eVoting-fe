@@ -121,7 +121,6 @@ const LoginForm = () => {
             href="/register"
             className={styles["a-auth"]}
           >
-            {" "}
             Poti crea unul acum!
           </Link>
         </p>
@@ -131,7 +130,6 @@ const LoginForm = () => {
             href="/reset-password"
             className={styles["a-auth"]}
           >
-            {" "}
             Resetare parola.
           </Link>
         </p>

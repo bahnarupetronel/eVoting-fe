@@ -4,7 +4,7 @@ import { useState } from "react";
 import Drawer from "@mui/material/Drawer";
 import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
-import { useAuth } from "../../../_context/user/UserContext";
+import { useAuth } from "../../_context/user/UserContext";
 import Link from "next/link";
 import styles from "./nav.module.css";
 import { AppBar, CssBaseline, Typography, Toolbar } from "@mui/material";
@@ -32,7 +32,7 @@ export default function NavBar(props) {
         >
           Acasa
         </Link>
-        {isLoggedIn ? (
+        {isLoggedIn ?? (
           <Link
             key="voteaza"
             href="/vote"
@@ -40,8 +40,6 @@ export default function NavBar(props) {
           >
             Voteaza
           </Link>
-        ) : (
-          <></>
         )}
         {isLoggedIn ? (
           <Link

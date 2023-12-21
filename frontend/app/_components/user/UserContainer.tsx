@@ -1,7 +1,7 @@
 "use client";
 
 import styles from "./user.module.css";
-import CustomSpan from "../../_shared/components/customSpan/CustomSpan";
+import CustomSpan from "../form/customSpan/CustomSpan";
 import { useUserDetails } from "./useUserDetails";
 import Link from "next/link";
 import { UserDetailsModel } from "../../_interfaces/userDetails.model";

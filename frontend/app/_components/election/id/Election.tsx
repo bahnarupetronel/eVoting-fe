@@ -9,6 +9,7 @@ import { Menu } from "./Menu";
 import Box from "@mui/material/Box";
 import Divider from "@mui/material/Divider";
 import { formatDate } from "../utils/formatDate";
+import { Button } from "@mui/material";
 
 const Election = () => {
   const pathname = usePathname();
@@ -35,6 +36,14 @@ const Election = () => {
           <span>{formatDate(election.endDate)}</span>
         </p>
         <Divider />
+        {!election.published ? (
+          <div className={styles["container-btn"]}>
+            <Button variant="outlined">Editeaza</Button>
+            <Button variant="outlined">Publica</Button>
+          </div>
+        ) : (
+          <></>
+        )}
       </Box>
     </div>
   );

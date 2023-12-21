@@ -15,13 +15,13 @@ const SearchBar = ({ elections }: { elections: Array<ElectionModel> }) => {
   >([]);
 
   const handleSearch = (event?: React.ChangeEvent<HTMLInputElement>): void => {
-    let filtered = [];
+    let filtered: Array<ElectionModel> = [];
     if (!event && searchTerm && elections.length > 0) {
       filtered = elections.filter((election) =>
         election.title.toLowerCase().includes(searchTerm.toLowerCase())
       );
     } else if (event) {
-      const value = event.target.value;
+      const value: string = event.target.value;
       setSearchTerm(value);
       if (value)
         filtered = elections.filter((election) =>
