@@ -11,13 +11,7 @@ axiosInstance.interceptors.response.use(
     return response;
   },
   (error) => {
-    if (
-      error.response &&
-      error.response.status >= 400 &&
-      error.response.status < 500 &&
-      error.response.status !== 404
-    ) {
-      console.log(error.response.status);
+    if (error.response?.status == 403) {
       const { removeCookie } = useCookies();
       console.log("go to login");
       removeCookie("user");
@@ -25,8 +19,11 @@ axiosInstance.interceptors.response.use(
       window.location.href = "/login";
     } else if (error.response.status === 404) {
       window.location.href = "/not-found";
-    }
-    return Promise.reject(error);
+    } else if (error.response.status === 400) {
+      console.log("bad request");
+    } else if (error.response === undefined) {
+      console.log("loading");
+    } else return Promise.reject(error);
   }
 );
 

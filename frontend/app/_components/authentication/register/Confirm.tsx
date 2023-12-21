@@ -12,7 +12,7 @@ import uploadFile from "./utils/uploadFile";
 import registerUser from "./utils/registerUser";
 import { NotificationManager } from "react-notifications";
 import "react-notifications/lib/notifications.css";
-import CustomSpan from "../../../_shared/components/customSpan/CustomSpan";
+import CustomSpan from "../../form/customSpan/CustomSpan";
 
 const Confirm = ({ changeLocation, file }) => {
   const { state } = useRegisterFormState();

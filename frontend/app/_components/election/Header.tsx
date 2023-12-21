@@ -1,7 +1,6 @@
 import styles from "./election.module.css";
 
-import { List, ListItem, SelectChangeEvent } from "@mui/material";
-import { useState } from "react";
+import { SelectChangeEvent } from "@mui/material";
 import {
   statusFilterOptions,
   typeFilterOptions,

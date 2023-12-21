@@ -17,6 +17,7 @@ export const statusFilterOptions: Array<option> = [
 
 export const typeFilterOptions: Array<option> = [
   { value: "", placeholder: "Selectati tipul" },
+  { value: "Referendum", placeholder: "Referendum" },
   { value: "Locale", placeholder: "Locale" },
   { value: "Prezidentiale", placeholder: "Prezidentiale" },
   { value: "Parlamentare", placeholder: "Parlamentare" },

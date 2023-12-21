@@ -1,13 +1,44 @@
+/*containers*/
 .container {
-  margin-top: 7vh;
+  margin: 10vh 5vw;
 }
 
 .title {
-  margin: 1vh 0;
-  text-align: center;
+  font-size: 1.5rem;
+  margin: 0 0 1rem;
 }
 
-.form {
+.flex {
   display: flex;
   flex-direction: column;
+}
+
+.label-event {
+  display: inline-block;
+  margin: 1rem 1rem 0 0;
+}
+
+.label-event-name {
+  width: 100%;
+}
+
+.input-referendum {
+  display: block;
+}
+
+.btn-submit {
+  margin: 2vh auto 0;
+  width: 100px;
+}
+
+@media only screen and (min-width: 650px) {
+  .container {
+    margin: 10vh 10vw;
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  .container {
+    margin: 10vh 15vw;
+  }
 }
