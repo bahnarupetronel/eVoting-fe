@@ -1,8 +1,8 @@
 import { createContext, useContext, useState } from "react";
 
 export const AppStateContext = createContext({ state: null, setState: null });
-import rolesEnum from "../../_shared/rolesEnum";
-import { RegisterFormState } from "../../_interfaces/registerFormState.model";
+import rolesEnum from "@/_shared/rolesEnum";
+import { RegisterFormState } from "@/_interfaces/registerFormState.model";
 
 export function FormProvider({ children }) {
   const [state, setState] = useState({ roles: [rolesEnum.ROLE_USER] });

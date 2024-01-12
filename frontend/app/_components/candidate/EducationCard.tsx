@@ -1,5 +1,5 @@
 import { CardContent, Divider, Typography } from "@mui/material";
-import { EducationModel } from "../../_interfaces/education.model";
+import { EducationModel } from "@/_interfaces/education.model";
 
 const EducationCard = ({ education }: { education: EducationModel }) => {
   return (

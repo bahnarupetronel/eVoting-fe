@@ -1,4 +1,4 @@
-import RomaniaMap from "../../_components/map/RomaniaMap";
+import RomaniaMap from "@/_components/map/RomaniaMap";
 
 const page = () => {
   return (

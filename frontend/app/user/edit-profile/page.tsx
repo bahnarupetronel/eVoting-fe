@@ -1,10 +1,6 @@
-import { EditProfileContainer } from "../../_components/user/editProfile/EditProfileContainer";
+import { EditProfileContainer } from "@/_components/user/editProfile/EditProfileContainer";
 
 const EditProfile = () => {
-  return (
-    <div>
-      <EditProfileContainer />
-    </div>
-  );
+  return <EditProfileContainer />;
 };
 export default EditProfile;

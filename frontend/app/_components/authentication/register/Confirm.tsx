@@ -1,18 +1,18 @@
 import { useForm } from "react-hook-form";
-import { useRegisterFormState } from "../../../_context/form/state";
+import { useRegisterFormState } from "@/_context/form/state";
 import {
   Form,
   Section,
   SectionRow,
   ImageLink,
-} from "../../form/getFormComponents";
-import styles from "../../form/form.module.css";
-import getS3UploadLink from "../../../_shared/utils/getS3UploadLink";
-import uploadFile from "../../../_shared/utils/uploadFile";
-import registerUser from "../../../_services/auth/registerUser";
+} from "@/_components/form/getFormComponents";
+import styles from "@/_components/form/form.module.css";
+import getS3UploadLink from "@/_shared/utils/getS3UploadLink";
+import uploadFile from "@/_shared/utils/uploadFile";
+import registerUser from "@/_services/auth/registerUser";
 import { NotificationManager } from "react-notifications";
 import "react-notifications/lib/notifications.css";
-import CustomSpan from "../../form/customSpan/CustomSpan";
+import CustomSpan from "@/_components/form/customSpan/CustomSpan";
 
 const Confirm = ({ changeLocation, file }) => {
   const { state } = useRegisterFormState();

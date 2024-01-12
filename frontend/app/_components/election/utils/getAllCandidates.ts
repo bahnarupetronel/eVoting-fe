@@ -1,4 +1,4 @@
-import axios from "../../../_api/axios";
+import axios from "@/_api/axios";
 
 export const getAllCandidates = async (): Promise<any> => {
   const candidates = await axios.get("/api/candidate");

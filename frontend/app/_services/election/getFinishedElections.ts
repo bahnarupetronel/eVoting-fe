@@ -1,4 +1,4 @@
-import axios from "../../_api/axios";
+import axios from "@/_api/axios";
 
 export const getFinishedElections = async (): Promise<any> => {
   try {

@@ -1,6 +1,6 @@
-import { ElectionModel } from "../../../_interfaces/election.model";
+import { ElectionModel } from "@/_interfaces/election.model";
 import { getElectionStatus } from "./getElectionStatus";
-import { filter } from "../../../_interfaces/filter.model";
+import { filter } from "@/_interfaces/filter.model";
 
 const elementsPerPage = 5;
 

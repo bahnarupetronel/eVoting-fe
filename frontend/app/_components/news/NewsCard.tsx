@@ -1,5 +1,5 @@
-import styles from "./news.module.css";
 import { getImage } from "./getImage.js";
+import styles from "./news.module.css";
 
 const NewsCard = () => {
   const fileName = "./example.png";
@@ -10,7 +10,11 @@ const NewsCard = () => {
         <p>Loading</p>
       ) : (
         <div className={styles["container-news-image"]}>
-          <img className={styles["card-image"]} src={image} alt={"image"} />
+          <img
+            className={styles["card-image"]}
+            src={image}
+            alt={"image"}
+          />
         </div>
       )}
       <div className={styles["content"]}>

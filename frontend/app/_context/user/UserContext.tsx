@@ -1,8 +1,8 @@
 "use client";
 
 import { createContext, useEffect, useState, useContext } from "react";
-import { useCookies } from "../../_hooks/useCookies.ts";
-import { UserContextModel } from "../../_interfaces/userContext.model.ts";
+import { useCookies } from "@/_hooks/useCookies.ts";
+import { UserContextModel } from "@/_interfaces/userContext.model.ts";
 export const UserContext = createContext<UserContextModel>(null);
 
 export const useAuth = () => {

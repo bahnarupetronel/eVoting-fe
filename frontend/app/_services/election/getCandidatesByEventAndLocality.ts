@@ -1,5 +1,5 @@
-import axios from "../../_api/axios";
-import { EventCandidate } from "../../_interfaces/eventCandidate.model";
+import axios from "@/_api/axios";
+import { EventCandidate } from "@/_interfaces/eventCandidate.model";
 
 export const getCandidateByEventAndLocality = async (
   typeId: string,

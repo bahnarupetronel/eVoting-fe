@@ -1,4 +1,4 @@
-import FinishedElections from "../../_components/election/finished/FinishedElections";
+import FinishedElections from "@/_components/election/finished/FinishedElections";
 
 const page = () => {
   return <FinishedElections />;

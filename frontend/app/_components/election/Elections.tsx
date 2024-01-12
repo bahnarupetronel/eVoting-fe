@@ -1,18 +1,18 @@
 "use client";
 
-import { useState, useEffect, useMemo } from "react";
+import { useState, useEffect } from "react";
+import { Pagination, Stack } from "@mui/material";
 import { getElections } from "./getElections";
 import { ElectionCard } from "./ElectionCard";
-import styles from "./election.module.css";
-import { ElectionModel } from "../../_interfaces/election.model";
-import Header from "./Header";
-import { Pagination, Stack } from "@mui/material";
+import { Header } from "./Header";
+import { ElectionModel } from "@/_interfaces/election.model";
+import { filter } from "@/_interfaces/filter.model";
 import {
   getFilteredElections,
   getCurrentPageElections,
   getNumberOfPages,
 } from "./utils/electionsUtils";
-import { filter } from "../../_interfaces/filter.model";
+import styles from "./election.module.css";
 
 const Elections = () => {
   const [elections, setElections] = useState<Array<ElectionModel>>([]);

@@ -1,5 +1,5 @@
 import axios from "axios";
-import useCookies from "../_hooks/useCookies.ts";
+import { useCookies } from "@/_hooks/useCookies";
 
 let axiosInstance = axios.create({
   baseURL: "http://localhost:8090",

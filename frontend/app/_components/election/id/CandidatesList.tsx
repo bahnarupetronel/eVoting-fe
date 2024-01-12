@@ -1,10 +1,10 @@
 import styles from "./election.module.css";
 
-const Candidates = () => {
+export const CandidatesList = () => {
   return (
     <div className={styles["container-candidates"]}>
       Niciun candidat selectat
     </div>
   );
 };
-export default Candidates;
+export default CandidatesList;

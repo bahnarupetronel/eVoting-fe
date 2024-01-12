@@ -1,13 +1,13 @@
 "use client";
 
-import Filter from "../../../_shared/components/Filter";
+// import Filter from "@/_shared/components/Filter";
 import styles from "./electionCandidates.module.css";
 import { useState } from "react";
-import SearchBar from "../utils/SearchBar";
-import FilterLocalities from "../../../_shared/components/FilterLocalities";
+// import SearchBar from "../utils/SearchBar";
+import FilterLocalities from "@/_shared/components/FilterLocalities";
 import Candidates from "./Candidates";
-import { ElectionModel } from "../../../_interfaces/election.model";
-import { locality } from "../../../_interfaces/locality.model";
+import { ElectionModel } from "@/_interfaces/election.model";
+import { locality } from "@/_interfaces/locality.model";
 
 const LocalElectionCandidates = ({ election }: { election: ElectionModel }) => {
   const [selectedLocality, setSelectedLocality] = useState<locality>(null);

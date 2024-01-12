@@ -1,4 +1,4 @@
-import { userRegister } from "../../_interfaces/userRegister.model";
+import { userRegister } from "@/_interfaces/userRegister.model";
 
 export const registerUser = async (data): Promise<any> => {
   try {

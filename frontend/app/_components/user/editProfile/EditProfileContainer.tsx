@@ -1,7 +1,7 @@
 "use client";
 
-import { Input, Form, Field } from "../../form/getFormComponents";
 import { useForm } from "react-hook-form";
+import { Input, Form, Field } from "@/_components/form/getFormComponents";
 import styles from "./styles.module.css";
 
 export const EditProfileContainer = () => {

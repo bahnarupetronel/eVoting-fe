@@ -1,4 +1,4 @@
-import { option } from "../../../_interfaces/filter.model";
+import { option } from "@/_interfaces/filter.model";
 
 export const statusFilterOptions: Array<option> = [
   { value: "", placeholder: "Selectati statusul" },

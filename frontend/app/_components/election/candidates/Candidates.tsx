@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
-import getCandidateByEventAndLocality from "../../../_services/election/getCandidatesByEventAndLocality";
-import CandidateCard from "./CandidateCard";
-import { EventCandidate } from "../../../_interfaces/eventCandidate.model";
 import Link from "next/link";
+import getCandidateByEventAndLocality from "@/_services/election/getCandidatesByEventAndLocality";
+import CandidateCard from "./CandidateCard";
+import { EventCandidate } from "@/_interfaces/eventCandidate.model";
 import styles from "./electionCandidates.module.css";
 
 const Candidates = ({
@@ -21,7 +21,7 @@ const Candidates = ({
           ? setCandidates(response.data)
           : setCandidates([]);
       });
-  }, [localityId]);
+  }, [localityId, typeId]);
 
   return (
     <div>

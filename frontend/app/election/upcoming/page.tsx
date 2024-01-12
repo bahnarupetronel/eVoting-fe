@@ -1,4 +1,4 @@
-import UpcomingElections from "../../_components/election/upcoming/UpcomingElections";
+import UpcomingElections from "@/_components/election/upcoming/UpcomingElections";
 
 const page = () => {
   return <UpcomingElections />;

@@ -1,4 +1,4 @@
-import axios from "../../_api/axios";
+import axios from "@/_api/axios";
 
 export const getLocalities = async (): Promise<any> => {
   const localities = await axios.get("/localities/all");

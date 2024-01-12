@@ -1,7 +1,7 @@
 "use client";
 
 import LocalElectionCandidates from "./LocalElectionCandidates";
-import { ElectionModel } from "../../../_interfaces/election.model";
+import { ElectionModel } from "@/_interfaces/election.model";
 import ReferendumElectionCandidates from "./ReferendumElectionCandidates";
 import PresidentialElectionCandidates from "./PresidentialElectionCandidates";
 import EuropeanParliamentElectionCandidates from "./EuropeanParliamentElectionCandidates";

@@ -1,12 +1,12 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import axios from "../../_api/axios.ts";
-import "react-notifications/lib/notifications.css";
-import { NotificationManager } from "react-notifications";
 import { useRouter } from "next/navigation";
-import { useAuth } from "../../_context/user/UserContext";
-import { useCookies } from "../../_hooks/useCookies.ts";
+import { NotificationManager } from "react-notifications";
+import "react-notifications/lib/notifications.css";
+import axios from "@/_api/axios.ts";
+import { useAuth } from "@/_context/user/UserContext";
+import { useCookies } from "@/_hooks/useCookies.ts";
 
 const logout = async (controller: AbortController): Promise<any> => {
   const response = await axios.post("/api/user/signout", {

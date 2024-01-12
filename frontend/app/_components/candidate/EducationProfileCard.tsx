@@ -1,10 +1,9 @@
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
-import { CandidateModel } from "../../_interfaces/candidate.model";
-import { EducationModel } from "../../_interfaces/education.model";
+import { CandidateModel } from "@/_interfaces/candidate.model";
+import { EducationModel } from "@/_interfaces/education.model";
 import EducationCard from "./EducationCard";
 import styles from "./candidate.module.css";
-import { Card } from "@mui/material";
 
 export const EducationProfileCard = ({
   candidate,

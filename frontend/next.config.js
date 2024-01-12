@@ -1,5 +1,5 @@
 /** @type {import('next').NextConfig} */
-
+const path = require("path");
 module.exports = {
   images: {
     remotePatterns: [
@@ -9,8 +9,14 @@ module.exports = {
       },
     ],
   },
-  compiler: {
-    styledComponents: true,
+  webpack: (config) => {
+    config.plugins = config.plugins || [];
+    config.optimization.providedExports = true;
+    config.resolve.alias = {
+      ...config.resolve.alias,
+      "@": path.resolve(__dirname, "./"),
+    };
+    return config;
   },
 };
 

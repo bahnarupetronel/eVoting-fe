@@ -1,4 +1,4 @@
-import LiveElection from "../../_components/election/live/LiveElections";
+import LiveElection from "@/_components/election/live/LiveElections";
 
 const page = () => {
   return <LiveElection />;

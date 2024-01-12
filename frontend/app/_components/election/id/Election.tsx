@@ -1,15 +1,13 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { getElectionById } from "../../../_services/election/getElectionById";
 import { usePathname } from "next/navigation";
-import styles from "./election.module.css";
-import { ElectionModel } from "../../../_interfaces/election.model";
-import Box from "@mui/material/Box";
-import Divider from "@mui/material/Divider";
+import { Divider, Button, Box } from "@mui/material";
+import { getElectionById } from "@/_services/election/getElectionById";
+import { ElectionModel } from "@/_interfaces/election.model";
 import { formatDate } from "../utils/formatDate";
-import { Button } from "@mui/material";
-import CandidatesList from "./CandidatesList";
+import { CandidatesList } from "./CandidatesList";
+import styles from "./election.module.css";
 
 const Election = () => {
   const pathname = usePathname();

@@ -1,8 +1,6 @@
-import CardContent from "@mui/material/CardContent";
-import Typography from "@mui/material/Typography";
-import { CandidateModel } from "../../_interfaces/candidate.model";
+import { Divider, Typography, CardContent } from "@mui/material";
+import { CandidateModel } from "@/_interfaces/candidate.model";
 import styles from "./candidate.module.css";
-import { Divider } from "@mui/material";
 import Image from "next/image";
 
 export const CandidateProfileCard = ({

@@ -1,5 +1,5 @@
-import axios from "../../_api/axios";
-import { EventCandidate } from "../../_interfaces/eventCandidateRegister.model";
+import axios from "@/_api/axios";
+import { EventCandidate } from "@/_interfaces/eventCandidateRegister.model";
 
 export const deleteCandidateFromEvent = async (
   data: EventCandidate

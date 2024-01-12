@@ -1,4 +1,4 @@
-import axios from "../../_api/axios.js";
+import axios from "@/_api/axios.js";
 
 export const isLoggedIn = async () => {
   try {

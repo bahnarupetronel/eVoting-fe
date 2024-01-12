@@ -1,4 +1,4 @@
-import Elections from "../_components/election/Elections";
+import Elections from "@/_components/election/Elections";
 
 const page = () => {
   return <Elections />;

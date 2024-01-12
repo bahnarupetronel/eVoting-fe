@@ -1,9 +1,9 @@
 "use client";
 
-import LoginForm from "../../_components/authentication/login/LoginForm";
-import styles from "../../_shared/stylesheets/auth.module.css";
 import Image from "next/image";
-import WithAuthentication from "../../_hooks/WithAuthentication";
+import LoginForm from "@/_components/authentication/login/LoginForm";
+import styles from "@/_shared/stylesheets/auth.module.css";
+import WithAuthentication from "@/_hooks/WithAuthentication";
 
 const LoginPage = () => {
   return (
