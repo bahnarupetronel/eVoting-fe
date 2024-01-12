@@ -1,8 +1,8 @@
+import Link from "next/link";
+import Image from "next/image";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
 import styles from "./home.module.css";
-import Link from "next/link";
-import Image from "next/image";
 
 export default function InfoCard({ props }) {
   return (

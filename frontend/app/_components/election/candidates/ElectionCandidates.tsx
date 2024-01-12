@@ -2,9 +2,9 @@
 
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
-import getElectionById from "../../../_services/election/getElectionById";
+import getElectionById from "@/_services/election/getElectionById";
 import LocalElectionCandidates from "./LocalElectionCandidates";
-import { ElectionModel } from "../../../_interfaces/election.model";
+import { ElectionModel } from "@/_interfaces/election.model";
 import ReferendumElectionCandidates from "./ReferendumElectionCandidates";
 import styles from "./electionCandidates.module.css";
 import PresidentialElectionCandidates from "./PresidentialElectionCandidates";

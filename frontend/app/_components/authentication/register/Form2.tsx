@@ -1,10 +1,15 @@
 import { useForm } from "react-hook-form";
 import { useEffect, useState, useRef } from "react";
-import { useRegisterFormState } from "../../../_context/form/state.tsx";
-import { Button, Form, Field, Input } from "../../form/getFormComponents";
+import { useRegisterFormState } from "@/_context/form/state.tsx";
+import {
+  Button,
+  Form,
+  Field,
+  Input,
+} from "@/_components/form/getFormComponents";
 import { phoneNumberValidation } from "./utils/phoneNumberValidation.ts";
-import { getCounties } from "../../../_shared/utils/getCounties.ts";
-import { getLocalities } from "../../../_shared/utils/getLocalities.ts";
+import { getCounties } from "@/_shared/utils/getCounties.ts";
+import { getLocalities } from "@/_shared/utils/getLocalities.ts";
 
 const Form2 = ({ changeLocation }: { changeLocation: Function }) => {
   const localityRef = useRef();

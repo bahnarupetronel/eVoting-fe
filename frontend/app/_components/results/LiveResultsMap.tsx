@@ -1,4 +1,3 @@
-import React from "react";
 import RomaniaMap from "../map/RomaniaMap";
 
 const LiveResultsMap = () => {

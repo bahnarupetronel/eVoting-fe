@@ -1,9 +1,9 @@
-import { useState, useRef, useEffect, FocusEventHandler } from "react";
+import { useState, useRef, useEffect } from "react";
+import { useRouter } from "next/navigation";
 import { IconButton, InputBase, List, ListItem, Paper } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
+import { ElectionModel } from "@/_interfaces/election.model";
 import styles from "../election.module.css";
-import { ElectionModel } from "../../../_interfaces/election.model";
-import { useRouter } from "next/navigation";
 
 const SearchBar = ({ elections }: { elections: Array<ElectionModel> }) => {
   const router = useRouter();

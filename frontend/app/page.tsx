@@ -1,6 +1,6 @@
 "use client";
 
-import Home from "./_components/home/Home";
+import Home from "@/_components/home/Home";
 
 function App() {
   return <Home />;

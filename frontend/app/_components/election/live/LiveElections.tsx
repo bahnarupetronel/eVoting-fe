@@ -1,9 +1,9 @@
 "use client";
 
-import styles from "../election.module.css";
-import { ElectionCard } from "../ElectionCard";
 import { useState, useEffect } from "react";
-import { getLiveElections } from "../../../_services/election/getLiveElections";
+import { getLiveElections } from "@/_services/election/getLiveElections";
+import { ElectionCard } from "../ElectionCard";
+import styles from "../election.module.css";
 
 const Vote = () => {
   const [elections, setElections] = useState(null);

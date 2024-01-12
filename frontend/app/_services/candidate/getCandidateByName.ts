@@ -1,4 +1,4 @@
-import axios from "../../_api/axios";
+import axios from "@/_api/axios";
 
 export const getCandidateByName = async (name: string): Promise<any> => {
   try {

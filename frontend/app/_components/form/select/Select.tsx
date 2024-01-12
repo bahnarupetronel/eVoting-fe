@@ -1,4 +1,4 @@
-import { ElectionType } from "../../../_interfaces/electionType.model";
+import { ElectionType } from "@/_interfaces/electionType.model";
 import styles from "./select.module.css";
 
 const Select = ({

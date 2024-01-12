@@ -74,7 +74,10 @@ const SideBar = () => {
             <span className="text-[15px] ml-4 text-gray-200 font-bold">
               Chatbox
             </span>
-            <span className="text-sm rotate-180" id="arrow">
+            <span
+              className="text-sm rotate-180"
+              id="arrow"
+            >
               <i className="bi bi-chevron-down"></i>
             </span>
           </div>

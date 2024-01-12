@@ -1,4 +1,4 @@
-import { ElectionModel } from "../../../_interfaces/election.model";
+import { ElectionModel } from "@/_interfaces/election.model";
 
 const EuropeanParliamentElectionCandidates = ({
   election,

@@ -1,5 +1,5 @@
-import axios from "../../_api/axios";
-import { UserLogin } from "../../_interfaces/userLogin.model";
+import axios from "@/_api/axios";
+import { UserLogin } from "@/_interfaces/userLogin.model";
 
 export const useLogin = async (user: UserLogin): Promise<any> => {
   try {

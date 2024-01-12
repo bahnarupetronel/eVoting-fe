@@ -1,8 +1,8 @@
 "use client";
 
 import { cache, useState, useEffect } from "react";
-import axios from "../../_api/axios";
-import { UserDetailsModel } from "../../_interfaces/userDetails.model";
+import axios from "@/_api/axios";
+import { UserDetailsModel } from "@/_interfaces/userDetails.model";
 
 export const revalidate = 3600;
 export const getDetails = cache(async (controller) => {

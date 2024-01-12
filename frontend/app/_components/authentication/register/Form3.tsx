@@ -1,9 +1,9 @@
 import { useState } from "react";
-import { useRegisterFormState } from "../../../_context/form/state";
-import { Button, Form } from "../../form/getFormComponents";
-import { UploadFile } from "./UploadFile";
 import "react-notifications/lib/notifications.css";
 import { NotificationManager } from "react-notifications";
+import { useRegisterFormState } from "@/_context/form/state";
+import { Button, Form } from "@/_components/form/getFormComponents";
+import { UploadFile } from "./UploadFile";
 
 const Form3 = ({ changeLocation, handleFileUpate }) => {
   const { state, setState } = useRegisterFormState();

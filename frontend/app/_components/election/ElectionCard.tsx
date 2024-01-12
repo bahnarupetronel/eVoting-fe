@@ -1,9 +1,9 @@
 import Link from "next/link";
-import styles from "./card.module.css";
-import { ElectionModel } from "../../_interfaces/election.model";
+import { ElectionModel } from "@/_interfaces/election.model";
 import { TypeTag } from "./utils/TypeTag";
 import { StatusBanner } from "./utils/StatusBanner";
 import { formatDate } from "./utils/formatDate";
+import styles from "./card.module.css";
 
 export const ElectionCard = ({ election }: { election: ElectionModel }) => {
   const startDate: string = formatDate(election?.startDate);

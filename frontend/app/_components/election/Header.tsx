@@ -1,16 +1,15 @@
-import styles from "./election.module.css";
-
 import { SelectChangeEvent } from "@mui/material";
+import Filter from "@/_shared/components/Filter";
+import { ElectionModel } from "@/_interfaces/election.model";
+import { filter } from "@/_interfaces/filter.model";
 import {
   statusFilterOptions,
   typeFilterOptions,
 } from "./utils/getFilterOptions";
-import Filter from "../../_shared/components/Filter";
-import { ElectionModel } from "../../_interfaces/election.model";
 import SearchBar from "./utils/SearchBar";
-import { filter } from "../../_interfaces/filter.model";
+import styles from "./election.module.css";
 
-const Header = ({
+export const Header = ({
   handleFilterChange,
   filters,
   elections,

@@ -1,7 +1,6 @@
-import React from "react";
-import cards from "../../_services/home/getCards";
-import styles from "./home.module.css";
+import cards from "@/_services/home/getCards";
 import Card from "./Card";
+import styles from "./home.module.css";
 
 const CardsCollection = () => {
   return (

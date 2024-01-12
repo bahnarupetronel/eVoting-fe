@@ -1,6 +1,6 @@
 import { FormControl, InputLabel, MenuItem, Select } from "@mui/material";
+import { option } from "@/_interfaces/filter.model";
 import styles from "./filter.module.css";
-import { option } from "../../_interfaces/filter.model";
 
 const Filter = ({
   options,

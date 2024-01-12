@@ -1,6 +1,6 @@
-import Menu from "../../_components/user/Menu";
-import UserContainer from "../../_components/user/UserContainer";
-import styles from "../../_components/user/user.module.css";
+import Menu from "@/_components/user/Menu";
+import UserContainer from "@/_components/user/UserContainer";
+import styles from "@/_components/user/user.module.css";
 
 const UserAccount = () => {
   return (

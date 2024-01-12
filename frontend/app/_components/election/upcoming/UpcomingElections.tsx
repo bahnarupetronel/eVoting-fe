@@ -1,10 +1,10 @@
 "use client";
 
-import styles from "../election.module.css";
-import { ElectionCard } from "../ElectionCard";
 import { useState, useEffect } from "react";
+import { ElectionModel } from "@/_interfaces/election.model";
+import { ElectionCard } from "../ElectionCard";
 import { getUpcomingElections } from "./getUpcomingElections";
-import { ElectionModel } from "../../../_interfaces/election.model";
+import styles from "../election.module.css";
 
 const UpcomingElections = () => {
   const [elections, setElections] = useState<Array<ElectionModel>>(null);

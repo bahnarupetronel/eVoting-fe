@@ -3,8 +3,8 @@
 import { useEffect, useState } from "react";
 import CandidateProfileCard from "./CandidateProfileCard";
 import styles from "./candidate.module.css";
-import getCandidateByName from "../../_services/candidate/getCandidateByName";
-import { CandidateModel } from "../../_interfaces/candidate.model";
+import getCandidateByName from "@/_services/candidate/getCandidateByName";
+import { CandidateModel } from "@/_interfaces/candidate.model";
 import EducationProfileCard from "./EducationProfileCard";
 import { usePathname } from "next/navigation";
 

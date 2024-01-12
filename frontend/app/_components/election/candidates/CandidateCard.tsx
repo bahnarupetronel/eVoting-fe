@@ -1,12 +1,12 @@
 "use client";
 
-import Button from "@mui/material/Button";
-import { EventCandidate } from "../../../_interfaces/eventCandidate.model";
-import styles from "./electionCandidates.module.css";
 import { useState } from "react";
-import registerCandidateToEvent from "../../../_services/candidate/registerCandidateToEvent";
 import { usePathname } from "next/navigation";
-import deleteCandidateFromEvent from "../../../_services/candidate/deleteCandidateFromEvent";
+import Button from "@mui/material/Button";
+import { EventCandidate } from "@/_interfaces/eventCandidate.model";
+import { registerCandidateToEvent } from "@/_services/candidate/registerCandidateToEvent";
+import styles from "./electionCandidates.module.css";
+import { deleteCandidateFromEvent } from "@/_services/candidate/deleteCandidateFromEvent";
 
 const CandidateCard = ({
   candidate,

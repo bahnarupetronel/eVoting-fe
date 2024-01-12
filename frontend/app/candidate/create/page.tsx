@@ -1,4 +1,4 @@
-import NewCandidate from "../../_components/candidate/create/NewCandidate";
+import NewCandidate from "@/_components/candidate/create/NewCandidate";
 
 const page = () => {
   return <NewCandidate />;
