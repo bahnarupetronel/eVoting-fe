@@ -3,7 +3,7 @@
 import styles from "../election.module.css";
 import { ElectionCard } from "../ElectionCard";
 import { useState, useEffect } from "react";
-import { getFinishedElections } from "./getFinishedElections";
+import { getFinishedElections } from "../../../_services/election/getFinishedElections";
 
 const UpcomingElections = () => {
   const [elections, setElections] = useState(null);

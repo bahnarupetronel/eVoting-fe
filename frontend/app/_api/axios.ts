@@ -20,10 +20,15 @@ axiosInstance.interceptors.response.use(
     } else if (error.response.status === 404) {
       window.location.href = "/not-found";
     } else if (error.response.status === 400) {
+      window.location.href = "/not-found";
       console.log("bad request");
+    } else if (error.response.status === 422) {
+      window.location.href = "/not-found";
+      console.log("bad request 422");
     } else if (error.response === undefined) {
       console.log("loading");
-    } else return Promise.reject(error);
+    }
+    return Promise.reject(error);
   }
 );
 

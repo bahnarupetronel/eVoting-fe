@@ -8,7 +8,7 @@ import { useRouter } from "next/navigation";
 import { useAuth } from "../../_context/user/UserContext";
 import { useCookies } from "../../_hooks/useCookies.ts";
 
-export const logout = async (controller: AbortController): Promise<any> => {
+const logout = async (controller: AbortController): Promise<any> => {
   const response = await axios.post("/api/user/signout", {
     signal: controller.signal,
   });

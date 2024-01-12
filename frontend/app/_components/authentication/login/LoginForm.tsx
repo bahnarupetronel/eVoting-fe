@@ -5,7 +5,6 @@ import { NotificationManager } from "react-notifications";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import Link from "next/link";
-
 import btn from "../../../_shared/stylesheets/button-auth.module.css";
 import styles from "../../../_shared/stylesheets/auth.module.css";
 import { useCookies } from "../../../_hooks/useCookies.ts";
@@ -14,8 +13,8 @@ import {
   isEmailValid,
   isPasswordValid,
   loginFormErrors,
-} from "../../../_shared/utils/validateForm";
-import useLogin from "./useLogin";
+} from "../register/utils/validateForm.ts";
+import useLogin from "../../../_services/auth/useLogin.ts";
 import { useAuth } from "../../../_context/user/UserContext";
 import { Input } from "../../form/Input";
 import { UserLogin } from "../../../_interfaces/userLogin.model.ts";

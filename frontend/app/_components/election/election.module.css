@@ -29,12 +29,6 @@
   max-height: 50vh;
 }
 
-/*filters*/
-.filter {
-  width: 150px;
-  margin: 2vh 1vh 0 0;
-}
-
 /*search*/
 .search-list {
   margin-top: 0.5vh;

@@ -4,7 +4,7 @@ import { useRef, useEffect, useState } from "react";
 import "mapbox-gl/dist/mapbox-gl.css";
 import mapboxgl from "mapbox-gl";
 import "./map.css";
-import getLocations from "./getLocations.js";
+import { getLocations } from "../../_services/map/getLocations";
 
 mapboxgl.accessToken =
   "pk.eyJ1IjoiYmFobmFydXBldHJvbmVsIiwiYSI6ImNremZvOHhhbDBzaGEydW55b3BxbXV1b3EifQ.VuJ-_hg8y1_hFGjDztaC-Q";

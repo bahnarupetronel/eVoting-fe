@@ -1,5 +1,5 @@
 import React from "react";
-import cards from "./getCards";
+import cards from "../../_services/home/getCards";
 import styles from "./home.module.css";
 import Card from "./Card";
 

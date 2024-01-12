@@ -5,12 +5,12 @@ import { NotificationManager } from "react-notifications";
 import { useEffect, useState } from "react";
 import DatePickerMinDate from "./DatePickerMinDate";
 import styles from "./electionEvent.module.css";
-import Filter from "../utils/Filter";
+import Filter from "../../../_shared/components/Filter";
 import { TextareaAutosize } from "@mui/base/TextareaAutosize";
 import { InputLabel, Input, Button } from "@mui/material";
 import getElectionTypes from "../utils/getElectionTypes";
 import { Event } from "../../../_interfaces/event.model";
-import submitEvent from "./submitEvent";
+import submitEvent from "../../../_services/election/submitEvent";
 import { useRouter } from "next/navigation";
 const { format } = require("date-fns");
 

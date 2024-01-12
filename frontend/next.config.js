@@ -9,6 +9,9 @@ module.exports = {
       },
     ],
   },
+  compiler: {
+    styledComponents: true,
+  },
 };
 
 // module.exports = nextConfig;

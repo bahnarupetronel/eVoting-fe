@@ -1,10 +1,6 @@
 import Election from "../../_components/election/id/Election";
 
 const page = () => {
-  return (
-    <div>
-      <Election />
-    </div>
-  );
+  return <Election />;
 };
 export default page;

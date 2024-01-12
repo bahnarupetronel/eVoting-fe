@@ -1,12 +1,4 @@
-export type option = {
-  placeholder: string;
-  value: string;
-};
-
-export type filter = {
-  status: string;
-  type: string;
-};
+import { option } from "../../../_interfaces/filter.model";
 
 export const statusFilterOptions: Array<option> = [
   { value: "", placeholder: "Selectati statusul" },
