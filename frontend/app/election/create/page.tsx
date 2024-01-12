@@ -1,4 +1,4 @@
-import { ElectionEvent } from "../../_components/election/create/ElectionEvent";
+import ElectionEvent from "../../_components/election/create/ElectionEvent";
 
 const page = () => {
   return <ElectionEvent />;

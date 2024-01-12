@@ -4,11 +4,11 @@ import { SelectChangeEvent } from "@mui/material";
 import {
   statusFilterOptions,
   typeFilterOptions,
-  filter,
 } from "./utils/getFilterOptions";
-import Filter from "./utils/Filter";
+import Filter from "../../_shared/components/Filter";
 import { ElectionModel } from "../../_interfaces/election.model";
 import SearchBar from "./utils/SearchBar";
+import { filter } from "../../_interfaces/filter.model";
 
 const Header = ({
   handleFilterChange,

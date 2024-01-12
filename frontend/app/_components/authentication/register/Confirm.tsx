@@ -7,9 +7,9 @@ import {
   ImageLink,
 } from "../../form/getFormComponents";
 import styles from "../../form/form.module.css";
-import getS3UploadLink from "./utils/getS3UploadLink";
-import uploadFile from "./utils/uploadFile";
-import registerUser from "./utils/registerUser";
+import getS3UploadLink from "../../../_shared/utils/getS3UploadLink";
+import uploadFile from "../../../_shared/utils/uploadFile";
+import registerUser from "../../../_services/auth/registerUser";
 import { NotificationManager } from "react-notifications";
 import "react-notifications/lib/notifications.css";
 import CustomSpan from "../../form/customSpan/CustomSpan";

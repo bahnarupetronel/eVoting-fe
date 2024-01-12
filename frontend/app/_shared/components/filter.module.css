@@ -1,0 +1,10 @@
+/*filters*/
+.filter {
+  width: 150px;
+  margin: 2vh 1vh 0 0;
+}
+
+.flex {
+  display: flex;
+  justify-content: space-around;
+}

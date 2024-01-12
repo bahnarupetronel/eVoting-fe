@@ -1,18 +1,16 @@
 import { useForm } from "react-hook-form";
 import { useRegisterFormState } from "../../../_context/form/state";
-import styles from "../../form/form.module.css";
 import { Button, Form, Field, Input } from "../../form/getFormComponents";
 import {
   isNameValid,
   isPasswordValid,
   isEmailValid,
-} from "../../../_shared/utils/validateForm";
-import { isCNPValid } from "../../../_shared/utils/validateCNP";
-import { isSerieAndNumberValid } from "../../../_shared/utils/validateSeriesAndNumber";
-import authStyle from "../../../_shared/stylesheets/auth.module.css";
+} from "./utils/validateForm";
+import { isCNPValid } from "./utils/validateCNP";
+import { isSerieAndNumberValid } from "./utils/validateSeriesAndNumber";
 import componentStyle from "./register.module.css";
 
-const Form1 = ({ changeLocation }: { changeLocation: void }) => {
+const Form1 = ({ changeLocation }: { changeLocation: Function }) => {
   const { state, setState } = useRegisterFormState();
   const {
     handleSubmit,

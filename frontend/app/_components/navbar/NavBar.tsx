@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { Suspense, useState } from "react";
 import Drawer from "@mui/material/Drawer";
 import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
@@ -32,32 +32,34 @@ export default function NavBar(props) {
         >
           Acasa
         </Link>
-        {isLoggedIn ?? (
-          <Link
-            key="voteaza"
-            href="/vote"
-            className={styles["nav-btn-mobile"]}
-          >
-            Voteaza
-          </Link>
-        )}
-        {isLoggedIn ? (
-          <Link
-            key="contul-meu"
-            href="/user/account"
-            className={styles["nav-btn-mobile"]}
-          >
-            Contul meu
-          </Link>
-        ) : (
-          <Link
-            key="login"
-            href="/login"
-            className={styles["nav-btn-mobile"]}
-          >
-            Login
-          </Link>
-        )}
+        <Suspense fallback={<div> Loading</div>}>
+          {isLoggedIn && (
+            <Link
+              key="voteaza"
+              href="/vote"
+              className={styles["nav-btn-mobile"]}
+            >
+              Voteaza
+            </Link>
+          )}
+          {isLoggedIn ? (
+            <Link
+              key="contul-meu"
+              href="/user/account"
+              className={styles["nav-btn-mobile"]}
+            >
+              Contul meu
+            </Link>
+          ) : (
+            <Link
+              key="login"
+              href="/login"
+              className={styles["nav-btn-mobile"]}
+            >
+              Login
+            </Link>
+          )}
+        </Suspense>
       </ul>
     </Toolbar>
   );
@@ -87,34 +89,34 @@ export default function NavBar(props) {
           >
             Acasa
           </Link>
-          {isLoggedIn ? (
-            <Link
-              key="voteaza"
-              href="/vote"
-              className={styles["nav-btn"]}
-            >
-              Voteaza
-            </Link>
-          ) : (
-            <></>
-          )}
-          {isLoggedIn ? (
-            <Link
-              key="contul-meu"
-              href="/user/account"
-              className={styles["nav-btn"]}
-            >
-              Contul meu
-            </Link>
-          ) : (
-            <Link
-              key="login"
-              href={"/login"}
-              className={styles["nav-btn"]}
-            >
-              Login
-            </Link>
-          )}
+          <Suspense>
+            {isLoggedIn && (
+              <Link
+                key="voteaza"
+                href="/vote"
+                className={styles["nav-btn"]}
+              >
+                Voteaza
+              </Link>
+            )}
+            {isLoggedIn ? (
+              <Link
+                key="contul-meu"
+                href="/user/account"
+                className={styles["nav-btn"]}
+              >
+                Contul meu
+              </Link>
+            ) : (
+              <Link
+                key="login"
+                href={"/login"}
+                className={styles["nav-btn"]}
+              >
+                Login
+              </Link>
+            )}
+          </Suspense>
         </ul>
       </nav>
       <Drawer
