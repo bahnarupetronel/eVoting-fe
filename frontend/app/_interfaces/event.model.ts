@@ -1,7 +1,7 @@
 export interface Event {
   typeId: string;
-  startDate: Date;
-  endDate: Date;
+  startDate: Date | string;
+  endDate: Date | string;
   description: string;
   title: string;
 }

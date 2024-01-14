@@ -1,0 +1,15 @@
+.container {
+  margin: 10vh 5vw 5vh 2vw;
+}
+
+@media only screen and (min-width: 650px) {
+  .container {
+    margin: 10vh 10vw;
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  .container {
+    margin: 10vh 15vw;
+  }
+}

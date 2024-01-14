@@ -1,8 +1,4 @@
 /*containers*/
-.container {
-  margin: 10vh 5vw 5vh 2vw;
-}
-
 .container-header {
   margin-bottom: 2vh;
 }
@@ -69,10 +65,6 @@
 }
 
 @media only screen and (min-width: 650px) {
-  .container {
-    margin: 10vh 10vw;
-  }
-
   .search-bar,
   .search-list {
     width: 400px;
@@ -80,10 +72,6 @@
 }
 
 @media only screen and (min-width: 1024px) {
-  .container {
-    margin: 10vh 15vw;
-  }
-
   .search-bar,
   .search-list {
     width: 500px;
