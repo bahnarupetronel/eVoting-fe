@@ -48,7 +48,7 @@ export const ElectionEvent = () => {
         timeZone: "Europe/Bucharest",
       });
       const response = await submitEvent(event);
-      if (response.status === 200) {
+      if (response.status >= 200 && response.status < 300) {
         NotificationManager.success(
           "Felicitari! Evenimentul a fost creat!",
           "Evenimentul a fost creat cu succes!",

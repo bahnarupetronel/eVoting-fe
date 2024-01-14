@@ -1,6 +1,7 @@
 import axios from "@/_api/axios";
+import { Event } from "@/_interfaces/event.model";
 
-export const submitEvent = async (data): Promise<any> => {
+export const submitEvent = async (data: Event): Promise<any> => {
   try {
     console.log(data);
     const response = await axios.post("/api/election", data, {
