@@ -1,6 +1,6 @@
-import Elections from "@/_components/election/Elections";
+import PublishedElections from "@/_components/election/published/PublishedElections";
 
 const page = () => {
-  return <Elections />;
+  return <PublishedElections />;
 };
 export default page;

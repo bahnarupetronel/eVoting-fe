@@ -27,6 +27,10 @@
   word-break: break-all;
 }
 
+.info-error {
+  color: red;
+}
+
 @media only screen and (min-width: 650px) {
   .container {
     margin: 0 10vw;

@@ -20,6 +20,7 @@
 
 .span-info {
   font-weight: normal;
+  word-wrap: break-word;
 }
 
 .p-inline {

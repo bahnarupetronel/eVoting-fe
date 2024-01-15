@@ -9,7 +9,6 @@ import Form3 from "@/_components/authentication/register/Form3";
 import Confirm from "@/_components/authentication/register/Confirm";
 import Stepper from "@/_components/form/Stepper";
 import stylesAuth from "@/_shared/stylesheets/auth.module.css";
-import WithAuthentication from "@/_hooks/WithAuthentication.tsx";
 import styles from "@/_components/authentication/register/register.module.css";
 
 const Register = () => {
@@ -57,4 +56,4 @@ const Register = () => {
   );
 };
 
-export default WithAuthentication(Register);
+export default Register;

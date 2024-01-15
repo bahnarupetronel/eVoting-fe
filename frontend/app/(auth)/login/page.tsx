@@ -3,7 +3,6 @@
 import Image from "next/image";
 import LoginForm from "@/_components/authentication/login/LoginForm";
 import styles from "@/_shared/stylesheets/auth.module.css";
-import WithAuthentication from "@/_hooks/WithAuthentication";
 
 const LoginPage = () => {
   return (
@@ -22,4 +21,4 @@ const LoginPage = () => {
   );
 };
 
-export default WithAuthentication(LoginPage);
+export default LoginPage;

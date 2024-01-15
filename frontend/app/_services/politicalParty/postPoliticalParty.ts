@@ -2,7 +2,6 @@ import axios from "@/_api/axios";
 
 export const postPoliticalParty = async (name: string): Promise<any> => {
   try {
-    console.log(name);
     const response = await axios.post(
       "/api/political-party",
       { name: name },
@@ -13,8 +12,7 @@ export const postPoliticalParty = async (name: string): Promise<any> => {
       }
     );
 
-    const result = await response;
-    return result;
+    return response;
   } catch (error) {
     return error;
   }

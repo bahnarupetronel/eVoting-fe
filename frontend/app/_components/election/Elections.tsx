@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from "react";
 import { Pagination, Stack } from "@mui/material";
-import { getElections } from "./getElections";
 import { ElectionCard } from "./ElectionCard";
 import { Header } from "./Header";
 import { ElectionModel } from "@/_interfaces/election.model";
@@ -13,8 +12,15 @@ import {
   getNumberOfPages,
 } from "./utils/electionsUtils";
 import styles from "./election.module.css";
+import globalStyles from "@/_stylesheets/App.module.css";
 
-const Elections = () => {
+const Elections = ({
+  getElections,
+  isPublished,
+}: {
+  getElections: Function;
+  isPublished: boolean;
+}) => {
   const [elections, setElections] = useState<Array<ElectionModel>>([]);
   const [pagination, setPagination] = useState({
     numberOfPages: 1,
@@ -40,6 +46,7 @@ const Elections = () => {
     value: number
   ) => {
     setPagination({ ...pagination, currentPage: value });
+    window?.scrollTo({ top: 0, left: 0, behavior: "smooth" });
   };
 
   useEffect(() => {
@@ -50,20 +57,23 @@ const Elections = () => {
   }, [filteredElections.length]);
 
   useEffect(() => {
-    getElections().then((data) => {
-      setElections(data);
-      setPagination({
-        ...pagination,
-        numberOfPages: getNumberOfPages(data.length),
-      });
+    getElections().then((response) => {
+      if (200 <= response.status && response.status < 300) {
+        setElections(response.data);
+        setPagination({
+          ...pagination,
+          numberOfPages: getNumberOfPages(response.data.length),
+        });
+      }
     });
   }, []);
   return (
-    <div className={styles["container"]}>
+    <div className={globalStyles["container"]}>
       <Header
         elections={filteredElections}
         handleFilterChange={handleFilterChange}
         filters={filter}
+        isPublished={isPublished}
       />
       <div className={styles["cards-container"]}>
         {currentPageElections?.length > 0 ? (
