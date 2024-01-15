@@ -17,18 +17,25 @@ const LocalElectionCandidates = ({ election }: { election: ElectionModel }) => {
   };
   const date = election?.startDate.toString().split("T");
 
+  if (election?.published)
+    return (
+      <div>
+        <p className={styles["info-error"]}>
+          Lista nu mai poate fi modificata! Evenimentul a fost publicat!
+        </p>
+      </div>
+    );
+
   return (
     <div>
       <p>Alege o localitate si inregistreaza candidatii la eveniment:</p>
       <FilterLocalities handleLocalityChange={handleLocalityChange} />
-      {election && (
-        <p className={styles["info-error"]}>
-          Lista poate fi modificata pana la data de{" "}
-          <span>
-            {date[0]}, ora {date[1]} !
-          </span>
-        </p>
-      )}
+      <p className={styles["info-error"]}>
+        Lista poate fi modificata pana la data de{" "}
+        <span>
+          {date[0]}, ora {date[1]} !
+        </span>
+      </p>
       <Candidates
         localityId={selectedLocality ? selectedLocality?.id : null}
         typeId={election ? election?.type.id : null}

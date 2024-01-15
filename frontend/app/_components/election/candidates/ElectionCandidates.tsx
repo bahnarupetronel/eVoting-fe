@@ -15,7 +15,10 @@ const ElectionCandidates = ({}: {}) => {
   const id: string = pathname.split("/")[2];
   const [election, setElection] = useState<ElectionModel>(null);
   useEffect(() => {
-    getElectionById(id).then((data) => setElection(data));
+    getElectionById(id).then((response) => {
+      if (200 <= response.status && response.status < 300)
+        setElection(response.data);
+    });
   }, []);
 
   return (

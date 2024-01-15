@@ -1,10 +1,10 @@
+import { useEffect, useState } from "react";
 import EuropeanParliamentElections from "./EuropeanParliamentElections";
 import LocalElections from "./LocalElections";
 import ParliamentaryElections from "./ParliamentaryElections";
 import PresidentialElections from "./PresidentialElections";
 import Referendum from "./Referendum";
-import { getAllCandidates } from "../utils/getAllCandidates";
-import { useEffect, useState } from "react";
+import { getCandidates } from "../utils/getCandidates";
 
 const EventFactory = ({
   type,
@@ -15,8 +15,9 @@ const EventFactory = ({
 }) => {
   const [candidates, setCandidates] = useState(null);
   useEffect(() => {
-    getAllCandidates().then((data) => {
-      setCandidates(data);
+    getCandidates().then((response) => {
+      if (200 <= response.status && response.status < 300)
+        setCandidates(response.data);
     });
   }, []);
   return (

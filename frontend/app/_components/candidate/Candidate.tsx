@@ -14,7 +14,10 @@ export const Candidate = () => {
   const [candidate, setCandidate] = useState<CandidateModel>(null);
   useEffect(() => {
     console.log(name);
-    getCandidateByName(name).then((candidate) => setCandidate(candidate));
+    getCandidateByName(name).then((response) => {
+      if (200 <= response.status && response.status < 300)
+        setCandidate(response.data);
+    });
   }, []);
   if (candidate === null) return <div>Loading</div>;
   return (

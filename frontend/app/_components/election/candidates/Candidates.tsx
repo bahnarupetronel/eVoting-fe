@@ -17,9 +17,8 @@ const Candidates = ({
   useEffect(() => {
     if (typeId && localityId)
       getCandidateByEventAndLocality(typeId, localityId).then((response) => {
-        response.status === 200
-          ? setCandidates(response.data)
-          : setCandidates([]);
+        if (200 <= response.status && response.status < 300)
+          setCandidates(response.data);
       });
   }, [localityId, typeId]);
 
@@ -37,7 +36,8 @@ const Candidates = ({
       {candidates.length > 0 && (
         <>
           <p className={styles["p-info"]}>
-            Apasa pe Adauga pentru a selecta candidatii pentru eveniment.
+            Apasa pe Adauga pentru a adauga un candidat pe lista de participare
+            la eveniment.
           </p>
           <p className={styles["p-info"]}>
             Apasa pe Sterge pentru a anula participare unui candidat la

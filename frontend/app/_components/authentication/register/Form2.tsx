@@ -8,8 +8,8 @@ import {
   Input,
 } from "@/_components/form/getFormComponents";
 import { phoneNumberValidation } from "./utils/phoneNumberValidation.ts";
-import { getCounties } from "@/_shared/utils/getCounties.ts";
-import { getLocalities } from "@/_shared/utils/getLocalities.ts";
+import { getCounties } from "@/_services/counties/getCounties.ts";
+import { getLocalities } from "@/_services/counties/getLocalities.ts";
 
 const Form2 = ({ changeLocation }: { changeLocation: Function }) => {
   const localityRef = useRef();

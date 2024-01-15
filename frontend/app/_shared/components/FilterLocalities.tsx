@@ -3,8 +3,8 @@
 import { useEffect, useState } from "react";
 import { Autocomplete, TextField } from "@mui/material";
 import { locality } from "@/_interfaces/locality.model";
-import getLocalities from "../utils/getLocalities";
-import getCounties from "../utils/getCounties";
+import getLocalities from "../../_services/counties/getLocalities";
+import getCounties from "../../_services/counties/getCounties";
 import styles from "./filter.module.css";
 
 const FilterLocalities = ({

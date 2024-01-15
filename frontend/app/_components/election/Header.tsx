@@ -13,10 +13,12 @@ export const Header = ({
   handleFilterChange,
   filters,
   elections,
+  isPublished,
 }: {
   handleFilterChange;
   filters: filter;
   elections: Array<ElectionModel>;
+  isPublished: boolean;
 }) => {
   const handleChange = (event: SelectChangeEvent, filter: string) => {
     filter === "status"
@@ -26,7 +28,9 @@ export const Header = ({
 
   return (
     <header className={styles["container-header"]}>
-      <h4 className={styles["title-header"]}>Evenimente</h4>
+      <h4 className={styles["title-header"]}>
+        Evenimente {!isPublished && " nepublicate"}
+      </h4>
       <SearchBar elections={elections} />
       <Filter
         options={statusFilterOptions}
