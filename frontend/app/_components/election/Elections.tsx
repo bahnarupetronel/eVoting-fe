@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useLayoutEffect } from "react";
 import { Pagination, Stack } from "@mui/material";
 import { ElectionCard } from "./ElectionCard";
 import { Header } from "./Header";
@@ -12,7 +12,7 @@ import {
   getNumberOfPages,
 } from "./utils/electionsUtils";
 import styles from "./election.module.css";
-import globalStyles from "@/_stylesheets/App.module.css";
+import globalStyles from "@/_shared/stylesheets/App.module.css";
 
 const Elections = ({
   getElections,
@@ -46,8 +46,11 @@ const Elections = ({
     value: number
   ) => {
     setPagination({ ...pagination, currentPage: value });
-    window?.scrollTo({ top: 0, left: 0, behavior: "smooth" });
   };
+
+  useLayoutEffect(() => {
+    window?.scrollTo({ top: 1, behavior: "smooth" });
+  }, [pagination.currentPage]);
 
   useEffect(() => {
     setPagination({

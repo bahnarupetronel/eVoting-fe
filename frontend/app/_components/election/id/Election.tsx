@@ -1,21 +1,30 @@
 "use client";
 
+import "react-notifications/lib/notifications.css";
+import { NotificationManager } from "react-notifications";
 import { useState, useEffect } from "react";
-import { usePathname } from "next/navigation";
+import { useRouter, usePathname } from "next/navigation";
+import Link from "next/link";
 import { Divider, Button, Box } from "@mui/material";
 import { getElectionById } from "@/_services/election/getElectionById";
 import { ElectionModel } from "@/_interfaces/election.model";
 import { formatDate } from "../utils/formatDate";
-import { CandidatesList } from "./CandidatesList";
+import { RegisteredCandidates } from "./RegisteredCandidates";
 import { Modal } from "@/_components/modal/Modal";
+import FilterLocalities from "@/_shared/components/FilterLocalities";
 import { getElectionStatus } from "../utils/getElectionStatus";
-import styles from "./election.module.css";
 import deleteElection from "@/_services/election/deleteElection";
+import { locality } from "@/_interfaces/locality.model";
+import styles from "./election.module.css";
+import globalStyles from "@/_shared/stylesheets/App.module.css";
 
 const Election = () => {
+  const router = useRouter();
   const pathname = usePathname();
   const [election, setElection] = useState<ElectionModel>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [hasCandidates, setHasCandidates] = useState(false);
+  const [locality, setLocality] = useState<locality | null>(null);
   const id: string = pathname.split("/").pop();
   const status =
     getElectionStatus(election?.startDate, election?.endDate) || null;
@@ -27,9 +36,24 @@ const Election = () => {
   const handleDeleteEvent = async () => {
     const response = await deleteElection(election?.electionId);
     if (200 <= response.status && response.status < 300) {
-      console.log("deleted");
+      NotificationManager.success(
+        "Evenimentul a fost sters cu succes. Sunteti redirectat catre pagina de evenimenete.",
+        "Eveniment sters.",
+        5000
+      );
+      router.push("/admin/election/unpublished");
+    } else {
+      NotificationManager.error(
+        "Evenimentul nu a putut fi sters. Incercati din nou mai tarziu!",
+        "Eveniment nu a putut fi sters.",
+        5000
+      );
     }
     setIsModalOpen(false);
+  };
+
+  const handleLocalityChange = (locality: locality) => {
+    setLocality(locality);
   };
 
   useEffect(() => {
@@ -44,7 +68,7 @@ const Election = () => {
   return (
     <Box
       sx={{ flexGrow: 1, bgcolor: "background.default", p: 2 }}
-      className={styles["container"]}
+      className={globalStyles["container"]}
     >
       <h3 className={styles["title"]}>{election.title}</h3>
       <h4 className={styles["title-secondary"]}>
@@ -60,15 +84,42 @@ const Election = () => {
         <span>{formatDate(election.endDate)}</span>
       </p>
       <Divider />
-      <CandidatesList />
+
+      {hasCandidates && (
+        <>
+          <p>Vezi candidatii din localitatea: </p>
+          <FilterLocalities handleLocalityChange={handleLocalityChange} />
+        </>
+      )}
+
+      {!hasCandidates && <p>Nu exista candidati inregistrati. </p>}
+      <RegisteredCandidates
+        setHasCandidates={setHasCandidates}
+        locality={locality}
+        electionId={id}
+      />
       {!election.published && status !== "Urmeaza" && (
         <p className={styles["info-error"]}>
-          Evenimentul s-a terminat sau a inceput inainte de a fi publicat.
-          Acesta nu mai poate fi modificat.
+          Inregistrarile pentru acest eveniment s-au terminat. Lista nu mai
+          poate fi modificata.
+          <br />
+          Evenimentul nu mai poate fi publicat.
         </p>
       )}
       {!election.published && (
         <div className={styles["container-btn"]}>
+          <Button
+            variant="outlined"
+            disabled={status !== "Urmeaza"}
+          >
+            <Link
+              href={`/admin/${pathname}`}
+              target="_blank"
+              className={styles["link"]}
+            >
+              Adauga candidati
+            </Link>
+          </Button>
           <Button
             variant="outlined"
             disabled={status !== "Urmeaza"}

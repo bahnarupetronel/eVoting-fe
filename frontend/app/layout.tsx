@@ -4,6 +4,7 @@ import "./globals.css";
 import { UserContextProvider } from "@/_context/user/UserContext";
 import { NotificationContainer } from "react-notifications";
 import Navbar from "@/_components/navbar/NavBar";
+import { ReactQueryClientProvider } from "./QueryClientProvider";
 
 const metadata = {
   title: "Evoting",
@@ -14,11 +15,13 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body>
-        <NotificationContainer />
-        <UserContextProvider>
-          <Navbar />
-          {children}
-        </UserContextProvider>
+        <ReactQueryClientProvider>
+          <NotificationContainer />
+          <UserContextProvider>
+            <Navbar />
+            {children}
+          </UserContextProvider>
+        </ReactQueryClientProvider>
       </body>
     </html>
   );

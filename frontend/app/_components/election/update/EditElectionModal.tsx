@@ -5,7 +5,7 @@ import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 
-export function Modal({
+export function EditElectionModal({
   isModalOpen,
   setIsModalOpen,
   handleDeleteEvent,
@@ -44,7 +44,7 @@ export function Modal({
             onClick={handleApproval}
             autoFocus
           >
-            Continua
+            Salveaza
           </Button>
         </DialogActions>
       </Dialog>
@@ -52,4 +52,4 @@ export function Modal({
   );
 }
 
-export default Modal;
+export default EditElectionModal;

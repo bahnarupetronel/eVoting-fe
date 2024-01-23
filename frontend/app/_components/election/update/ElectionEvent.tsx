@@ -12,7 +12,6 @@ import getElectionTypes from "../utils/getElectionTypes";
 import { Event } from "@/_interfaces/event.model";
 import submitEvent from "@/_services/election/submitEvent";
 import { useRouter } from "next/navigation";
-import EventFactory from "./EventFactory";
 const { format } = require("date-fns");
 
 export const ElectionEvent = () => {
@@ -55,7 +54,7 @@ export const ElectionEvent = () => {
           "Evenimentul a fost creat cu succes!",
           5000
         );
-        router.push(`/admin/election/unpublished`);
+        router.push(`/election/${response.data}`);
       } else {
         NotificationManager.error(
           "Ne pare rau, ceva nu a functionat corect. Incearca din nou",
@@ -146,10 +145,10 @@ export const ElectionEvent = () => {
           minRows={3}
           placeholder="Introduceti o descriere"
         />
-        <EventFactory
+        {/* <EventFactory
           type={getEventName(eventDetails.typeId)}
           handleChange={handleChange}
-        />
+        /> */}
         <Button
           variant="outlined"
           type="submit"

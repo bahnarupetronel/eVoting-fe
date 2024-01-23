@@ -1,10 +1,11 @@
 "use client";
 
-import styles from "./user.module.css";
+import Link from "next/link";
 import CustomSpan from "../form/customSpan/CustomSpan";
 import { useUserDetails } from "./useUserDetails";
-import Link from "next/link";
 import { UserDetailsModel } from "../../_interfaces/userDetails.model";
+import styles from "./user.module.css";
+import { Button } from "@mui/material";
 
 const UserContainer = () => {
   const userDetails: UserDetailsModel = useUserDetails();
@@ -49,13 +50,15 @@ const UserContainer = () => {
             Tara:
             <CustomSpan text={userDetails.country} />
           </li>
-          <Link
-            className={styles["btn-edit"]}
-            href="/user/edit-profile"
-            key="edit-profile"
-          >
-            Editeaza profilul
-          </Link>
+          <Button variant="outlined">
+            <Link
+              href="/user/edit-profile"
+              key="edit-profile"
+              className={styles["link"]}
+            >
+              Editeaza profilul
+            </Link>
+          </Button>
         </ul>
       ) : (
         <p>Loading user data...</p>

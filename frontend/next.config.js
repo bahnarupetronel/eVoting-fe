@@ -2,6 +2,8 @@
 const path = require("path");
 module.exports = {
   images: {
+    // loader: "akamai",
+    // path: "",
     remotePatterns: [
       {
         protocol: "https",

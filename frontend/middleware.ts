@@ -7,13 +7,16 @@ export function middleware(request: NextRequest) {
   if (pathname.startsWith("/user/"))
     return NextResponse.rewrite(new URL("/user/account", request.url));
   if (pathname === "/login" && isUserLoggedIn)
-    return NextResponse.redirect(new URL("/not-found", request.url));
+    return NextResponse.redirect(new URL("/", request.url));
   if (pathname === "/register" && isUserLoggedIn)
-    return NextResponse.redirect(new URL("/not-found", request.url));
+    return NextResponse.redirect(new URL("/", request.url));
   if (!isUserLoggedIn && pathname !== "/login" && pathname !== "/register")
     return NextResponse.redirect(new URL("/login", request.url));
 }
 
 export const config = {
-  matcher: ["/((?!_next|api/auth).*)(.+)"],
+  matcher: [
+    "/((?!_next|api/auth).*)(.+)",
+    "/((?!api|_next/static|_next/image|favicon.ico).*)",
+  ],
 };

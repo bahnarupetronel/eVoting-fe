@@ -1,19 +1,19 @@
 "use client";
 
 // import Filter from "@/_shared/components/Filter";
-import styles from "./electionCandidates.module.css";
+import styles from "./registerCandidates.module.css";
 import { useState } from "react";
 // import SearchBar from "../utils/SearchBar";
 import FilterLocalities from "@/_shared/components/FilterLocalities";
-import Candidates from "./Candidates";
+import RegisterCandidates from "./RegisterCandidates";
 import { ElectionModel } from "@/_interfaces/election.model";
 import { locality } from "@/_interfaces/locality.model";
 
 const LocalElectionCandidates = ({ election }: { election: ElectionModel }) => {
-  const [selectedLocality, setSelectedLocality] = useState<locality>(null);
+  const [locality, setLocality] = useState<locality>(null);
 
-  const handleLocalityChange = (locality: locality) => {
-    setSelectedLocality(locality);
+  const handleLocalityChange = (selectedLocality: locality) => {
+    setLocality(selectedLocality);
   };
   const date = election?.startDate.toString().split("T");
 
@@ -36,9 +36,10 @@ const LocalElectionCandidates = ({ election }: { election: ElectionModel }) => {
           {date[0]}, ora {date[1]} !
         </span>
       </p>
-      <Candidates
-        localityId={selectedLocality ? selectedLocality?.id : null}
+      <RegisterCandidates
+        localityId={locality ? locality?.id : null}
         typeId={election ? election?.type.id : null}
+        eventId={election?.electionId}
       />
     </div>
   );

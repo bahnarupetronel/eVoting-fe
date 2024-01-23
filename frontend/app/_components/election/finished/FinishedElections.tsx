@@ -8,7 +8,11 @@ import { getFinishedElections } from "@/_services/election/getFinishedElections"
 const UpcomingElections = () => {
   const [elections, setElections] = useState(null);
   useEffect(() => {
-    getFinishedElections().then((data) => setElections(data));
+    getFinishedElections().then((response) => {
+      if (200 <= response.status && response.status < 300) {
+        setElections(response.data);
+      }
+    });
   }, []);
   return (
     <main className={styles["container"]}>

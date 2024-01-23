@@ -1,4 +1,4 @@
 export interface ElectionType {
-  id: string;
+  id: number;
   name: string;
 }

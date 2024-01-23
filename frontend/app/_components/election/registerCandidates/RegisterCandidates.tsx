@@ -1,24 +1,27 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import getCandidateByEventAndLocality from "@/_services/election/getCandidatesByEventAndLocality";
-import CandidateCard from "./CandidateCard";
+import { getAvailableCandidates } from "@/_services/candidate/getAvailableCandidates";
+import RegisterCandidateCard from "./RegisterCandidateCard";
 import { EventCandidate } from "@/_interfaces/eventCandidate.model";
-import styles from "./electionCandidates.module.css";
+import styles from "./registerCandidates.module.css";
 
-const Candidates = ({
+const RegisterCandidates = ({
   typeId,
   localityId,
+  eventId,
 }: {
-  typeId: string;
+  typeId: number;
   localityId: number;
+  eventId: number;
 }) => {
   const [candidates, setCandidates] = useState<Array<EventCandidate>>([]);
 
   useEffect(() => {
     if (typeId && localityId)
-      getCandidateByEventAndLocality(typeId, localityId).then((response) => {
-        if (200 <= response.status && response.status < 300)
+      getAvailableCandidates(typeId, localityId, eventId).then((response) => {
+        if (200 <= response.status && response.status < 300) {
           setCandidates(response.data);
+        }
       });
   }, [localityId, typeId]);
 
@@ -46,7 +49,7 @@ const Candidates = ({
         </>
       )}
       {candidates?.map((candidate, index) => (
-        <CandidateCard
+        <RegisterCandidateCard
           candidate={candidate}
           index={index}
           key={candidate.id}
@@ -55,4 +58,4 @@ const Candidates = ({
     </div>
   );
 };
-export default Candidates;
+export default RegisterCandidates;

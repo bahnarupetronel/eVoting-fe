@@ -1,5 +1,5 @@
 import Link from "next/link";
-import globalStyles from "@/_stylesheets/App.module.css";
+import globalStyles from "@/_shared/stylesheets/App.module.css";
 
 export const page = () => {
   return (
@@ -16,7 +16,7 @@ export const page = () => {
         </li>
         <li>
           <Link
-            href="/admin/political-party"
+            href="/admin/create/candidate"
             target="_blank"
           >
             Candidat
@@ -32,7 +32,7 @@ export const page = () => {
         </li>
         <li>
           <Link
-            href="/admin/political-party"
+            href="/admin/create/locality"
             target="_blank"
           >
             Localitate

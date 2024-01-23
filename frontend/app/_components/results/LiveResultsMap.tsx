@@ -1,11 +1,7 @@
 import RomaniaMap from "../map/RomaniaMap";
 
 const LiveResultsMap = () => {
-  return (
-    <div>
-      <RomaniaMap />
-    </div>
-  );
+  return <RomaniaMap />;
 };
 
 export default LiveResultsMap;

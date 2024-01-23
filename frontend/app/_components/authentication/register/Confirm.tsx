@@ -9,7 +9,7 @@ import {
 import styles from "@/_components/form/form.module.css";
 import getS3UploadLink from "@/_shared/utils/getS3UploadLink";
 import uploadFile from "@/_shared/utils/uploadFile";
-import registerUser from "@/_services/auth/registerUser";
+import registerUser from "@/_hooks/auth";
 import { NotificationManager } from "react-notifications";
 import "react-notifications/lib/notifications.css";
 import CustomSpan from "@/_components/form/customSpan/CustomSpan";

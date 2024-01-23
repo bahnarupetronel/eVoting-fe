@@ -43,7 +43,7 @@ const FilterLocalities = ({
       setFilters({ locality: "", county: value });
       setLocalitiesFilterOptions([]);
     } else {
-      const selected = localities.find(
+      const selected: locality = localities.find(
         (locality: locality) => locality.name === value
       );
       handleLocalityChange(selected);

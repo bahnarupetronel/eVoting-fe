@@ -1,7 +1,3 @@
-.container {
-  width: 100%;
-}
-
 .title,
 .h4-title {
   text-align: center;
@@ -46,14 +42,16 @@
   margin: 1rem 0;
 }
 
+.link {
+  color: inherit;
+}
+
+.link:hover {
+  color: blue;
+}
+
 @media only screen and (min-width: 650px) {
-  .container {
-    margin: 0 10vw;
-  }
 }
 
 @media only screen and (min-width: 1024px) {
-  .container {
-    margin: 0 15vw;
-  }
 }
