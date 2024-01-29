@@ -9,20 +9,23 @@ import {
 import styles from "@/_components/form/form.module.css";
 import getS3UploadLink from "@/_shared/utils/getS3UploadLink";
 import uploadFile from "@/_shared/utils/uploadFile";
-import registerUser from "@/_hooks/auth";
+import { useRegisterUser } from "@/_hooks/auth";
 import { NotificationManager } from "react-notifications";
 import "react-notifications/lib/notifications.css";
 import CustomSpan from "@/_components/form/customSpan/CustomSpan";
+import { useRouter } from "next/navigation";
 
 const Confirm = ({ changeLocation, file }) => {
+  const router = useRouter();
+  const mutation = useRegisterUser();
   const { state } = useRegisterFormState();
   const { handleSubmit } = useForm({ defaultValues: state });
+
   const submitData = async (data) => {
     event.preventDefault();
 
     const fileExtenstion = file.name.split(".").pop();
     const result = await getS3UploadLink(fileExtenstion);
-    console.log(result);
     if (result.status === 200) {
       let url = await result.text();
       const imageUrl = await uploadFile(url, file);
@@ -31,22 +34,23 @@ const Confirm = ({ changeLocation, file }) => {
       let stateCopy = { ...state };
       delete stateCopy.file;
       delete stateCopy.confirmPassword;
-
-      const userRegisterResponse = await registerUser(stateCopy);
-      if (userRegisterResponse.status === 200) {
-        NotificationManager.success(
-          "Inregistrarea s-a realizat cu succes. Te poti conecta si poti incepe sa utilizezi serviciile noatre. Va multumim!",
-          "Inregistrare realizata cu succes! ",
-          5000
-        );
-        window.location.href = "/login";
-      } else {
-        NotificationManager.error(
-          "Ne pare rau, inregistrarea nu s-a realizat cu succes. Daca aveti un cont, va puteti conecta. Email-ul sau parola sunt deja folosite.",
-          "Inregistrarea a esuat!",
-          5000
-        );
-      }
+      mutation.mutate(stateCopy, {
+        onSuccess: (response) => {
+          NotificationManager.success(
+            "Inregistrarea s-a realizat cu succes. Te poti conecta si poti incepe sa utilizezi serviciile noatre. Va multumim!",
+            "Inregistrare realizata cu succes! ",
+            5000
+          );
+          router.push("/login");
+        },
+        onError: () => {
+          NotificationManager.error(
+            "Ne pare rau, inregistrarea nu s-a realizat cu succes. Daca aveti un cont, va puteti conecta. Email-ul sau parola sunt deja folosite.",
+            "Inregistrarea a esuat!",
+            5000
+          );
+        },
+      });
     }
   };
 

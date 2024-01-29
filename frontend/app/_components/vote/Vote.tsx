@@ -1,11 +1,7 @@
 import LiveElections from "../election/live/LiveElections";
 
 const Vote = () => {
-  return (
-    <div>
-      <LiveElections />
-    </div>
-  );
+  return <LiveElections />;
 };
 
 export default Vote;

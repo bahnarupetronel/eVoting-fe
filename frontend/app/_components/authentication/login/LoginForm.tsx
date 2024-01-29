@@ -13,12 +13,13 @@ import {
   isEmailValid,
   isPasswordValid,
   loginFormErrors,
-} from "../register/utils/validateForm.ts";
+} from "../../form/utils/validateForm.ts";
 import { useLogin } from "@/_hooks/auth.ts";
 import { useAuth } from "@/_context/user/UserContext";
 import { Input } from "@/_components/form/Input";
 import { UserLogin } from "@/_interfaces/userLogin.model.ts";
 import { UserLoginResponse } from "@/_interfaces/userLoginResponse.model.ts";
+import { Button } from "@mui/material";
 
 const LoginForm = () => {
   const router = useRouter();
@@ -111,12 +112,13 @@ const LoginForm = () => {
         >
           Utilizator/parola incorecte.
         </span>
-        <button
+        <Button
           type="submit"
+          variant="outlined"
           className={btn["btn-sign-up"]}
         >
           Inregistreaza-te
-        </button>
+        </Button>
         <p className={styles["p-auth"]}>
           Nu ai un cont?{" "}
           <Link
@@ -129,7 +131,7 @@ const LoginForm = () => {
         <p className={styles["p-auth"]}>
           Ai uitat parola?{" "}
           <Link
-            href="/reset-password"
+            href="/forgot-password"
             className={styles["a-auth"]}
           >
             Resetare parola.
