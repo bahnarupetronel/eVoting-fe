@@ -6,16 +6,14 @@ import styles from "./home.module.css";
 
 export default function InfoCard({ props }) {
   return (
-    <div
-      className={styles["card"]}
-      sx={{ boxShadow: 4 }}
-    >
+    <div className={styles["card"]}>
       <Link
         href={props.href}
         className={styles["card-link"]}
       >
         <Image
           className={styles["image-card"]}
+          priority
           width="200"
           height="200"
           sizes="(min-width: 200px) 100%"

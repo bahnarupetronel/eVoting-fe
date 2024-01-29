@@ -1,16 +1,14 @@
 "use client";
 
 import postPoliticalParty from "@/_services/politicalParty/postPoliticalParty";
-import globalStyles from "@/_stylesheets/App.module.css";
 import { InputLabel, Input, FormControl, Button } from "@mui/material";
 import { useState } from "react";
+import globalStyles from "@/_shared/stylesheets/App.module.css";
 
-export const CreatePoliticalPart = () => {
+export const CreatePoliticalParty = () => {
   const [name, setName] = useState<string>("");
   const handleClick = (e) => {
     e.preventDefault();
-    console.log("preventing");
-    console.log(name);
     if (name) postPoliticalParty(name);
   };
   return (
@@ -34,4 +32,4 @@ export const CreatePoliticalPart = () => {
     </div>
   );
 };
-export default CreatePoliticalPart;
+export default CreatePoliticalParty;

@@ -14,16 +14,17 @@ import {
   isPasswordValid,
   loginFormErrors,
 } from "../register/utils/validateForm.ts";
-import useLogin from "@/_services/auth/useLogin.ts";
+import { useLogin } from "@/_hooks/auth.ts";
 import { useAuth } from "@/_context/user/UserContext";
 import { Input } from "@/_components/form/Input";
 import { UserLogin } from "@/_interfaces/userLogin.model.ts";
 import { UserLoginResponse } from "@/_interfaces/userLoginResponse.model.ts";
 
 const LoginForm = () => {
-  const { setCookie } = useCookies();
   const router = useRouter();
+  const { setCookie } = useCookies();
   const { setUser, setIsLoggedIn } = useAuth();
+  const userMutation = useLogin();
   const {
     handleSubmit,
     register,
@@ -35,28 +36,30 @@ const LoginForm = () => {
   });
 
   const loginUser = async (userInput: UserLogin) => {
-    const response = await useLogin(userInput);
-
-    if (response.status === 200) {
-      NotificationManager.success(
-        "Your login was successful.",
-        "Successfully logged in. ",
-        5000
-      );
-      const user: UserLoginResponse = await response.data;
-      setCookie("isUserLoggedIn", true);
-      setCookie("user", user);
-      setUser(user);
-      setIsLoggedIn(true);
-      router.push("/");
-    } else {
-      NotificationManager.error(
-        "We're sorry, but your login was unsuccessful. Incorrect email or password",
-        "Login failed",
-        5000
-      );
-    }
+    userMutation.mutate(userInput, {
+      onSuccess: (response) => {
+        NotificationManager.success(
+          "Your login was successful.",
+          "Successfully logged in. ",
+          5000
+        );
+        const user: UserLoginResponse = response.data;
+        setCookie("isUserLoggedIn", true);
+        setCookie("user", user);
+        setUser(user);
+        setIsLoggedIn(true);
+        router.push("/");
+      },
+      onError: () => {
+        NotificationManager.error(
+          "We're sorry, but your login was unsuccessful. Incorrect email or password",
+          "Login failed",
+          5000
+        );
+      },
+    });
   };
+
   return (
     <div className={styles["form-container"]}>
       <form

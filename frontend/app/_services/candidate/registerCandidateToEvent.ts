@@ -5,7 +5,7 @@ export const registerCandidateToEvent = async (
   data: EventCandidate
 ): Promise<any> => {
   try {
-    const response = await axios.post("/api/election-competitor", data, {
+    const response = await axios.post("/api/election-candidate", data, {
       headers: {
         "content-type": "application/json",
       },

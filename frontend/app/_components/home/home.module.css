@@ -1,6 +1,10 @@
+.container {
+  padding-top: 50px;
+  height: 100%;
+}
+
 .cards-container {
-  width: 90%;
-  margin: 1.5% auto;
+  margin: 1rem 5vw;
   display: flex;
   flex-wrap: wrap;
 }
@@ -19,10 +23,14 @@
   text-decoration: none;
 }
 
+.card-link:active,
+.card-link:visited {
+  color: rgb(0, 102, 204);
+}
+
 .card:hover {
   color: #4a4860;
   background: #ffc4eb;
-  /* box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px; */
   box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
     rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
 }
@@ -37,9 +45,38 @@
   border-bottom: 2px solid black;
 }
 
-/* 
-@media only screen and (max-width: 600px) {
-  img {
-    height: 49vh;
+@media only screen and (min-width: 800px) {
+  .cards-container {
+    margin: 1rem 10vw;
   }
-} */
+}
+
+@media only screen and (min-width: 1024px) {
+  .cards-container {
+    margin: 1rem 15vw;
+  }
+
+  .card {
+    min-width: 225px;
+  }
+}
+
+@media only screen and (min-width: 1280px) {
+  .cards-container {
+    margin: 1rem 17.5vw;
+  }
+
+  .card {
+    min-width: 255px;
+  }
+}
+
+@media only screen and (min-width: 1580px) {
+  .cards-container {
+    margin: 1rem 20vw;
+  }
+
+  .card {
+    min-width: 275px;
+  }
+}

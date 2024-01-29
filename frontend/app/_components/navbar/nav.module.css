@@ -1,4 +1,4 @@
-.nav-header {
+.navbar {
   position: fixed;
   top: 0;
   left: 0;
@@ -8,7 +8,7 @@
   border-bottom: 4px solid #323042;
   @media all and (max-width: 600px) {
     display: flex;
-    height: 6.9vh;
+    height: 51.2px;
   }
 }
 
@@ -16,7 +16,7 @@
   width: 100%;
   color: white;
   list-style: none;
-  margin-top: 6.9vh;
+  margin-top: 50px;
   padding: 0;
   @media all and (min-width: 600px) {
     margin: 0 0 0 5vw;

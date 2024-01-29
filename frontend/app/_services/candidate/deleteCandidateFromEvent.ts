@@ -5,7 +5,7 @@ export const deleteCandidateFromEvent = async (
   data: EventCandidate
 ): Promise<any> => {
   try {
-    const response = await axios.delete("/api/election-competitor", {
+    const response = await axios.delete("/api/election-candidate", {
       headers: {
         "content-type": "application/json",
       },

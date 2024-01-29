@@ -1,10 +1,6 @@
 import RomaniaMap from "@/_components/map/RomaniaMap";
 
 const page = () => {
-  return (
-    <div>
-      <RomaniaMap />
-    </div>
-  );
+  return <RomaniaMap />;
 };
 export default page;

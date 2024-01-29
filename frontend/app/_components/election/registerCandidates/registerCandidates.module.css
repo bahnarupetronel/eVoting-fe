@@ -1,0 +1,57 @@
+.title,
+.h4-title {
+  text-align: center;
+}
+
+.h4-title {
+  margin: 0;
+  background-color: black;
+  color: white;
+}
+
+.name {
+  text-decoration: underline;
+  margin: 0.5rem 0;
+}
+.index {
+  margin: auto 1rem;
+}
+
+.political-party {
+  margin: 0 auto 0.2rem;
+}
+
+.p-info {
+  margin-bottom: 0;
+}
+
+.info-error {
+  color: red;
+}
+
+.btn {
+  margin: auto;
+  margin-right: 1rem;
+}
+
+.card {
+  border: 1px solid black;
+  border-radius: 10px;
+  display: flex;
+  /* background-color: #f3f3f3; */
+  margin: 1rem 0;
+}
+
+.link {
+  color: inherit;
+}
+
+.link:hover {
+  color: blue;
+}
+
+@media only screen and (min-width: 650px) {
+}
+
+@media only screen and (min-width: 1024px) {
+}

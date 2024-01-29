@@ -18,6 +18,7 @@ export const ElectionCard = ({ election }: { election: ElectionModel }) => {
       <Link
         className={styles["title"]}
         href={`/election/${election.electionId}`}
+        target="_blank"
       >
         {election.title}
       </Link>

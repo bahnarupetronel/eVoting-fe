@@ -8,20 +8,15 @@ const Filter = ({
   label,
   id,
   handleChange,
-  size,
 }: {
   options: Array<option>;
   value: string;
   label: string;
   id: string;
   handleChange;
-  size?: string;
 }) => {
   return (
-    <FormControl
-      className={styles["filter"]}
-      size={size ?? "default"}
-    >
+    <FormControl className={styles["filter"]}>
       <InputLabel id={id}>{label}</InputLabel>
       <Select
         labelId={id}

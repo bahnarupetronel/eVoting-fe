@@ -1,6 +1,17 @@
 /** @type {import('next').NextConfig} */
 const path = require("path");
 module.exports = {
+  experimental: {
+    forceSwcTransforms: true,
+  },
+  async rewrites() {
+    return [
+      {
+        source: "/:path*/favicon.ico",
+        destination: "/favicon.ico",
+      },
+    ];
+  },
   images: {
     remotePatterns: [
       {

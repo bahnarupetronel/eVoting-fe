@@ -71,7 +71,7 @@ export default function NavBar(props) {
     window !== undefined ? () => window().document.body : undefined;
 
   return (
-    <AppBar className={styles["nav-header"]}>
+    <AppBar className={styles["navbar"]}>
       <CssBaseline />
       <IconButton
         color="inherit"

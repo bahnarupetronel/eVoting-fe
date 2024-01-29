@@ -12,6 +12,9 @@ import getElectionTypes from "../utils/getElectionTypes";
 import { Event } from "@/_interfaces/event.model";
 import submitEvent from "@/_services/election/submitEvent";
 import { useRouter } from "next/navigation";
+import EventFactory from "./EventFactory";
+import globalStyles from "@/_shared/stylesheets/global.module.css";
+
 const { format } = require("date-fns");
 
 export const ElectionEvent = () => {
@@ -25,6 +28,7 @@ export const ElectionEvent = () => {
   });
   const [filterTypes, setFilterTypes] = useState([]);
   const [types, setTypes] = useState([]);
+
   const handleChange = (event, field: string): void => {
     setEventDetails({ ...eventDetails, [field]: event.target?.value || event });
   };
@@ -54,7 +58,7 @@ export const ElectionEvent = () => {
           "Evenimentul a fost creat cu succes!",
           5000
         );
-        router.push(`/election/${response.data}`);
+        router.push(`/admin/election/unpublished`);
       } else {
         NotificationManager.error(
           "Ne pare rau, ceva nu a functionat corect. Incearca din nou",
@@ -79,7 +83,7 @@ export const ElectionEvent = () => {
   }, []);
 
   return (
-    <div className={styles["container"]}>
+    <div className={globalStyles["container"]}>
       <h2 className={styles["title"]}> Creeaza un nou eveniment</h2>
       <form
         className={styles["flex"]}
@@ -145,10 +149,10 @@ export const ElectionEvent = () => {
           minRows={3}
           placeholder="Introduceti o descriere"
         />
-        {/* <EventFactory
+        <EventFactory
           type={getEventName(eventDetails.typeId)}
           handleChange={handleChange}
-        /> */}
+        />
         <Button
           variant="outlined"
           type="submit"

@@ -3,15 +3,15 @@
 import { useState, useEffect } from "react";
 import { ElectionModel } from "@/_interfaces/election.model";
 import { ElectionCard } from "../ElectionCard";
-import { getUpcomingElections } from "./getUpcomingElections";
+import { getUpcomingElections } from "../../../_services/election/getUpcomingElections";
 import styles from "../election.module.css";
 
 const UpcomingElections = () => {
   const [elections, setElections] = useState<Array<ElectionModel>>(null);
   useEffect(() => {
-    getUpcomingElections().then((data) => {
-      console.log(data.length);
-      setElections(data);
+    getUpcomingElections().then((response) => {
+      if (200 <= response.status && response.status < 300)
+        setElections(response.data);
     });
   }, []);
   return (
