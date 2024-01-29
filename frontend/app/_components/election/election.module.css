@@ -1,6 +1,6 @@
 /*containers*/
-.container-header {
-  margin-bottom: 2vh;
+.header {
+  margin: 20px 0;
 }
 
 .cards-container {
@@ -23,6 +23,7 @@
 .pagination {
   align-items: center;
   max-height: 50vh;
+  margin-bottom: 20px;
 }
 
 /*search*/

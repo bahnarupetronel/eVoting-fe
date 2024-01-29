@@ -43,6 +43,7 @@ export default function MenuListComposition() {
         </Link>
         <Link
           href="/user/validate-account"
+          target="blank"
           className={styles["nav-link"]}
         >
           <AddBoxIcon className={styles["icon"]} />

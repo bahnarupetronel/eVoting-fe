@@ -1,0 +1,44 @@
+.label-event {
+  display: inline-block;
+  margin: 1rem 1rem 0 0;
+}
+
+.flex {
+  display: flex;
+  flex-direction: column;
+}
+
+.btn-submit {
+  margin: 0 auto 2rem;
+  width: 150px;
+}
+
+.label-event-name {
+  width: 100%;
+}
+
+.title {
+  font-size: 1.5rem;
+  margin: 0 0 1rem;
+}
+
+.date-picker {
+  display: flex;
+}
+
+.li {
+  list-style: none;
+  margin-bottom: 1.5rem;
+}
+
+.ul {
+  padding: 0;
+}
+
+.textarea {
+  width: 100%;
+}
+
+.fieldset {
+  margin: 0;
+}

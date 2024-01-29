@@ -1,14 +1,7 @@
-import Menu from "@/_components/user/Menu";
-import UserContainer from "@/_components/user/UserContainer";
-import styles from "@/_components/user/user.module.css";
+import User from "@/_components/user/User";
 
 const UserAccount = () => {
-  return (
-    <div className={styles["container-user"]}>
-      <Menu />
-      <UserContainer />
-    </div>
-  );
+  return <User />;
 };
 
 export default UserAccount;

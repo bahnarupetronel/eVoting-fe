@@ -13,6 +13,8 @@ import { Event } from "@/_interfaces/event.model";
 import submitEvent from "@/_services/election/submitEvent";
 import { useRouter } from "next/navigation";
 import EventFactory from "./EventFactory";
+import globalStyles from "@/_shared/stylesheets/global.module.css";
+
 const { format } = require("date-fns");
 
 export const ElectionEvent = () => {
@@ -26,6 +28,7 @@ export const ElectionEvent = () => {
   });
   const [filterTypes, setFilterTypes] = useState([]);
   const [types, setTypes] = useState([]);
+
   const handleChange = (event, field: string): void => {
     setEventDetails({ ...eventDetails, [field]: event.target?.value || event });
   };
@@ -80,7 +83,7 @@ export const ElectionEvent = () => {
   }, []);
 
   return (
-    <div className={styles["container"]}>
+    <div className={globalStyles["container"]}>
       <h2 className={styles["title"]}> Creeaza un nou eveniment</h2>
       <form
         className={styles["flex"]}

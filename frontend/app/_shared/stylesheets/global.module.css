@@ -1,0 +1,21 @@
+.container {
+  padding: 70px 5vw 0;
+}
+
+@media only screen and (min-width: 650px) {
+  .container {
+    padding: 70px 10vw 0;
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  .container {
+    padding: 70px 15vw 0;
+  }
+}
+
+@media only screen and (min-width: 1480px) {
+  .container {
+    padding: 70px 20vw 0;
+  }
+}

@@ -1,3 +1,4 @@
+import { CandidateType } from "./candidateType.model";
 import { EducationModel } from "./education.model";
 
 export interface CandidateModel {
@@ -12,6 +13,8 @@ export interface CandidateModel {
   localityId: number;
   residence: string;
   phoneNumber: string;
+  candidateType: CandidateType;
+  candidateTypeId: string;
   email: string;
   education: Array<EducationModel>;
 }

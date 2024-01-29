@@ -12,7 +12,7 @@ import {
   getNumberOfPages,
 } from "./utils/electionsUtils";
 import styles from "./election.module.css";
-import globalStyles from "@/_shared/stylesheets/App.module.css";
+import globalStyles from "@/_shared/stylesheets/global.module.css";
 
 const Elections = ({
   getElections,

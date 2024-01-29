@@ -68,7 +68,7 @@ export const errors = {
   "invalid-name": "Not a valid name",
   "invalid-form": "All inputs and selects are mandatory",
   "invalid-email": "Not a valid email format",
-  mismatch: "The passwords must match",
+  "invalid-confirm-password": "The passwords must match",
   "invalid-password":
     "The password must have at least 8 and maximum 20 characters,contain at least 1 uppercase letter, 1 lowercase letter, and 1 number.It can contain special characters",
 };

@@ -9,6 +9,12 @@ import { ReactQueryClientProvider } from "./QueryClientProvider";
 const metadata = {
   title: "Evoting",
   description: "Evoting description",
+  icons: {
+    icon: {
+      url: "/favicon.ico",
+    },
+    shortcut: { url: "/favicon.ico" },
+  },
 };
 
 export default function RootLayout({ children }) {

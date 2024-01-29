@@ -1,55 +1,6 @@
-import Link from "next/link";
-import globalStyles from "@/_shared/stylesheets/App.module.css";
+import Home from "@/_components/admin/Home";
 
 export const page = () => {
-  return (
-    <div className={globalStyles["container"]}>
-      <p>Creeaza: </p>
-      <ul>
-        <li>
-          <Link
-            href="/admin/create/political-party"
-            target="_blank"
-          >
-            Partid politic
-          </Link>
-        </li>
-        <li>
-          <Link
-            href="/admin/create/candidate"
-            target="_blank"
-          >
-            Candidat
-          </Link>
-        </li>
-        <li>
-          <Link
-            href="/admin/create/election"
-            target="_blank"
-          >
-            Eveniment
-          </Link>
-        </li>
-        <li>
-          <Link
-            href="/admin/create/locality"
-            target="_blank"
-          >
-            Localitate
-          </Link>
-        </li>
-      </ul>
-
-      <p>
-        Vezi lista de evenimente nepublicate:{" "}
-        <Link
-          href="/admin/election/unpublished"
-          target="_blank"
-        >
-          aici.
-        </Link>
-      </p>
-    </div>
-  );
+  return <Home />;
 };
 export default page;

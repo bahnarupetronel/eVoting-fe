@@ -14,23 +14,11 @@ const cards = [
     target: "_blank",
   },
   {
-    iconSrc: "/assets/icons/election.jpg",
-    title: "Ultimele rezultate",
-    imageAlt: "electionResultsIcon",
-    href: "/results",
-  },
-  {
     iconSrc: "/assets/icons/unknown.jpg",
     title: "Alegeri in derulare",
     imageAlt: "unknownIcon",
     href: "/election",
     target: "_blank",
-  },
-  {
-    iconSrc: "/assets/icons/location.jpg",
-    title: "Locatii",
-    imageAlt: "locationIcon",
-    href: "/vote/locations",
   },
   {
     iconSrc: "/assets/icons/unknown.jpg",

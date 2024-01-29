@@ -18,7 +18,7 @@ axiosInstance.interceptors.response.use(
       removeCookie("isUserLoggedIn");
       window.location.href = "/login";
     } else if (error.response.status === 404) {
-      window.location.href = "/not-found";
+      // window.location.href = "/not-found";
     } else if (error.response.status === 400) {
       console.log("not-found");
       window.location.href = "/not-found";

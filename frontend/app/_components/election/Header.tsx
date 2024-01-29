@@ -27,7 +27,7 @@ export const Header = ({
   };
 
   return (
-    <header className={styles["container-header"]}>
+    <header className={styles["header"]}>
       <h4 className={styles["title-header"]}>
         Evenimente {!isPublished && " nepublicate"}
       </h4>
