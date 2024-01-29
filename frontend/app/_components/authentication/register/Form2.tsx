@@ -7,7 +7,7 @@ import {
   Field,
   Input,
 } from "@/_components/form/getFormComponents";
-import { phoneNumberValidation } from "./utils/phoneNumberValidation.ts";
+import { phoneNumberValidation } from "../../form/utils/phoneNumberValidation.ts";
 import { getCounties } from "@/_services/counties/getCounties.ts";
 import { getLocalities } from "@/_services/counties/getLocalities.ts";
 

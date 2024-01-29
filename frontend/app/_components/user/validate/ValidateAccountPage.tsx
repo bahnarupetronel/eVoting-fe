@@ -1,5 +1,5 @@
-import Menu from "./Menu";
-import styles from "./user.module.css";
+import Menu from "../Menu";
+import styles from "../user.module.css";
 
 const ValidateAccountPage = () => {
   return (

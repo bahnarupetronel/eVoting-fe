@@ -10,10 +10,11 @@ import {
   isNameValid,
   isPasswordValid,
   isEmailValid,
-} from "./utils/validateForm";
-import { isCNPValid } from "./utils/validateCNP";
-import { isSerieAndNumberValid } from "./utils/validateSeriesAndNumber";
+} from "../../form/utils/validateForm";
+import { isCNPValid } from "../../form/utils/validateCNP";
+import { isSerieAndNumberValid } from "../../form/utils/validateSeriesAndNumber";
 import componentStyle from "./register.module.css";
+import authStyle from "@/_shared/stylesheets/auth.module.css";
 
 const Form1 = ({ changeLocation }: { changeLocation: Function }) => {
   const { state, setState } = useRegisterFormState();
