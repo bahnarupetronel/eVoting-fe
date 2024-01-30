@@ -46,7 +46,7 @@ const LoginForm = () => {
         );
         const user: UserLoginResponse = response.data;
         setCookie("isUserLoggedIn", true);
-        setCookie("user", user);
+        setCookie("user", user.email);
         setUser(user);
         setIsLoggedIn(true);
         router.push("/");
@@ -117,7 +117,7 @@ const LoginForm = () => {
           variant="outlined"
           className={btn["btn-sign-up"]}
         >
-          Inregistreaza-te
+          Conectare
         </Button>
         <p className={styles["p-auth"]}>
           Nu ai un cont?{" "}

@@ -26,6 +26,10 @@
   margin: auto 24%;
 }
 
+.section-logout {
+  width: 42%;
+  margin: auto 10%;
+}
 .title-auth {
   font-family: "Roboto", bold;
   margin-bottom: 6vh;
