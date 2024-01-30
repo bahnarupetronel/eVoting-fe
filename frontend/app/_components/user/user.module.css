@@ -10,7 +10,7 @@
   padding: 0;
 }
 
-.validate {
+.header-validate {
   color: red;
   padding: 5px 1rem;
   background-color: yellow;
@@ -69,13 +69,19 @@
   margin: 0;
 }
 
-.li {
-  list-style: none;
+.p-warning {
+  display: block;
+  padding: 5px 0 5px 10px;
+  margin: 0;
 }
 
-.ul {
-  padding: 0;
-  margin-left: 10px;
+.span-btn {
+  font-style: italic;
+}
+
+.section-header {
+  display: flex;
+  align-items: center;
 }
 
 @media only screen and (min-width: 800px) {

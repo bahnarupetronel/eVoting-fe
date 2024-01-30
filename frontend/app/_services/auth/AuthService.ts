@@ -27,14 +27,6 @@ class AuthService {
     });
   };
 
-  validateEmail = async () => {
-    return await axios.get(`/api/user/validate-email`);
-  };
-
-  confirmEmail = async (token: string) => {
-    return await axios.post(`/api/user/validate-email?token=${token}`);
-  };
-
   logoutUser = async (): Promise<any> => {
     return await axios.post("/api/user/signout");
   };

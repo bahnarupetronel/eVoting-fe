@@ -19,4 +19,5 @@ export interface UserDetailsModel {
   credentialsNonExpired: boolean;
   accountNonLocked: boolean;
   isEmailConfirmed: boolean;
+  isIdentityVerified: boolean;
 }

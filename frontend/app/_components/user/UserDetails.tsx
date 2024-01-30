@@ -20,6 +20,9 @@ const UserDetails = ({ user }: { user: UserDetailsModel }) => {
         Seria si numarul: <CustomSpan text={user.seriesAndNumber} />
       </li>
       <li>
+        Numarul de telefon: <CustomSpan text={user.phoneNumber} />
+      </li>
+      <li>
         Adresa 1:
         <CustomSpan text={user.addressLine1} />
       </li>

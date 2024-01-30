@@ -3,7 +3,8 @@ import { NextRequest, NextResponse } from "next/server";
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
   const isUserLoggedIn = request.cookies.get("isUserLoggedIn")?.value;
-
+  if (pathname === "/logout" && !isUserLoggedIn)
+    return NextResponse.redirect(new URL("/", request.url));
   if (pathname === "/login" && isUserLoggedIn)
     return NextResponse.redirect(new URL("/", request.url));
   if (pathname === "/register" && isUserLoggedIn)
@@ -16,6 +17,7 @@ export function middleware(request: NextRequest) {
     return NextResponse.redirect(new URL("/", request.url));
   if (
     !isUserLoggedIn &&
+    pathname !== "/" &&
     pathname !== "/login" &&
     pathname !== "/register" &&
     pathname !== "/forgot-password" &&

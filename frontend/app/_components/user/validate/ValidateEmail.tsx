@@ -1,35 +1,70 @@
-import { Button } from "@mui/material";
-import styles from "../user.module.css";
-import WarningIcon from "@mui/icons-material/Warning";
-import Link from "next/link";
+"use client";
 
-const ValidateEmail = ({ email }: { email: string }) => {
-  if (!email) return null;
+import "react-notifications/lib/notifications.css";
+import { NotificationManager } from "react-notifications";
+import { useSendEmailToken } from "@/_hooks/user";
+import { useRouter, useSearchParams } from "next/navigation";
+import globalStyles from "@/_shared/stylesheets/global.module.css";
+import styles from "../user.module.css";
+import { useEffect, useRef, useState } from "react";
+import { Button } from "@mui/material";
+
+const ValidateEmail = () => {
+  const isFirstRender = useRef(true);
+  const searchParams = useSearchParams();
+  const router = useRouter();
+  const token = searchParams.get("token");
+  const mutation = useSendEmailToken();
+  const [isSucces, setIsSucces] = useState(false);
+
+  const handleClick = () => {
+    router.push("/");
+  };
+
+  useEffect(() => {
+    if (!isFirstRender.current) {
+      mutation.mutate(token, {
+        onSuccess: () => {
+          NotificationManager.success(
+            "Adresa de email a fost verificata cu succes.",
+            "Adresa de email a fost verificata. ",
+            3000
+          );
+          setIsSucces(true);
+        },
+        onError: () => {
+          NotificationManager.error(
+            "Ceva nu a functionat corect. Incercati din nou !",
+            "Eroare",
+            3000
+          );
+        },
+      });
+    }
+    isFirstRender.current = false;
+  }, []);
+
   return (
-    <div className={styles["validate"]}>
-      <WarningIcon />
-      <ul className={styles["ul"]}>
-        <li className={styles["li"]}>Verifica adresa de email!</li>
-        <li className={styles["li"]}>
-          {" "}
-          Acceseaza{" "}
-          <Link
-            className={styles["link-validation"]}
-            href="https://www.gmail.com"
-            target="blank"
-          >
-            gmail.com
-          </Link>{" "}
-          pentru a confirma adresa de email {email}.
-        </li>
-      </ul>
-      <Button
-        variant="outlined"
-        color="warning"
-        className={styles["btn-resend"]}
-      >
-        Retrimite email-ul
-      </Button>
+    <div className={globalStyles["container"]}>
+      {" "}
+      <section className={styles["section-logout"]}>
+        {isSucces ? (
+          <div>
+            <h2>Adresa de email a fost confirmata.</h2>
+            <p>Multumim!</p>
+            <Button
+              variant="outlined"
+              onClick={handleClick}
+            >
+              Vezi acasa
+            </Button>
+          </div>
+        ) : (
+          <div>
+            <p>Confirmarea adresei de email a esuat.</p>
+          </div>
+        )}
+      </section>
     </div>
   );
 };

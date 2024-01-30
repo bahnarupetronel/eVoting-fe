@@ -32,10 +32,10 @@ const ChangePassword = () => {
       isPasswordValid(password.password)
     ) {
       mutation.mutate(password.password, {
-        onSuccess: (response) => {
+        onSuccess: () => {
           NotificationManager.success(
-            "Check your email. A message was sent for you to modify your password.",
-            "Check your email. ",
+            "Parola a fost modificata cu succes. Verificati email-ul pentru confirmare.",
+            "Parola a fost modificata. ",
             5000
           );
           router.push("/login");

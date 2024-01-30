@@ -16,12 +16,12 @@ axiosInstance.interceptors.response.use(
       console.log("go to login");
       removeCookie("user");
       removeCookie("isUserLoggedIn");
-      window.location.href = "/login";
+      // window.location.href = "/login";
     } else if (error.response.status === 404) {
       // window.location.href = "/not-found";
     } else if (error.response.status === 400) {
       console.log("not-found");
-      window.location.href = "/not-found";
+      // window.location.href = "/not-found";
     } else if (error.response.status === 409) {
       console.log("bad request conflict 409");
     } else if (error.response.status === 422) {
