@@ -67,6 +67,7 @@
 
 .title {
   margin: 0;
+  text-align: center;
 }
 
 .p-warning {
@@ -80,6 +81,24 @@
 }
 
 .section-header {
+  display: flex;
+  align-items: center;
+}
+
+.span {
+  color: #19376d;
+  font-weight: 600;
+}
+
+.icon-success {
+  color: green;
+}
+
+.icon-error {
+  color: red;
+}
+
+.div-verifications {
   display: flex;
   align-items: center;
 }

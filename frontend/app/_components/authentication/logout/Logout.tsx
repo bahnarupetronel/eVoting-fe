@@ -7,15 +7,19 @@ import { useAuth } from "@/_context/user/UserContext";
 import { useCookies } from "@/_hooks/useCookies.ts";
 import { useLogoutUser } from "@/_hooks/auth";
 import styles from "@/_shared/stylesheets/auth.module.css";
-import Image from "next/image";
+import globalStyles from "@/_shared/stylesheets/global.module.css";
 import { Button } from "@mui/material";
 import { useRouter } from "next/navigation";
+import DoneIcon from "@mui/icons-material/Done";
+import ErrorIcon from "@mui/icons-material/Error";
+import HourglassBottomIcon from "@mui/icons-material/HourglassBottom";
 
 const LogoutUser = () => {
   const mutation = useLogoutUser();
   const { removeCookie } = useCookies();
   const { setUser, setIsLoggedIn } = useAuth();
   const [isLogoutSuccessfull, setIsLogoutSuccessfull] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const router = useRouter();
 
   const handleClick = () => {
@@ -25,6 +29,7 @@ const LogoutUser = () => {
   useEffect(() => {
     mutation.mutate(null, {
       onSuccess: () => {
+        setIsLoading(false);
         removeCookie("isUserLoggedIn");
         removeCookie("user");
 
@@ -34,6 +39,7 @@ const LogoutUser = () => {
         NotificationManager.success("", "Deconectarea a avut succes.", 3000);
       },
       onError: () => {
+        setIsLoading(false);
         NotificationManager.error(
           "A aparut eroare. Incercati din nou mai tarziu!",
           "Deconectarea a esuat.",
@@ -42,23 +48,28 @@ const LogoutUser = () => {
       },
     });
   }, []);
-
-  return (
-    <div className={styles["container"]}>
-      <div className={styles["img-container"]}>
-        <Image
-          src="/assets/vote.jpg"
-          alt="vote-image"
-          fill
-          priority
-          sizes="100%"
-        />
+  if (isLoading)
+    return (
+      <div className={globalStyles["container"]}>
+        <h1 className={globalStyles["title-evoting"]}> eVoting</h1>
+        <section className={globalStyles["section-modal"]}>
+          <HourglassBottomIcon className={globalStyles["icon-loading"]} />
+          <h3 className={styles["title"]}> Loading</h3>
+        </section>
       </div>
-      <section className={styles["section-logout"]}>
-        {isLogoutSuccessfull ? (
+    );
+  return (
+    <div className={globalStyles["container"]}>
+      <h1 className={globalStyles["title-evoting"]}> eVoting</h1>
+      {isLogoutSuccessfull ? (
+        <section className={globalStyles["section-modal"]}>
+          <DoneIcon className={globalStyles["icon-success"]} />
+          <h3 className={styles["title"]}>
+            {" "}
+            Deconectarea s-a realizat cu succes.
+          </h3>
           <div>
-            <h2>Deconectarea a avut succes.</h2>
-            <p>Multumim pentru ca ati folosit eVoting.</p>
+            <p>Multumim ca ati folosit eVoting.</p>
             <Button
               variant="outlined"
               onClick={handleClick}
@@ -66,16 +77,16 @@ const LogoutUser = () => {
               Conectare din nou
             </Button>
           </div>
-        ) : (
-          <div>
-            <p>
-              Deconectarea a esuat. A aparut eroare.Incercati din nou mai
-              tarziu.
-            </p>
-          </div>
-        )}
-      </section>
+        </section>
+      ) : (
+        <section className={globalStyles["section-modal"]}>
+          <ErrorIcon className={globalStyles["icon-error"]} />
+          <h3 className={styles["title"]}> Deconectarea nu a avut succes.</h3>
+          <p>A aparut eroare.Incercati din nou mai tarziu.</p>
+        </section>
+      )}
     </div>
   );
 };
+
 export default LogoutUser;

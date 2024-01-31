@@ -1,26 +1,19 @@
-import authStyles from "@/_shared/stylesheets/auth.module.css";
 import styles from "./forgotPassword.module.css";
-import Image from "next/image";
 import Link from "next/link";
+import globalStyles from "@/_shared/stylesheets/global.module.css";
+import authStyles from "@/_shared/stylesheets/auth.module.css";
+import DoneIcon from "@mui/icons-material/Done";
 
 const ChangePasswordConfirm = () => {
   return (
-    <main className={authStyles["container"]}>
-      <div className={authStyles["img-container"]}>
-        <Image
-          src="/assets/vote.jpg"
-          alt="vote-image"
-          width={0}
-          height={0}
-          sizes="100%"
-          style={{ width: "100%", height: "100%" }}
-        />
-      </div>
-      <section className={styles["section"]}>
-        <h2>Email-ul a fost trimis.</h2>
-        <p>Verifica mail-ul primit si urmeaza pasii.</p>
+    <div className={globalStyles["container"]}>
+      <h1 className={globalStyles["title-evoting"]}> eVoting</h1>
+      <section className={globalStyles["section-modal"]}>
+        <DoneIcon className={globalStyles["icon-success"]} />
+        <h3 className={styles["title"]}> Email-ul a fost trimis</h3>
+        <p>Verifica email-ul primit si urmeaza pasii.</p>
         <p>
-          Daca nu ai primit in 5 minute, incearca din nou{" "}
+          Daca nu l-ai primit in 5 minute, incearca din nou{" "}
           <Link
             href="/forgot-password"
             className={authStyles["a-auth"]}
@@ -29,7 +22,7 @@ const ChangePasswordConfirm = () => {
           </Link>
         </p>
       </section>
-    </main>
+    </div>
   );
 };
 export default ChangePasswordConfirm;

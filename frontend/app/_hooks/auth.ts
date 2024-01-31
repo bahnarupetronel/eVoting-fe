@@ -1,4 +1,4 @@
-import { useQuery, useMutation } from "@tanstack/react-query";
+import { useMutation } from "@tanstack/react-query";
 import { userRegister } from "@/_interfaces/userRegister.model";
 import { UserLogin } from "@/_interfaces/userLogin.model";
 import AuthService from "../_services/auth/AuthService";
@@ -43,27 +43,10 @@ const useChangePassword = (token: string) => {
   });
 };
 
-const useConfirmEmail = (token: string) => {
-  return useMutation({
-    mutationFn: () => {
-      return AuthService.confirmEmail(token);
-    },
-  });
-};
-
-const useValidateEmail = () => {
-  return useQuery({
-    queryKey: ["validateEmail"],
-    queryFn: () => AuthService.validateEmail(),
-  });
-};
-
 export {
   useLogin,
   useForgotPassword,
   useChangePassword,
-  useValidateEmail,
-  useConfirmEmail,
   useRegisterUser,
   useLogoutUser,
 };

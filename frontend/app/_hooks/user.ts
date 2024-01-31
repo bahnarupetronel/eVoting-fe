@@ -6,6 +6,7 @@ const useGetUserDetails = (email: string) => {
     queryKey: ["user", email],
     queryFn: () => UserService.getUserDetails(),
     staleTime: 1000 * 60 * 60 * 24,
+    retry: 0,
   });
 };
 
@@ -14,6 +15,7 @@ const useIsConfirmEmailSent = (email: string) => {
     queryKey: ["confirm-email", email],
     queryFn: () => UserService.isConfirmEmailSent(),
     staleTime: 1000 * 60 * 60 * 24,
+    retry: 0,
   });
 };
 
