@@ -2,6 +2,33 @@
   padding: 70px 5vw 0;
 }
 
+.title-evoting {
+  color: #19376d;
+  margin: 20px auto 50px;
+  text-align: center;
+}
+
+.icon-error,
+.icon-success,
+.icon-loading {
+  font-size: 50px;
+}
+
+.icon-error {
+  color: red;
+}
+
+.icon-success {
+  color: green;
+}
+
+.section-modal {
+  background-color: #f9f9f9;
+  box-shadow: 0px 4px 15px 3px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  padding: 10px;
+}
+
 @media only screen and (min-width: 650px) {
   .container {
     padding: 70px 10vw 0;

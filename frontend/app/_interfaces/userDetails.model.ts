@@ -11,7 +11,6 @@ export interface UserDetailsModel {
   localityId: number;
   countyId: number;
   country: string;
-  linkCIPhoto: string;
   roles: Array<String>;
   enabled: boolean;
   authorities?: any;

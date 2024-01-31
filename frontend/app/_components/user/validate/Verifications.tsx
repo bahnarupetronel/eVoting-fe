@@ -1,6 +1,8 @@
 import Link from "next/link";
 import styles from "../user.module.css";
 import CustomSpan from "@/_components/form/customSpan/CustomSpan";
+import ErrorIcon from "@mui/icons-material/Error";
+import DoneIcon from "@mui/icons-material/Done";
 
 const Verifications = ({
   isEmailConfirmed,
@@ -10,41 +12,50 @@ const Verifications = ({
   isIdentityVerified: boolean;
 }) => {
   return (
-    <section className={styles["section-validate-account"]}>
+    <main className={styles["section-validate-account"]}>
       <header className={styles["header"]}>
         <h3 className={styles["title"]}>Verificare identitate și email</h3>
       </header>
       <hr className={styles["hr"]} />
-      <main>
+      <section>
         {!isEmailConfirmed ? (
-          <p>
-            Email: <CustomSpan text={"Valideaza email-ul!"} />
-          </p>
+          <div className={styles["div-verifications"]}>
+            <p>
+              Email: <CustomSpan text={"Valideaza email-ul!"} />
+            </p>
+            <ErrorIcon className={styles["icon-error"]} />
+          </div>
         ) : (
-          <p>
-            Email: <CustomSpan text={"Adresa de email a fost validata."} />
-          </p>
+          <div className={styles["div-verifications"]}>
+            <CustomSpan text={"Adresa de email a fost confirmata."} />
+            <DoneIcon className={styles["icon-success"]} />
+          </div>
         )}
         {!isIdentityVerified ? (
-          <p>
-            Identitate:{" "}
-            <CustomSpan
-              text={"Pentru a vota, trebuie sa ai identitatea validata."}
-            />{" "}
-            Apasa{" "}
-            <Link
-              href="/user/validate/account"
-              target="blank"
-            >
-              aici
-            </Link>{" "}
-            si urmeaza pasii urmatori.
-          </p>
+          <div className={styles["div-verifications"]}>
+            <p>
+              Identitate:{" "}
+              <span className={styles["span"]}>
+                Apasa{" "}
+                <Link
+                  href="/user/validate/identity"
+                  target="blank"
+                >
+                  aici
+                </Link>{" "}
+                si urmeaza pasii urmatori pentru validarea indentitatii.
+              </span>
+            </p>
+            <ErrorIcon className={styles["icon-error"]} />
+          </div>
         ) : (
-          <p></p>
+          <div className={styles["div-verifications"]}>
+            <CustomSpan text={"Identitatea a fost verificata."} />
+            <DoneIcon className={styles["icon-success"]} />
+          </div>
         )}
-      </main>
-    </section>
+      </section>
+    </main>
   );
 };
 export default Verifications;

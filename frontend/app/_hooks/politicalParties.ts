@@ -6,6 +6,7 @@ const useGetPoliticalParties = () => {
     queryKey: ["political-parties"],
     queryFn: () => PoliticalPartiesService.getPoliticalParties(),
     staleTime: 1000 * 60 * 60 * 24,
+    retry: 1,
   });
 };
 

@@ -24,6 +24,7 @@ const useGetCandidateByName = (name: string) => {
   return useQuery({
     queryKey: [name],
     queryFn: () => CandidateService.getCandidateByName(name),
+    retry: 0,
   });
 };
 
@@ -32,6 +33,7 @@ const useGetCandidateType = () => {
     queryKey: ["candidate-type"],
     queryFn: () => CandidateService.getCandidateType(),
     staleTime: 1000 * 60 * 60 * 24,
+    retry: 1,
   });
 };
 
@@ -40,6 +42,7 @@ const useGetGenders = () => {
     queryKey: ["candidate-genders"],
     queryFn: () => CandidateService.getGenders(),
     staleTime: 1000 * 60 * 60 * 24,
+    retry: 1,
   });
 };
 
@@ -51,6 +54,7 @@ const useGetRegisteredCandidatesLocality = (
     queryKey: [`candidates?localityId=${localityId}&electionId=${electionId}`],
     queryFn: () =>
       CandidateService.getRegisteredCandidatesLocality(electionId, localityId),
+    retry: 0,
   });
 };
 
@@ -62,6 +66,7 @@ const useGetCandidatesByEventTypeAndLocality = (
     queryKey: [`candidates?localityId=${localityId}&typeId=${typeId}`],
     queryFn: () =>
       CandidateService.getCandidatesByEventTypeAndLocality(typeId, localityId),
+    retry: 0,
   });
 };
 

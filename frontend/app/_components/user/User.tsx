@@ -25,7 +25,10 @@ const User = () => {
         <hr className={styles["hr"]} />
         <UserDetails user={userDetails} />
         {isSuccess && (
-          <Verifications isEmailConfirmed={userDetails?.isEmailConfirmed} />
+          <Verifications
+            isEmailConfirmed={userDetails?.isEmailConfirmed}
+            isIdentityVerified={userDetails?.isIdentityVerified}
+          />
         )}
       </section>
     </div>
