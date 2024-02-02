@@ -24,7 +24,6 @@ export const ElectionEvent = () => {
     startDate: null,
     endDate: null,
     description: "",
-    title: "",
   });
   const [filterTypes, setFilterTypes] = useState([]);
   const [types, setTypes] = useState([]);
@@ -53,11 +52,7 @@ export const ElectionEvent = () => {
       });
       const response = await submitEvent(event);
       if (response.status >= 200 && response.status < 300) {
-        NotificationManager.success(
-          "Felicitari! Evenimentul a fost creat!",
-          "Evenimentul a fost creat cu succes!",
-          5000
-        );
+        NotificationManager.success("Evenimentul a fost creat!", "", 5000);
         router.push(`/admin/election/unpublished`);
       } else {
         NotificationManager.error(
@@ -89,20 +84,6 @@ export const ElectionEvent = () => {
         className={styles["flex"]}
         onSubmit={(e) => handleSubmit(e)}
       >
-        <div>
-          <InputLabel
-            htmlFor="name"
-            className={styles["label-event"]}
-          >
-            Numele evenimentului:
-          </InputLabel>
-          <Input
-            onChange={(e) => handleChange(e, "title")}
-            placeholder="Introduceti numele evenimentului"
-            className={styles["label-event-name"]}
-          />
-        </div>
-
         <div>
           <InputLabel
             htmlFor="tip"

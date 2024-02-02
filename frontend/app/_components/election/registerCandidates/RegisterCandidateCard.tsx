@@ -49,16 +49,12 @@ const RegisterCandidateCard = ({
     });
   };
 
-  const transformNameForLinkPath = (name: string): string => {
-    return name?.replace(/ /g, "-");
-  };
-
   return (
     <div className={styles["card"]}>
       <h2 className={styles["index"]}>{index + 1}</h2>
       <div>
         <Link
-          href={`/candidate/${transformNameForLinkPath(candidate?.name)}`}
+          href={`/candidate/${candidate?.id}`}
           target="_blank"
           className={styles["link"]}
         >

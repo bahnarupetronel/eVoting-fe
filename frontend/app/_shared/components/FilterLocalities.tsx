@@ -46,8 +46,8 @@ const FilterLocalities = ({
       const selected: locality = localities.find(
         (locality: locality) => locality.name === value
       );
-      handleLocalityChange(selected);
-      setFilters({ ...filters, locality: value });
+      handleLocalityChange(selected || "");
+      setFilters({ ...filters, locality: value || "" });
     }
   };
 

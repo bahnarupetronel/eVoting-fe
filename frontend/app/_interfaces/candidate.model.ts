@@ -7,13 +7,14 @@ export interface CandidateModel {
   gender: string;
   position: string;
   imageUrl: string;
-  birthDate: string; //make it a date
+  birthDate: string;
   description: string;
-  politicalPartyId: number;
-  localityId: number;
-  residence: string;
+  politicalPartyId: string;
+  competingInLocality: string;
+  address: string;
   phoneNumber: string;
   candidateType: CandidateType;
+  eventTypeId: string;
   candidateTypeId: string;
   email: string;
   education: Array<EducationModel>;

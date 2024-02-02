@@ -1,5 +1,5 @@
 import Link from "next/link";
-import globalStyles from "@/_shared/stylesheets/App.module.css";
+import globalStyles from "@/_shared/stylesheets/global.module.css";
 
 const Home = () => {
   return (

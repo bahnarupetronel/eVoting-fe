@@ -1,5 +1,6 @@
 "use client";
 
+import { CandidateModel } from "@/_interfaces/candidate.model";
 import { EventCandidate } from "@/_interfaces/eventCandidate.model";
 import CandidateService from "@/_services/candidate/CandidateService";
 import { useMutation, useQuery } from "@tanstack/react-query";
@@ -20,10 +21,10 @@ const useRegisterCandidateToEvent = () => {
   });
 };
 
-const useGetCandidateByName = (name: string) => {
+const useGetCandidateByName = (id: string) => {
   return useQuery({
-    queryKey: [name],
-    queryFn: () => CandidateService.getCandidateByName(name),
+    queryKey: [id],
+    queryFn: () => CandidateService.getCandidateById(id),
     retry: 0,
   });
 };
@@ -70,6 +71,14 @@ const useGetCandidatesByEventTypeAndLocality = (
   });
 };
 
+const usePostCandidate = () => {
+  return useMutation({
+    mutationFn: (candidate: CandidateModel) => {
+      return CandidateService.postCandidate(candidate);
+    },
+  });
+};
+
 export {
   useDeleteCandidateFromEvent,
   useRegisterCandidateToEvent,
@@ -78,4 +87,5 @@ export {
   useGetCandidateType,
   useGetRegisteredCandidatesLocality,
   useGetGenders,
+  usePostCandidate,
 };
