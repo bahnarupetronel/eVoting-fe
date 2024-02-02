@@ -15,6 +15,7 @@ export const CandidateProfileCard = ({
         height={300}
         alt="candidate image"
         className={styles["image-avatar"]}
+        priority
         src={candidate.imageUrl}
       />
       <CardContent className={styles["card-content"]}>
@@ -53,8 +54,8 @@ export const CandidateProfileCard = ({
           component="p"
           className={styles["p-details"]}
         >
-          Localitate:{" "}
-          <span className={styles["span-details"]}>{candidate.localityId}</span>
+          Adresa:{" "}
+          <span className={styles["span-details"]}>{candidate.address}</span>
         </Typography>
         <Divider />
         <Typography
@@ -63,11 +64,15 @@ export const CandidateProfileCard = ({
           component="p"
           className={styles["p-details"]}
         >
-          Adresa de contact:{" "}
+          Adresa de email:{" "}
           <span className={styles["span-details"]}>{candidate.email}</span>
         </Typography>
         <Divider />
-        <Typography variant="body1">{candidate.description}</Typography>
+        <Typography variant="body1">
+          <span className={styles["span-description"]}>
+            {candidate.description}
+          </span>
+        </Typography>
       </CardContent>
     </div>
   );

@@ -23,20 +23,11 @@ export const EducationProfileCard = ({
         >
           Educatie
         </Typography>
-        {educations.map((education: EducationModel) => (
-          <EducationCard education={education} />
-        ))}
-      </CardContent>
-      <CardContent>
-        <Typography
-          variant="h6"
-          color="text.secondary"
-          className={styles["title"]}
-        >
-          Experienta
-        </Typography>
-        {educations.map((education: EducationModel) => (
-          <EducationCard education={education} />
+        {educations.map((education: EducationModel, index) => (
+          <EducationCard
+            education={education}
+            key={index}
+          />
         ))}
       </CardContent>
     </div>

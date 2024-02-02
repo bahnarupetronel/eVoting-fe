@@ -42,3 +42,26 @@
 .fieldset {
   margin: 0;
 }
+
+.education-container {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+.education {
+  width: 100%;
+}
+.btn {
+  margin-right: 10px;
+}
+
+@media only screen and (min-width: 800px) {
+  .education-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+}

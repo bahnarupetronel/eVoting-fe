@@ -4,11 +4,15 @@ import { TypeTag } from "./utils/TypeTag";
 import { StatusBanner } from "./utils/StatusBanner";
 import { formatDate } from "./utils/formatDate";
 import styles from "./card.module.css";
+import dayjs from "dayjs";
 
 export const ElectionCard = ({ election }: { election: ElectionModel }) => {
   const startDate: string = formatDate(election?.startDate);
   const endDate: string = formatDate(election?.endDate);
+  const year = dayjs(election?.startDate).get("year");
+
   if (election == null) return <div>Loading</div>;
+
   return (
     <div className={styles["container"]}>
       <StatusBanner
@@ -20,7 +24,7 @@ export const ElectionCard = ({ election }: { election: ElectionModel }) => {
         href={`/election/${election.electionId}`}
         target="_blank"
       >
-        {election.title}
+        {election.type.name + " " + year}
       </Link>
       <p className={styles["p-info"]}>
         Description:{" "}

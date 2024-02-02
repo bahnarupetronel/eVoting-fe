@@ -17,6 +17,7 @@ import deleteElection from "@/_services/election/deleteElection";
 import { locality } from "@/_interfaces/locality.model";
 import styles from "./election.module.css";
 import globalStyles from "@/_shared/stylesheets/App.module.css";
+import dayjs from "dayjs";
 
 const Election = () => {
   const router = useRouter();
@@ -32,6 +33,8 @@ const Election = () => {
   const handleOpen = () => {
     setIsModalOpen(true);
   };
+
+  const year = dayjs(election?.startDate).get("year");
 
   const handleDeleteEvent = async () => {
     const response = await deleteElection(election?.electionId);
@@ -70,14 +73,14 @@ const Election = () => {
       sx={{ flexGrow: 1, bgcolor: "background.default", p: 2 }}
       className={globalStyles["container"]}
     >
-      <h3 className={styles["title"]}>{election.title}</h3>
-      <h4 className={styles["title-secondary"]}>
+      <h2 className={styles["title"]}>
         {election.type.name === "Referendum" ? (
           election?.type.name
         ) : (
           <>Alegeri {election?.type.name}</>
         )}
-      </h4>
+        {" " + year}
+      </h2>
       <p className={styles["description"]}>{election.description}</p>
       <p>
         <span>{formatDate(election.startDate)}</span>

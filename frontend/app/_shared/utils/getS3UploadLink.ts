@@ -1,22 +1,18 @@
+import axios from "@/_api/axios";
+
 export const getS3UploadLink = async (fileExtension): Promise<any> => {
   try {
     const requestBody = {
       fileExtension: fileExtension,
     };
+    const response = await axios.post("/api/s3/generate-upload-url", {
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(requestBody),
+    });
 
-    const response = await fetch(
-      "http://localhost:5173/api/s3/generate-upload-url",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(requestBody),
-      }
-    );
-
-    const result = await response;
-    return result;
+    return response;
   } catch (error) {
     return error;
   }

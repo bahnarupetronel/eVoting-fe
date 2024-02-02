@@ -24,11 +24,10 @@
 .container-profile-education {
   margin-left: 0;
   display: flex;
-  justify-content: space-around;
-  flex-direction: column;
 }
 
 .p-details {
+  display: inline-block;
   font-size: 1.1rem;
   margin: 0;
 }
@@ -38,6 +37,10 @@
   color: blue;
 }
 
+.span-description {
+  overflow-wrap: anywhere;
+  font-size: 1rem;
+}
 .image-avatar {
   border-radius: 50%;
   /* scale: 2; */

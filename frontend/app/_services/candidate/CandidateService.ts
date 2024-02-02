@@ -1,10 +1,11 @@
 import axios from "@/_api/axios";
+import { CandidateModel } from "@/_interfaces/candidate.model";
 import { CandidateType } from "@/_interfaces/candidateType.model";
 import { EventCandidate } from "@/_interfaces/eventCandidate.model";
 
 class CandidateService {
-  getCandidateByName = async (name: string) => {
-    return await axios.get(`/api/candidate/${name}`);
+  getCandidateById = async (id: string) => {
+    return await axios.get(`/api/candidate/${id}`);
   };
 
   deleteCandidateFromEvent = async (data: EventCandidate) => {
@@ -36,6 +37,14 @@ class CandidateService {
 
   registerCandidateToEvent = async (data: EventCandidate) => {
     return await axios.post("/api/election-candidate", data, {
+      headers: {
+        "content-type": "application/json",
+      },
+    });
+  };
+
+  postCandidate = async (candidate: CandidateModel) => {
+    return await axios.post("/api/candidate", candidate, {
       headers: {
         "content-type": "application/json",
       },
