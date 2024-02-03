@@ -19,7 +19,6 @@ import { isCNPValid } from "@/_components/form/utils/validateCNP";
 import { usePostUserDetails } from "@/_hooks/user";
 import { isFormValid } from "./isFormValid";
 import { userDetailsEdit } from "@/_interfaces/userDetailsEdit.model";
-import { useRouter } from "next/navigation";
 
 export const EditProfileModal = ({
   user,
@@ -30,7 +29,6 @@ export const EditProfileModal = ({
   handleCloseModal: Function;
   isModalOpen: boolean;
 }) => {
-  const router = useRouter();
   const [userCopy, setUserCopy] = useState<userDetailsEdit>(user);
   const mutation = usePostUserDetails();
 
@@ -49,7 +47,6 @@ export const EditProfileModal = ({
         onSuccess: () => {
           NotificationManager.success("Detaliile au fost salvate", "", 5000);
           handleCloseModal();
-          router.refresh();
         },
         onError: () => {
           NotificationManager.error(
@@ -85,11 +82,25 @@ export const EditProfileModal = ({
               htmlFor="name"
               className={styles["input-label"]}
             >
-              Numele candidatului:
+              Prenume:
             </InputLabel>
             <Input
-              value={userCopy?.name ?? ""}
-              onChange={(e) => handleChange(e, "name")}
+              value={userCopy?.firstName ?? ""}
+              onChange={(e) => handleChange(e, "firstName")}
+              placeholder="Nume"
+              className={styles["input"]}
+            />
+          </div>
+          <div className={styles["field"]}>
+            <InputLabel
+              htmlFor="name"
+              className={styles["input-label"]}
+            >
+              Nume:
+            </InputLabel>
+            <Input
+              value={userCopy?.lastName ?? ""}
+              onChange={(e) => handleChange(e, "lastName")}
               placeholder="Nume"
               className={styles["input"]}
             />
@@ -219,7 +230,3 @@ export const EditProfileModal = ({
     </Dialog>
   );
 };
-export default EditProfileModal;
-function userRouter() {
-  throw new Error("Function not implemented.");
-}

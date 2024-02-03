@@ -1,6 +1,7 @@
 export interface UserDetailsModel {
   id: string;
-  name: string;
+  firstName: string;
+  lastName: string;
   email: string;
   cnp: string;
   seriesAndNumber: string;

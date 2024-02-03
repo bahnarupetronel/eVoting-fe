@@ -1,3 +1,7 @@
+import "react-notifications/lib/notifications.css";
+import { NotificationManager } from "react-notifications";
+import { usePublishEvent } from "@/_hooks/elections";
+import { ElectionModel } from "@/_interfaces/election.model";
 import Button from "@mui/material/Button";
 import Dialog from "@mui/material/Dialog";
 import DialogActions from "@mui/material/DialogActions";
@@ -5,21 +9,39 @@ import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 
-export function Modal({
+export function PublishEventModal({
+  election,
   isModalOpen,
   setIsModalOpen,
-  handleDeleteEvent,
 }: {
+  election: ElectionModel;
   isModalOpen: boolean;
   setIsModalOpen: Function;
-  handleDeleteEvent: Function;
 }) {
-  const handleClose = () => {
+  const mutation = usePublishEvent();
+
+  const handlePublishEvent = async () => {
+    mutation.mutate(election.electionId, {
+      onSuccess: () => {
+        NotificationManager.success(
+          "Evenimentul a fost publicat cu succes. ",
+          "",
+          5000
+        );
+      },
+      onError: () => {
+        NotificationManager.error(
+          "Evenimentul nu a putut fi publicat. Incercati din nou mai tarziu!",
+          "",
+          5000
+        );
+      },
+    });
     setIsModalOpen(false);
   };
 
-  const handleApproval = () => {
-    handleDeleteEvent();
+  const handleClose = () => {
+    setIsModalOpen(false);
   };
 
   return (
@@ -31,17 +53,18 @@ export function Modal({
         aria-describedby="alert-dialog-description"
       >
         <DialogTitle id="alert-dialog-title">
-          {"Doriti sa stergeti acest eveniment?"}
+          {"Publicati evenimentul?"}
         </DialogTitle>
         <DialogContent>
           <DialogContentText id="alert-dialog-description">
-            Stergerea acestui eveniment este ireversibila.
+            Evenimentul va fi publicat. Acesta poate fi sters si dupa publicare.
+            Continuati?
           </DialogContentText>
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose}>Anuleaza</Button>
           <Button
-            onClick={handleApproval}
+            onClick={handlePublishEvent}
             autoFocus
           >
             Continua
@@ -52,4 +75,4 @@ export function Modal({
   );
 }
 
-export default Modal;
+export default PublishEventModal;

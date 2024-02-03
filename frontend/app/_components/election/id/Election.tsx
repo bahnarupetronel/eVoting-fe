@@ -1,7 +1,5 @@
 "use client";
 
-import "react-notifications/lib/notifications.css";
-import { NotificationManager } from "react-notifications";
 import { useState, useEffect } from "react";
 import { useRouter, usePathname } from "next/navigation";
 import Link from "next/link";
@@ -10,20 +8,20 @@ import { getElectionById } from "@/_services/election/getElectionById";
 import { ElectionModel } from "@/_interfaces/election.model";
 import { formatDate } from "../utils/formatDate";
 import { RegisteredCandidates } from "./RegisteredCandidates";
-import { Modal } from "@/_components/modal/Modal";
+import { DeleteEventModal } from "@/_components/modal/DeleteEventModal";
 import FilterLocalities from "@/_shared/components/FilterLocalities";
 import { getElectionStatus } from "../utils/getElectionStatus";
-import deleteElection from "@/_services/election/deleteElection";
 import { locality } from "@/_interfaces/locality.model";
 import styles from "./election.module.css";
 import globalStyles from "@/_shared/stylesheets/App.module.css";
 import dayjs from "dayjs";
+import { PublishEventModal } from "@/_components/modal/PublishEventModal";
 
 const Election = () => {
-  const router = useRouter();
   const pathname = usePathname();
   const [election, setElection] = useState<ElectionModel>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isPublishModalOpen, setIsPublishModalOpen] = useState(false);
   const [hasCandidates, setHasCandidates] = useState(false);
   const [locality, setLocality] = useState<locality | null>(null);
   const id: string = pathname.split("/").pop();
@@ -34,26 +32,11 @@ const Election = () => {
     setIsModalOpen(true);
   };
 
-  const year = dayjs(election?.startDate).get("year");
-
-  const handleDeleteEvent = async () => {
-    const response = await deleteElection(election?.electionId);
-    if (200 <= response.status && response.status < 300) {
-      NotificationManager.success(
-        "Evenimentul a fost sters cu succes. Sunteti redirectat catre pagina de evenimenete.",
-        "Eveniment sters.",
-        5000
-      );
-      router.push("/admin/election/unpublished");
-    } else {
-      NotificationManager.error(
-        "Evenimentul nu a putut fi sters. Incercati din nou mai tarziu!",
-        "Eveniment nu a putut fi sters.",
-        5000
-      );
-    }
-    setIsModalOpen(false);
+  const handlePublishModalOpen = () => {
+    setIsPublishModalOpen(true);
   };
+
+  const year = dayjs(election?.startDate).get("year");
 
   const handleLocalityChange = (locality: locality) => {
     setLocality(locality);
@@ -112,6 +95,7 @@ const Election = () => {
       {!election.published && (
         <div className={styles["container-btn"]}>
           <Button
+            type="button"
             variant="outlined"
             disabled={status !== "Urmeaza"}
           >
@@ -124,18 +108,15 @@ const Election = () => {
             </Link>
           </Button>
           <Button
-            variant="outlined"
-            disabled={status !== "Urmeaza"}
-          >
-            Editeaza
-          </Button>
-          <Button
+            onClick={handlePublishModalOpen}
+            type="button"
             variant="outlined"
             disabled={status !== "Urmeaza"}
           >
             Publica
           </Button>
           <Button
+            type="button"
             variant="outlined"
             color="error"
             onClick={handleOpen}
@@ -144,10 +125,15 @@ const Election = () => {
           </Button>
         </div>
       )}
-      <Modal
+      <DeleteEventModal
+        election={election}
         isModalOpen={isModalOpen}
         setIsModalOpen={setIsModalOpen}
-        handleDeleteEvent={handleDeleteEvent}
+      />
+      <PublishEventModal
+        election={election}
+        isModalOpen={isPublishModalOpen}
+        setIsModalOpen={setIsPublishModalOpen}
       />
     </Box>
   );
