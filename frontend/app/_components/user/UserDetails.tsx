@@ -2,7 +2,7 @@ import { UserDetailsModel } from "@/_interfaces/userDetails.model";
 import styles from "./user.module.css";
 import CustomSpan from "../form/customSpan/CustomSpan";
 
-const UserDetails = ({ user }: { user: UserDetailsModel }) => {
+const UserDetails = ({ user }: { user }) => {
   if (!user)
     return <p className={styles["user-details-list"]}>Loading user data...</p>;
   return (
@@ -34,15 +34,11 @@ const UserDetails = ({ user }: { user: UserDetailsModel }) => {
         Cod postal: <CustomSpan text={user.postalCode} />
       </li>
       <li>
-        Localitate: <CustomSpan text={JSON.stringify(user.localityId)} />
+        Localitate: <CustomSpan text={user.locality} />
       </li>
       <li>
         Judet:
-        <CustomSpan text={JSON.stringify(user.countyId)} />
-      </li>
-      <li>
-        Tara:
-        <CustomSpan text={user.country} />
+        <CustomSpan text={user.county} />
       </li>
     </ul>
   );

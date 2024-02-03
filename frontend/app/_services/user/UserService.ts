@@ -1,4 +1,5 @@
 import axios from "@/_api/axios";
+import { userDetailsEdit } from "@/_interfaces/userDetailsEdit.model";
 
 class UserService {
   validateEmail = async (email: string) => {
@@ -14,7 +15,11 @@ class UserService {
   };
 
   getUserDetails = async () => {
-    return await axios.get("/api/user/details");
+    return await axios.get("/api/user");
+  };
+
+  postUserDetails = async (user: userDetailsEdit) => {
+    return await axios.post("/api/user", user);
   };
 }
 

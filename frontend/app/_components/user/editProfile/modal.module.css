@@ -1,0 +1,25 @@
+.dialog,
+.container {
+  padding: 10px 20px;
+}
+
+.dialog {
+  margin-top: 60px;
+}
+
+.hr {
+  border: 1px solid #19376d;
+}
+
+.field {
+  margin: 1rem 0;
+}
+
+.input {
+  width: 100%;
+}
+
+.error {
+  margin: 0;
+  color: red;
+}

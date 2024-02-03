@@ -3,7 +3,6 @@ const containsOnlyDigits = (CNP) => {
 };
 
 const compareToCurrentDate = (year, month, day) => {
-  //compared the date from the CNP to the current date
   const today = new Date();
   today.setHours(0, 0, 0, 0);
   const _month = today.getMonth() + 1;
@@ -52,7 +51,6 @@ const validateDay = (year, month, day) => {
 };
 
 const validateMonth = (month) => {
-  //console.log(month);
   if (month < 1 || month > 12) {
     return 0;
   }

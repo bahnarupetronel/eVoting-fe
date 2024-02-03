@@ -1,5 +1,5 @@
 import { useMutation } from "@tanstack/react-query";
-import { userRegister } from "@/_interfaces/userRegister.model";
+import { userRegister } from "@/_interfaces/userDetailsEdit.model";
 import { UserLogin } from "@/_interfaces/userLogin.model";
 import AuthService from "../_services/auth/AuthService";
 
