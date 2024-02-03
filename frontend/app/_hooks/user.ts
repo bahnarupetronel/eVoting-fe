@@ -1,3 +1,4 @@
+import { userDetailsEdit } from "@/_interfaces/userDetailsEdit.model";
 import UserService from "@/_services/user/UserService";
 import { useMutation, useQuery } from "@tanstack/react-query";
 
@@ -35,9 +36,18 @@ const useSendEmailToken = () => {
   });
 };
 
+const usePostUserDetails = () => {
+  return useMutation({
+    mutationFn: (user: userDetailsEdit) => {
+      return UserService.postUserDetails(user);
+    },
+  });
+};
+
 export {
   useGetUserDetails,
   useIsConfirmEmailSent,
   useSendValidationEmail,
   useSendEmailToken,
+  usePostUserDetails,
 };

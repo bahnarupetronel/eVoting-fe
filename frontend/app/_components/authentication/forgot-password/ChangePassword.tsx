@@ -42,8 +42,8 @@ const ChangePassword = () => {
         },
         onError: () => {
           NotificationManager.error(
-            "Something went wrong. Try again!",
-            "Error",
+            "Ceva nu a functionat! Incearca mai tarziu!",
+            "Eroare",
             5000
           );
         },
@@ -78,7 +78,7 @@ const ChangePassword = () => {
             <Input
               error={!isPasswordValid(password.password)}
               onChange={(e) => handleChange(e, "password")}
-              placeholder="Introduceti numele candidatului"
+              placeholder="Parola"
               className={styles["input"]}
               type="password"
             />
@@ -100,7 +100,7 @@ const ChangePassword = () => {
               error={password.password !== password.confirmPassword}
               type="password"
               onChange={(e) => handleChange(e, "confirmPassword")}
-              placeholder="Introduceti numele candidatului"
+              placeholder="Parola"
               className={styles["input"]}
             />
             {password.confirmPassword.length > 0 &&

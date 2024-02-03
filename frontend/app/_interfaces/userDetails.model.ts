@@ -10,7 +10,6 @@ export interface UserDetailsModel {
   postalCode: string;
   localityId: number;
   countyId: number;
-  country: string;
   roles: Array<String>;
   enabled: boolean;
   authorities?: any;

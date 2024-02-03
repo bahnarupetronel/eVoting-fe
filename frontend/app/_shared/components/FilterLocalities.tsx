@@ -44,7 +44,8 @@ const FilterLocalities = ({
       setLocalitiesFilterOptions([]);
     } else {
       const selected: locality = localities.find(
-        (locality: locality) => locality.name === value
+        (locality: locality) =>
+          locality.name === value && locality.county === filters.county
       );
       handleLocalityChange(selected || "");
       setFilters({ ...filters, locality: value || "" });

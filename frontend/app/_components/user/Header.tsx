@@ -1,23 +1,17 @@
 import { Button } from "@mui/material";
 import styles from "./user.module.css";
-import Link from "next/link";
 
-const Header = () => {
+const Header = ({ handleOpenModal }: { handleOpenModal: Function }) => {
   return (
     <header className={styles["header"]}>
       <h2 className={styles["title"]}>Profilul meu</h2>{" "}
       <Button
+        type="button"
         variant="outlined"
         className={styles["btn-edit"]}
+        onClick={() => handleOpenModal()}
       >
-        <Link
-          href="/user/edit-profile"
-          key="edit-profile"
-          target="blank"
-          className={styles["link"]}
-        >
-          Editeaza profilul
-        </Link>
+        Editeaza profilul
       </Button>
     </header>
   );
