@@ -44,7 +44,19 @@ export const CandidateProfileCard = ({
         >
           Partid:{" "}
           <span className={styles["span-details"]}>
-            {candidate.politicalPartyId}
+            {candidate.politicalParty.name}
+          </span>
+        </Typography>
+        <Divider />
+        <Typography
+          gutterBottom
+          variant="h6"
+          component="p"
+          className={styles["p-details"]}
+        >
+          Candideaza la:{" "}
+          <span className={styles["span-details"]}>
+            {candidate.candidateType.name}
           </span>
         </Typography>
         <Divider />
@@ -66,6 +78,18 @@ export const CandidateProfileCard = ({
         >
           Adresa de email:{" "}
           <span className={styles["span-details"]}>{candidate.email}</span>
+        </Typography>
+        <Divider />
+        <Typography
+          gutterBottom
+          variant="h6"
+          component="p"
+          className={styles["p-details"]}
+        >
+          Numarul de telefon:{" "}
+          <span className={styles["span-details"]}>
+            {candidate.phoneNumber}
+          </span>
         </Typography>
         <Divider />
         <Typography variant="body1">

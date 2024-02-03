@@ -1,5 +1,6 @@
 export interface userDetailsEdit {
-  name: string;
+  firstName: string;
+  lastName: string;
   email: string;
   cnp: string;
   seriesAndNumber: string;

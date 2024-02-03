@@ -10,7 +10,7 @@ import ValidateEmailHeader from "./validate/ValidateEmailHeader";
 import { useGetUserDetails } from "@/_hooks/user";
 import useCookies from "@/_hooks/useCookies";
 import { useEffect, useState } from "react";
-import EditProfileModal from "./editProfile/EditProfileModal";
+import { EditProfileModal } from "./editProfile/EditProfileModal";
 import { useGetLocalityById } from "@/_hooks/counties";
 
 const User = () => {

@@ -7,7 +7,7 @@ import DatePickerMinDate from "./DatePickerMinDate";
 import styles from "./electionEvent.module.css";
 import Filter from "@/_shared/components/Filter";
 import { TextareaAutosize } from "@mui/base/TextareaAutosize";
-import { InputLabel, Input, Button } from "@mui/material";
+import { InputLabel, Button } from "@mui/material";
 import getElectionTypes from "../utils/getElectionTypes";
 import { Event } from "@/_interfaces/event.model";
 import submitEvent from "@/_services/election/submitEvent";
@@ -61,9 +61,7 @@ export const ElectionEvent = () => {
           5000
         );
       }
-    } catch (e) {
-      // console.log(e);
-    }
+    } catch (e) {}
   };
 
   useEffect(() => {

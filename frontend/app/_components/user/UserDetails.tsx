@@ -8,7 +8,10 @@ const UserDetails = ({ user }: { user }) => {
   return (
     <ul className={styles["user-details-list"]}>
       <li>
-        Nume: <CustomSpan text={user.name} />
+        Nume: <CustomSpan text={user.lastName} />
+      </li>
+      <li>
+        Prenume: <CustomSpan text={user.firstName} />
       </li>
       <li>
         Email: <CustomSpan text={user.email} />
