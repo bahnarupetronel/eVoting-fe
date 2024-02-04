@@ -52,7 +52,15 @@ const Home = () => {
             </Link>
           </li>
         </ul>
-
+        <p>
+          Sterge evenimente publicate:{" "}
+          <Link
+            href="/admin/election/published"
+            target="_blank"
+          >
+            aici.
+          </Link>
+        </p>
         <p>
           Vezi lista de evenimente nepublicate:{" "}
           <Link

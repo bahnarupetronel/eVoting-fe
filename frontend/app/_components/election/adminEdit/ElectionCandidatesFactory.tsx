@@ -9,23 +9,37 @@ import ParlamentaryElection from "./ParlamentaryElection";
 
 const ElectionCandidatesFactory = ({
   election,
+  type,
 }: {
   election: ElectionModel;
+  type: string;
 }) => {
   return (
     <>
       {election?.type.name === "Referendum" && <ReferendumElectionCandidates />}
       {election?.type.name === "Locale" && (
-        <LocalElectionCandidates election={election} />
+        <LocalElectionCandidates
+          election={election}
+          type={type}
+        />
       )}
       {election?.type.name === "Prezidentiale" && (
-        <PresidentialElectionCandidates election={election} />
+        <PresidentialElectionCandidates
+          election={election}
+          type={type}
+        />
       )}
       {election?.type.name === "Parlamentare" && (
-        <ParlamentaryElection election={election} />
+        <ParlamentaryElection
+          election={election}
+          type={type}
+        />
       )}
       {election?.type.name === "Parlamentul european" && (
-        <EuropeanParliamentElectionCandidates election={election} />
+        <EuropeanParliamentElectionCandidates
+          election={election}
+          type={type}
+        />
       )}
     </>
   );

@@ -43,8 +43,8 @@
   position: absolute;
   top: -1px;
   right: -20px;
-  background-color: #3498db; /* Change this to the desired color */
-  color: #ffffff; /* Change this to the desired text color */
+  background-color: #3498db;
+  color: #ffffff;
   padding: 5px 10px;
   border-radius: 5px;
   transform: skewX(20deg);

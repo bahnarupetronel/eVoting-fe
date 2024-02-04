@@ -2,12 +2,13 @@ import { ElectionModel } from "@/_interfaces/election.model";
 import { getElectionStatus } from "./getElectionStatus";
 import { filter } from "@/_interfaces/filter.model";
 
-const elementsPerPage = 5;
+const elementsPerPage = 10;
 
 export const getFilteredElections = (
-  elections: Array<ElectionModel>,
+  elections: Array<ElectionModel> | any,
   filter: filter
 ): Array<ElectionModel> => {
+  if (!elections) return [];
   if (!filter.status && !filter.type) return elections;
   elections = filter.status
     ? elections.filter((election) => {

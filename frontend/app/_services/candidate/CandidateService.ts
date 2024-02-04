@@ -1,20 +1,9 @@
 import axios from "@/_api/axios";
 import { CandidateModel } from "@/_interfaces/candidate.model";
-import { CandidateType } from "@/_interfaces/candidateType.model";
-import { EventCandidate } from "@/_interfaces/eventCandidate.model";
 
 class CandidateService {
   getCandidateById = async (id: string) => {
     return await axios.get(`/api/candidate/${id}`);
-  };
-
-  deleteCandidateFromEvent = async (data: EventCandidate) => {
-    return await axios.delete("/api/election-candidate", {
-      headers: {
-        "content-type": "application/json",
-      },
-      data,
-    });
   };
 
   getCandidatesByEventTypeAndLocality = async (
@@ -24,23 +13,6 @@ class CandidateService {
     return await axios.get(
       `/api/candidate/type/${typeId}/locality/${localityId}`
     );
-  };
-
-  getRegisteredCandidatesLocality = async (
-    electionId: string,
-    localityId: number
-  ) => {
-    return await axios.get(
-      `/api/election-candidate?election=${electionId}&locality=${localityId}`
-    );
-  };
-
-  registerCandidateToEvent = async (data: EventCandidate) => {
-    return await axios.post("/api/election-candidate", data, {
-      headers: {
-        "content-type": "application/json",
-      },
-    });
   };
 
   postCandidate = async (candidate: CandidateModel) => {
@@ -55,8 +27,25 @@ class CandidateService {
     return await axios.get("/candidate-type");
   };
 
+  getTypeByElection = async (electionTypeId: number) => {
+    return await axios.get(
+      `/candidate-type/election?election-type=${electionTypeId}`
+    );
+  };
+
   getGenders = async () => {
     return await axios.get("/gender");
+  };
+
+  getAvailableCandidates = async (
+    typeId: number,
+    localityId: number,
+    eventId: number,
+    candidateTypeId: number
+  ) => {
+    return await axios.get(
+      `/api/candidate/filtered?typeId=${typeId}&localityId=${localityId}&eventId=${eventId}&candidateTypeId=${candidateTypeId}`
+    );
   };
 }
 

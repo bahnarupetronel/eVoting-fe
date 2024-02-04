@@ -5,7 +5,7 @@ import { ElectionCard } from "../ElectionCard";
 import { useState, useEffect } from "react";
 import { getFinishedElections } from "@/_services/election/getFinishedElections";
 
-const UpcomingElections = () => {
+const FinishedElections = () => {
   const [elections, setElections] = useState(null);
   useEffect(() => {
     getFinishedElections().then((response) => {
@@ -26,4 +26,4 @@ const UpcomingElections = () => {
     </main>
   );
 };
-export default UpcomingElections;
+export default FinishedElections;

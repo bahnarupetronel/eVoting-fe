@@ -1,36 +1,56 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { getAvailableCandidates } from "@/_services/candidate/getAvailableCandidates";
+
 import RegisterCandidateCard from "./RegisterCandidateCard";
 import { EventCandidate } from "@/_interfaces/eventCandidate.model";
 import styles from "./registerCandidates.module.css";
+import { useGetAvailableCandidates } from "@/_hooks/candidate";
+import IsLoadingComponent from "@/_shared/components/isLoading/IsLoadingComponent";
 
 const RegisterCandidates = ({
   typeId,
   localityId,
   eventId,
+  candidateTypeId,
 }: {
   typeId: number;
   localityId: number;
   eventId: number;
+  candidateTypeId: number;
 }) => {
-  const [candidates, setCandidates] = useState<Array<EventCandidate>>([]);
+  const [enabled, setEnabled] = useState(false);
+  let candidates: Array<EventCandidate> = [];
+  const { isSuccess, isError, isLoading, data } = useGetAvailableCandidates(
+    typeId,
+    localityId,
+    eventId,
+    candidateTypeId,
+    enabled
+  );
+
+  if (isSuccess) {
+    candidates = data.data;
+  }
 
   useEffect(() => {
-    if (typeId && localityId)
-      getAvailableCandidates(typeId, localityId, eventId).then((response) => {
-        if (200 <= response.status && response.status < 300) {
-          setCandidates(response.data);
-        }
-      });
+    if (typeId && localityId) setEnabled(true);
   }, [localityId, typeId]);
+
+  if (isError) {
+    return <div>Eroare</div>;
+  }
 
   return (
     <div>
       {candidates?.length === 0 && localityId && (
         <p>
           Niciun candidat disponibil pentru eveniment.{" "}
-          <Link href="/candidate/create">Adauga candidati noi aici!</Link>
+          <Link
+            href="/admin/create/candidate"
+            target="_blank"
+          >
+            Adauga candidati noi aici!
+          </Link>
         </p>
       )}
       {!localityId && (
@@ -48,6 +68,7 @@ const RegisterCandidates = ({
           </p>
         </>
       )}
+      {isLoading && <IsLoadingComponent />}
       {candidates?.map((candidate, index) => (
         <RegisterCandidateCard
           candidate={candidate}

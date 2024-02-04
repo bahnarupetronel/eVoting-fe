@@ -4,19 +4,28 @@ import { useEffect, useState } from "react";
 import styles from "./election.module.css";
 import isEventPopulated from "@/_services/election/isEventPopulated";
 import { locality } from "@/_interfaces/locality.model";
-import getRegisteredCandidatesByLocality from "@/_services/candidate/getRegisteredCandidatesByLocality";
-import RegisterCandidateCard from "../registerCandidates/RegisterCandidateCard";
+import { useGetRegisteredCandidates } from "@/_hooks/electionCandidate";
+import RegisteredCandidateCard from "./RegisteredCandidateCard";
+import IsLoadingComponent from "@/_shared/components/isLoading/IsLoadingComponent";
 
 export const RegisteredCandidates = ({
   setHasCandidates,
   electionId,
   locality,
+  type,
 }: {
   setHasCandidates: Function;
   electionId: string;
   locality: locality;
+  type: string;
 }) => {
-  const [candidates, setCandidates] = useState(null);
+  const [enabled, setEnabled] = useState(false);
+  const {
+    isSuccess,
+    isLoading,
+    isError,
+    data: candidates,
+  } = useGetRegisteredCandidates(electionId, locality?.id, type, enabled);
 
   useEffect(() => {
     isEventPopulated(electionId).then((response) => {
@@ -26,33 +35,20 @@ export const RegisteredCandidates = ({
   }, []);
 
   useEffect(() => {
-    locality?.id &&
-      getRegisteredCandidatesByLocality(electionId, locality?.id).then(
-        (response) => {
-          if (200 <= response.status && response.status < 300) {
-            const candidates = response.data.map((item) => {
-              return {
-                ...item.candidate,
-                politicalParty: item.politicalParty.name,
-              };
-            });
-            setCandidates(candidates);
-          }
-        }
-      );
+    if (locality?.id) setEnabled(true);
   }, [locality?.id ?? null]);
 
   return (
     <section className={styles["container-candidates"]}>
-      {candidates?.map((candidate, index) => (
-        <RegisterCandidateCard
+      {isLoading && <IsLoadingComponent />}
+      {candidates?.data.map((candidate, index) => (
+        <RegisteredCandidateCard
           key={candidate.id}
           candidate={candidate}
           index={index}
-          registered={true}
         />
       ))}
-      {candidates?.length === 0 && <p>Niciun candidat inregistrat.</p>}
+      {candidates?.data.length === 0 && <p>Niciun candidat inregistrat.</p>}
     </section>
   );
 };

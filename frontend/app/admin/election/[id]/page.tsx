@@ -1,4 +1,4 @@
-import ElectionCandidates from "@/_components/election/registerCandidates/ElectionCandidates";
+import ElectionCandidates from "@/_components/election/adminEdit/ElectionCandidates";
 
 const page = () => {
   return <ElectionCandidates />;

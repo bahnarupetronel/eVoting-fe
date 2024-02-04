@@ -4,12 +4,12 @@
 
 @media only screen and (min-width: 650px) {
   .container {
-    margin: 10vh 10vw;
+    margin: 10vh 10vw 0;
   }
 }
 
 @media only screen and (min-width: 1024px) {
   .container {
-    margin: 10vh 15vw;
+    margin: 10vh 15vw 0;
   }
 }

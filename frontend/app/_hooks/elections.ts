@@ -10,6 +10,30 @@ const useGetElectionTypes = () => {
   });
 };
 
+const useGetLiveElections = () => {
+  return useQuery({
+    queryKey: ["election-live"],
+    queryFn: () => ElectionsService.getLiveElections(),
+    retry: 0,
+  });
+};
+
+const useGetUpcomingElections = () => {
+  return useQuery({
+    queryKey: ["election-upcoming"],
+    queryFn: () => ElectionsService.getUpcomingElections(),
+    retry: 0,
+  });
+};
+
+const useGetElectionById = (id: string) => {
+  return useQuery({
+    queryKey: ["election", id],
+    queryFn: () => ElectionsService.getElectionById(id),
+    retry: 0,
+  });
+};
+
 const usePublishEvent = () => {
   return useMutation({
     mutationFn: (electionId: number) => {
@@ -18,4 +42,10 @@ const usePublishEvent = () => {
   });
 };
 
-export { useGetElectionTypes, usePublishEvent };
+export {
+  useGetElectionTypes,
+  usePublishEvent,
+  useGetElectionById,
+  useGetLiveElections,
+  useGetUpcomingElections,
+};

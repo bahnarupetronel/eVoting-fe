@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useEffect, useLayoutEffect } from "react";
-import { Pagination, Stack } from "@mui/material";
 import { ElectionCard } from "./ElectionCard";
 import { Header } from "./Header";
 import { ElectionModel } from "@/_interfaces/election.model";
@@ -13,6 +12,7 @@ import {
 } from "./utils/electionsUtils";
 import styles from "./election.module.css";
 import globalStyles from "@/_shared/stylesheets/global.module.css";
+import PaginationElections from "@/_shared/components/pagination/PaginationElections";
 
 const Elections = ({
   getElections,
@@ -91,18 +91,12 @@ const Elections = ({
         )}
       </div>
 
-      <Stack
-        spacing={2}
-        className={styles["pagination"]}
-      >
-        <Pagination
-          count={pagination.numberOfPages}
-          variant="outlined"
-          shape="rounded"
-          onChange={handlePageChange}
-          page={pagination.currentPage}
-        />
-      </Stack>
+      <PaginationElections
+        numberOfPages={pagination.numberOfPages}
+        onChange={handlePageChange}
+        currentPage={pagination.currentPage}
+        isOpen={filteredElections?.length > 0}
+      />
     </div>
   );
 };

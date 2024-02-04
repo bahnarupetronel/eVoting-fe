@@ -25,26 +25,8 @@ import Education from "./Education";
 import PoliticalPartyLocalityService from "@/_services/politicalPartyLocality/PoliticalPartyLocalityService";
 import { useGetElectionTypes } from "@/_hooks/elections";
 import { useRouter } from "next/navigation";
-
-const createOptions = (isSuccess, data, field = "name") => {
-  if (!isSuccess) return [];
-  let typesArray = [{ value: "", placeholder: "Selectati o varianta" }];
-  data.map((type) => {
-    typesArray.push({ value: type.id.toString(), placeholder: type[field] });
-  });
-  return typesArray;
-};
-
-const createPoliticalPartyOptions = (data) => {
-  let typesArray = [{ value: "", placeholder: "Selectati o varianta" }];
-  data.map((politicalParty) => {
-    typesArray.push({
-      value: politicalParty.politicalParty.id.toString(),
-      placeholder: politicalParty.politicalParty.name,
-    });
-  });
-  return typesArray;
-};
+import { createOptions } from "@/_shared/utils/createOptions";
+import { createPoliticalPartyOptions } from "@/_shared/utils/createPoliticalPartyOptions";
 
 const NewCandidate = () => {
   const router = useRouter();
