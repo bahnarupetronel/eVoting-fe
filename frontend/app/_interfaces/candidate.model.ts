@@ -11,7 +11,7 @@ export interface CandidateModel {
   birthDate: string;
   description: string;
   politicalParty: PoliticalPartyType;
-  politicalPartyId: number;
+  politicalPartyId: string;
   competingInLocality: string;
   address: string;
   phoneNumber: string;

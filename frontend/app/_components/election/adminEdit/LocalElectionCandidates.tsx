@@ -1,15 +1,19 @@
 "use client";
 
-// import Filter from "@/_shared/components/Filter";
 import styles from "./registerCandidates.module.css";
 import { useState } from "react";
-// import SearchBar from "../utils/SearchBar";
 import FilterLocalities from "@/_shared/components/FilterLocalities";
 import RegisterCandidates from "./RegisterCandidates";
 import { ElectionModel } from "@/_interfaces/election.model";
 import { locality } from "@/_interfaces/locality.model";
 
-const LocalElectionCandidates = ({ election }: { election: ElectionModel }) => {
+const LocalElectionCandidates = ({
+  election,
+  type,
+}: {
+  election: ElectionModel;
+  type: string;
+}) => {
   const [locality, setLocality] = useState<locality>(null);
 
   const handleLocalityChange = (selectedLocality: locality) => {
@@ -40,6 +44,7 @@ const LocalElectionCandidates = ({ election }: { election: ElectionModel }) => {
         localityId={locality ? locality?.id : null}
         typeId={election ? election?.type.id : null}
         eventId={election?.electionId}
+        candidateTypeId={parseInt(type)}
       />
     </div>
   );

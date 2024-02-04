@@ -3,7 +3,7 @@
 import { getUnpublishedElections } from "@/_services/election/getUnpublishedElections";
 import Elections from "../Elections";
 
-export const PublishedElections = () => {
+export const UnPublishedElections = () => {
   return (
     <Elections
       getElections={getUnpublishedElections}
@@ -11,4 +11,4 @@ export const PublishedElections = () => {
     />
   );
 };
-export default PublishedElections;
+export default UnPublishedElections;

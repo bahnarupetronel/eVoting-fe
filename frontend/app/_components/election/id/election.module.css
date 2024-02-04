@@ -1,9 +1,9 @@
 .container-layout {
+  margin-bottom: 0;
   display: flex;
   flex-direction: row;
 }
 
-.title,
 .title-secondary {
   text-align: center;
 }
@@ -14,7 +14,7 @@
 
 .container-btn {
   display: flex;
-  justify-content: space-around;
+  gap: 20px;
   margin-top: 2vh;
 }
 
@@ -33,4 +33,19 @@
 .link {
   text-decoration: none;
   color: inherit;
+}
+
+.dates {
+  display: flex;
+  justify-content: space-between;
+}
+
+.date {
+  display: flex;
+  flex-direction: column;
+}
+
+.span {
+  font-weight: bold;
+  color: #19376d;
 }

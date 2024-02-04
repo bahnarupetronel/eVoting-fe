@@ -19,13 +19,6 @@
   margin: 0 0 1rem;
 }
 
-/*pagination*/
-.pagination {
-  align-items: center;
-  max-height: 50vh;
-  margin-bottom: 20px;
-}
-
 /*search*/
 .search-list {
   margin-top: 0.5vh;

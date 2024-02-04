@@ -29,6 +29,16 @@
   padding: 10px;
 }
 
+.link {
+  text-decoration: none;
+  color: inherit;
+}
+
+.link:hover {
+  text-decoration: underline;
+  color: black;
+}
+
 @media only screen and (min-width: 650px) {
   .container {
     padding: 70px 10vw 0;
