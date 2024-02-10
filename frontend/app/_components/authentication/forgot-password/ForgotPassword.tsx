@@ -57,6 +57,7 @@ const ResetPassword = () => {
             onChange={(e) => setEmail(e.target.value)}
             placeholder="Introduceti adresa de email"
             className={styles["input"]}
+            autoComplete="true"
           />
           {email.length > 0 && !isEmailValid(email) && (
             <p className={styles["error"]}>Email-ul nu este corect.</p>

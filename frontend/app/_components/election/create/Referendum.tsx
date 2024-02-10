@@ -1,15 +1,21 @@
 import { InputLabel, Input } from "@mui/material";
 import styles from "./electionEvent.module.css";
-import { TextareaAutosize } from "@mui/base";
 
 const Referendum = ({ handleChange }: { handleChange: Function }) => {
   return (
     <div className={styles["flex"]}>
       <h3>Detalii referendum</h3>
-      <InputLabel htmlFor="name">Textul de lege al referendumului:</InputLabel>
+      <InputLabel htmlFor="name">Legea curenta:</InputLabel>
       <Input
-        placeholder="Introduceti textul de lege"
+        placeholder="Introduceti legea:"
         onChange={(e) => handleChange(e, "lawText")}
+        className={styles["input-referendum"]}
+      />
+
+      <InputLabel htmlFor="name">Noua lege propusa:</InputLabel>
+      <Input
+        placeholder="Introduceti legea propusa:"
+        onChange={(e) => handleChange(e, "proposedLawText")}
         className={styles["input-referendum"]}
       />
     </div>

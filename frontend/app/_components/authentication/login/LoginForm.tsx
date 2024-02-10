@@ -16,27 +16,30 @@ import {
 } from "../../form/utils/validateForm.ts";
 import { useLogin } from "@/_hooks/auth.ts";
 import { useAuth } from "@/_context/user/UserContext";
-import { Input } from "@/_components/form/Input";
 import { UserLogin } from "@/_interfaces/userLogin.model.ts";
 import { UserLoginResponse } from "@/_interfaces/userLoginResponse.model.ts";
-import { Button } from "@mui/material";
+import { Button, TextField } from "@mui/material";
+import Error from "../Error.tsx";
 
 const LoginForm = () => {
   const router = useRouter();
   const { setCookie } = useCookies();
   const { setUser, setIsLoggedIn } = useAuth();
   const userMutation = useLogin();
+  const state = { password: "", email: "" };
   const {
     handleSubmit,
     register,
     formState: { errors },
   } = useForm({
-    defaultValues: {},
+    defaultValues: state,
     mode: "onSubmit",
     reValidateMode: "onChange",
   });
 
   const loginUser = async (userInput: UserLogin) => {
+    event.preventDefault();
+    console.log(userInput);
     userMutation.mutate(userInput, {
       onSuccess: (response) => {
         NotificationManager.success(
@@ -78,41 +81,41 @@ const LoginForm = () => {
         >
           Toate campurile sunt obligatorii
         </span>
-        <Input
-          name="email"
-          label="Email"
-          className={errors?.email ? "field-error" : "no-field-error"}
-          id={styles["login-email"]}
-          placeholder="Introduceti email-ul"
-          autoComplete="true"
-          {...register("email", {
-            required: "Email-ul este obligatoriu",
-            validate: (value) =>
-              isEmailValid(value)
-                ? true
-                : "Adresa de email are format invalid.",
-          })}
-        />
-        <Input
-          type="password"
-          name="password"
-          label="Parola"
-          className={errors?.password ? "field-error" : "no-field-error"}
-          placeholder="Introduceti parola"
-          id={styles["login-password"]}
-          autoComplete="true"
-          {...register("password", {
-            required: "Parola este obligatorie",
-          })}
-        />
-        <span
-          id="invalid-entries"
-          aria-hidden="true"
-          hidden
-          className={styles["span-error"]}
-        >
-          Utilizator/parola incorecte.
-        </span>
+        <div className={styles["field"]}>
+          <label htmlFor="email">Email:</label>
+          <TextField
+            size="small"
+            variant="outlined"
+            className={styles["input"]}
+            placeholder="Introduceti email-ul"
+            autoComplete="true"
+            {...register("email", {
+              required: "Email-ul este obligatoriu",
+              validate: (value) =>
+                isEmailValid(value)
+                  ? true
+                  : "Adresa de email are format invalid.",
+            })}
+          />
+          <Error error={errors?.email} />
+        </div>
+        <div className={styles["field"]}>
+          <label htmlFor="password">Parola:</label>
+          <TextField
+            type="password"
+            name="password"
+            size="small"
+            className={styles["input"]}
+            placeholder="Introduceti parola"
+            autoComplete="true"
+            {...register("password", {
+              required: "Parola este obligatorie",
+            })}
+          />
+          {errors?.password?.message.toString() ===
+            "Parola este obligatorie" && <Error error={errors?.password} />}
+        </div>
+
         <Button
           type="submit"
           variant="outlined"

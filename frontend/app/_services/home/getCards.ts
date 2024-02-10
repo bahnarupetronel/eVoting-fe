@@ -39,7 +39,7 @@ const loggedInCards = [
     title: "Pagina",
     imageAlt: "registerIcon",
     href: "/register",
-    target: "",
+    target: "_blank",
   },
 ];
 

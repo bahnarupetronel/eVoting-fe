@@ -7,12 +7,7 @@ class AuthService {
   };
 
   registerUser = async (data) => {
-    return await axios.post("/api/user/register", {
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
-    });
+    return await axios.post("/api/user/register", data);
   };
 
   forgotPassword = async (emailAddress: string) => {

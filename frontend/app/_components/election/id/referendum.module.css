@@ -1,0 +1,19 @@
+.header {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+@media only screen and (min-width: 650px) {
+  .header {
+    flex-direction: row;
+  }
+}
+
+.law-text {
+  color: #19376d;
+}
+
+.container-margin {
+  margin-bottom: 70px;
+}

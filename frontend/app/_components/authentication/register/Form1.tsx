@@ -1,11 +1,6 @@
 import { useForm } from "react-hook-form";
 import { useRegisterFormState } from "@/_context/form/state";
-import {
-  Button,
-  Form,
-  Field,
-  Input,
-} from "@/_components/form/getFormComponents";
+import { Form } from "@/_components/form/getFormComponents";
 import {
   isNameValid,
   isPasswordValid,
@@ -13,8 +8,9 @@ import {
 } from "../../form/utils/validateForm";
 import { isCNPValid } from "../../form/utils/validateCNP";
 import { isSerieAndNumberValid } from "../../form/utils/validateSeriesAndNumber";
-import componentStyle from "./register.module.css";
-import authStyle from "@/_shared/stylesheets/auth.module.css";
+import styles from "@/_shared/stylesheets/auth.module.css";
+import { Button, TextField } from "@mui/material";
+import Error from "../Error.tsx";
 
 const Form1 = ({ changeLocation }: { changeLocation: Function }) => {
   const { state, setState } = useRegisterFormState();
@@ -38,17 +34,33 @@ const Form1 = ({ changeLocation }: { changeLocation: Function }) => {
 
   return (
     <Form onSubmit={handleSubmit(saveData)}>
-      <fieldset className={componentStyle["fieldset"]}>
+      <fieldset className={styles["fieldset"]}>
         <legend>Detalii</legend>
-        <Field
-          label="Nume*"
-          error={errors?.name}
-        >
-          <Input
+        <div className={styles["field"]}>
+          <label>Nume</label>
+          <TextField
+            variant="outlined"
             placeholder="Introduceti numele"
-            className={errors?.fullName ? "field-error" : "no-field-error"}
-            {...register("name", {
+            className={styles["input"]}
+            {...register("lastName", {
               required: "Numele e obligatoriu!",
+              validate: (value) =>
+                isNameValid(value)
+                  ? true
+                  : "Nume invalid. Nu poate contine numere sau caractere speciale",
+            })}
+            id="last-name"
+          />
+          <Error error={errors?.lastName} />
+        </div>
+        <div className={styles["field"]}>
+          <label>Prenume</label>
+          <TextField
+            variant="outlined"
+            placeholder="Introduceti prenumele"
+            className={styles["input"]}
+            {...register("firstName", {
+              required: "Prenumele e obligatoriu!",
               validate: (value) =>
                 isNameValid(value)
                   ? true
@@ -56,14 +68,14 @@ const Form1 = ({ changeLocation }: { changeLocation: Function }) => {
             })}
             id="full-name"
           />
-        </Field>
-        <Field
-          label="Codul numeric personal*"
-          error={errors?.cnp}
-        >
-          <Input
+          <Error error={errors?.firstName} />
+        </div>
+        <div className={styles["field"]}>
+          <label>Codul numeric personal</label>
+          <TextField
+            variant="outlined"
             placeholder="Introduceti CNP-ul"
-            className={errors?.cnp ? "field-error" : "no-field-error"}
+            className={styles["input"]}
             {...register("cnp", {
               required: "CNP-ul e obligatoriu!",
               validate: (value) =>
@@ -73,14 +85,14 @@ const Form1 = ({ changeLocation }: { changeLocation: Function }) => {
             })}
             id="cnp"
           />
-        </Field>
-        <Field
-          label="ID: Seria si numarul*"
-          error={errors?.seriesAndNumber}
-        >
-          <Input
+          <Error error={errors?.cnp} />
+        </div>
+        <div className={styles["field"]}>
+          <label>ID: Seria si numarul</label>
+          <TextField
+            variant="outlined"
             placeholder="Introduceti seria si numarul"
-            className={errors?.CNP ? "field-error" : "no-field-error"}
+            className={styles["input"]}
             {...register("seriesAndNumber", {
               required: "Seria si numarul sunt obligatorii!",
               validate: (value) =>
@@ -90,14 +102,14 @@ const Form1 = ({ changeLocation }: { changeLocation: Function }) => {
             })}
             id="series-and-number"
           />
-        </Field>
-        <Field
-          label="Email*"
-          error={errors?.email}
-        >
-          <Input
+          <Error error={errors?.seriesAndNumber} />
+        </div>
+        <div className={styles["field"]}>
+          <label>Email</label>
+          <TextField
+            variant="outlined"
             placeholder="Introduceti email-ul"
-            className={errors?.email ? "field-error" : "no-field-error"}
+            className={styles["input"]}
             {...register("email", {
               required: "Email este obligatoriu",
               validate: (value) =>
@@ -108,14 +120,14 @@ const Form1 = ({ changeLocation }: { changeLocation: Function }) => {
             type="email"
             id="email"
           />
-        </Field>
-        <Field
-          label="Parola*"
-          error={errors?.password}
-        >
-          <Input
+          <Error error={errors?.email} />
+        </div>
+        <div className={styles["field"]}>
+          <label>Parola</label>
+          <TextField
+            variant="outlined"
             placeholder="Introduceti parola"
-            className={errors?.password ? "field-error" : "no-field-error"}
+            className={styles["input"]}
             {...register("password", {
               required: "Parola e obligatorie!",
               validate: (value) =>
@@ -126,16 +138,14 @@ const Form1 = ({ changeLocation }: { changeLocation: Function }) => {
             type="password"
             id="password"
           />
-        </Field>
-        <Field
-          label="Confirma parola*"
-          error={errors?.confirmPassword}
-        >
-          <Input
+          <Error error={errors?.password} />
+        </div>
+        <div className={styles["field"]}>
+          <label>Confirma parola</label>
+          <TextField
+            variant="outlined"
             placeholder="Reintroduceti parola"
-            className={
-              errors?.confirmPassword ? "field-error" : "no-field-error"
-            }
+            className={styles["input"]}
             {...register("confirmPassword", {
               required: "Confirmati parola!",
               validate: (value) =>
@@ -144,8 +154,15 @@ const Form1 = ({ changeLocation }: { changeLocation: Function }) => {
             type="password"
             id="password-confirm"
           />
-        </Field>
-        <Button onClick={handleSubmit(saveData)}>Urmatorul {">"}</Button>
+          <Error error={errors?.confirmPassword} />
+        </div>
+        <Button
+          type="button"
+          variant="outlined"
+          onClick={handleSubmit(saveData)}
+        >
+          Urmatorul {">"}
+        </Button>
       </fieldset>
     </Form>
   );

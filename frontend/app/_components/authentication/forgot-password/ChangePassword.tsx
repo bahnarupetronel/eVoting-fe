@@ -2,8 +2,7 @@
 
 import "react-notifications/lib/notifications.css";
 import { NotificationManager } from "react-notifications";
-import authStyles from "@/_shared/stylesheets/auth.module.css";
-import styles from "./forgotPassword.module.css";
+import styles from "@/_shared/stylesheets/auth.module.css";
 import Image from "next/image";
 import { Button, Input, InputLabel } from "@mui/material";
 import { useState } from "react";
@@ -27,6 +26,8 @@ const ChangePassword = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    console.log(password.password);
+    console.log(isPasswordValid(password.password));
     if (
       password.confirmPassword === password.password &&
       isPasswordValid(password.password)
@@ -52,8 +53,8 @@ const ChangePassword = () => {
   };
 
   return (
-    <main className={authStyles["container"]}>
-      <div className={authStyles["img-container"]}>
+    <main className={styles["container"]}>
+      <div className={styles["img-container"]}>
         <Image
           src="/assets/vote.jpg"
           alt="vote-image"
@@ -62,13 +63,13 @@ const ChangePassword = () => {
           sizes="100%"
         />
       </div>
-      <form
-        className={styles["section"]}
-        onSubmit={handleSubmit}
-      >
-        <h2 className={styles["title"]}>Schimbati parola</h2>
-        <ul className={styles["ul"]}>
-          <li className={styles["li"]}>
+      <div className={styles["form-container"]}>
+        <form
+          className={`${styles["form-default"]}`}
+          onSubmit={handleSubmit}
+        >
+          <h2 className={styles["title"]}>Schimbati parola</h2>
+          <div className={styles["field"]}>
             <InputLabel
               htmlFor="name"
               className={styles["label-event"]}
@@ -84,12 +85,12 @@ const ChangePassword = () => {
             />
             {password.password.length > 0 &&
               !isPasswordValid(password.password) && (
-                <p className={authStyles["error"]}>
+                <p className={styles["field-error"]}>
                   {errors["invalid-password"]}
                 </p>
               )}
-          </li>
-          <li className={styles["li"]}>
+          </div>
+          <div className={styles["field"]}>
             <InputLabel
               htmlFor="name"
               className={styles["label-event"]}
@@ -105,21 +106,21 @@ const ChangePassword = () => {
             />
             {password.confirmPassword.length > 0 &&
               password.password !== password.confirmPassword && (
-                <p className={authStyles["error"]}>
+                <p className={styles["field-error"]}>
                   {errors["invalid-confirm-password"]}
                 </p>
               )}
-          </li>
-        </ul>
+          </div>
 
-        <Button
-          variant="outlined"
-          type="submit"
-          className={styles["btn-submit"]}
-        >
-          Submit
-        </Button>
-      </form>
+          <Button
+            variant="outlined"
+            type="submit"
+            className={styles["btn-submit"]}
+          >
+            Submit
+          </Button>
+        </form>
+      </div>
     </main>
   );
 };

@@ -56,8 +56,7 @@ const useGetAvailableCandidates = (
   typeId: number,
   localityId: number,
   eventId: number,
-  candidateTypeId: number,
-  enabled: boolean
+  candidateTypeId: number
 ) => {
   return useQuery({
     queryKey: [
@@ -71,7 +70,7 @@ const useGetAvailableCandidates = (
         candidateTypeId
       ),
     retry: 0,
-    enabled: enabled,
+    enabled: localityId !== null && typeId !== null,
   });
 };
 

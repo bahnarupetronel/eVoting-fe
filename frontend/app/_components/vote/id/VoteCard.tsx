@@ -7,6 +7,8 @@ import ConfirmSelectionModal from "./ConfirmSelectionModal";
 import { CandidateModel } from "@/_interfaces/candidate.model";
 import { CandidateType } from "@/_interfaces/candidateType.model";
 import { useCookies } from "@/_hooks/useCookies";
+import { VoteModel } from "@/_interfaces/vote.model";
+import { usePathname } from "next/navigation";
 
 const VoteCard = ({
   candidate,
@@ -19,9 +21,17 @@ const VoteCard = ({
   hasUserVotedResponse: boolean;
   isUserAllowedToVote: boolean;
 }) => {
+  const pathname = usePathname();
+  const electionId: string = pathname.split("/")[2];
   const [isModalOpen, setIsModalOpen] = useState(false);
   const { getCookie } = useCookies();
   const role = getCookie("role");
+
+  const vote: VoteModel = {
+    electionId: electionId,
+    candidateId: candidate?.id,
+    candidateTypeId: candidate?.candidateType.id,
+  };
 
   const handleOpenModal = () => {
     setIsModalOpen(true);
@@ -56,6 +66,7 @@ const VoteCard = ({
         candidate={candidate}
         isModalOpen={isModalOpen}
         setIsModalOpen={setIsModalOpen}
+        vote={vote}
       />
     </div>
   );
