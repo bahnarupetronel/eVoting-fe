@@ -9,4 +9,6 @@ export interface userDetailsEdit {
   phoneNumber: string;
   postalCode: string;
   localityId: number;
+  locality: string;
+  county: string;
 }
