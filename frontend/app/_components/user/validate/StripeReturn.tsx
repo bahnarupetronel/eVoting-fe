@@ -5,10 +5,10 @@ import useCookies from "@/_hooks/useCookies";
 import globalStyles from "@/_shared/stylesheets/global.module.css";
 import { useRouter } from "next/navigation";
 import IsSuccessSection from "./IsSuccessSection";
-import IsErrorSection from "./IsErrorSection";
 import IsNotVerified from "./IsNotVerified";
 import IsProcessingSection from "./IsProcessingSection";
 import IsLoadingSection from "./IsLoadingSection";
+import FailedSection from "./FailedSection";
 
 const StripeReturn = () => {
   const email = useCookies().getCookie("user");
@@ -31,7 +31,7 @@ const StripeReturn = () => {
     return (
       <div className={globalStyles["container"]}>
         <h1 className={globalStyles["title-evoting"]}> eVoting</h1>
-        <IsErrorSection handleClick={handleClick} />
+        <FailedSection handleClick={handleClick} />
       </div>
     );
 

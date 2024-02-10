@@ -37,12 +37,19 @@ export const EditProfileModal = ({
   };
 
   const handleLocalityChange = (locality: locality) => {
-    setUserCopy({ ...userCopy, ["localityId"]: locality.id });
+    console.log(locality);
+    setUserCopy({
+      ...userCopy,
+      ["localityId"]: locality.id,
+      ["county"]: locality.county,
+      ["locality"]: locality.name,
+    });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (isFormValid(userCopy)) {
+      console.log(userCopy);
       mutation.mutate(userCopy, {
         onSuccess: () => {
           NotificationManager.success("Detaliile au fost salvate", "", 5000);

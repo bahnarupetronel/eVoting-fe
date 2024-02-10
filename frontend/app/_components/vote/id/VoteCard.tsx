@@ -47,6 +47,7 @@ const VoteCard = ({
     if (!hasUserVotedResponse && isUserAllowedToVote) return "Voteaza";
     if (role === "admin") return "Nu poti vota (cont admin)";
     else if (!isUserAllowedToVote) return "Nu poti vota";
+    else return "Ai votat";
   };
 
   return (

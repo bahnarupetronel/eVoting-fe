@@ -9,11 +9,14 @@ import { useRouter } from "next/navigation";
 import { useGetUserDetails } from "@/_hooks/user";
 import { UserDetailsModel } from "@/_interfaces/userDetails.model";
 import IsErrorSection from "./IsErrorSection";
+import { useState } from "react";
+import FailedSection from "./FailedSection";
 
 const Stripe = () => {
   const email = useCookies().getCookie("user");
   const { data: data } = useGetUserDetails(email);
   const userDetails: UserDetailsModel = data?.data;
+  const [status, setStatus] = useState(null);
   const mutation = useCreateVerificationSession();
   const router = useRouter();
 
@@ -24,12 +27,23 @@ const Stripe = () => {
         const sessionUrl = response.data.url;
         router.push(sessionUrl);
       },
+      onError: (response) => {
+        console.log(response);
+        setStatus(response);
+      },
     });
   };
 
   const refreshPage = () => {
     router.refresh();
   };
+
+  if (status) {
+    <div className={globalStyles["container"]}>
+      <h1 className={globalStyles["title-evoting"]}> eVoting</h1>
+      <FailedSection handleClick={refreshPage} />
+    </div>;
+  }
 
   if (userDetails?.isIdentityVerified) {
     return (
