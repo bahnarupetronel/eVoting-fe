@@ -1,6 +1,5 @@
 "use client";
 
-import { UserDetailsModel } from "../../_interfaces/userDetails.model";
 import styles from "./user.module.css";
 import UserDetails from "./UserDetails";
 import Menu from "./Menu";
@@ -42,7 +41,6 @@ const User = () => {
     if (isSuccessLocality) {
       userDetails.locality = locality?.data.name;
       userDetails.county = locality?.data.county;
-      console.log(userDetails);
       setEnabled(false);
     }
   }, [isSuccessLocality]);

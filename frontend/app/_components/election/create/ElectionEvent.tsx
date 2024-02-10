@@ -12,14 +12,15 @@ import getElectionTypes from "../utils/getElectionTypes";
 import { Event } from "@/_interfaces/event.model";
 import submitEvent from "@/_services/election/submitEvent";
 import { useRouter } from "next/navigation";
-import EventFactory from "./EventFactory";
 import globalStyles from "@/_shared/stylesheets/global.module.css";
+import Referendum from "./Referendum";
+import { ReferendumModel } from "@/_interfaces/referendumEvent.model";
 
 const { format } = require("date-fns");
 
 export const ElectionEvent = () => {
   const router = useRouter();
-  const [eventDetails, setEventDetails] = useState<Event>({
+  const [eventDetails, setEventDetails] = useState<Event | ReferendumModel>({
     typeId: "",
     startDate: null,
     endDate: null,
@@ -128,10 +129,9 @@ export const ElectionEvent = () => {
           minRows={3}
           placeholder="Introduceti o descriere"
         />
-        <EventFactory
-          type={getEventName(eventDetails.typeId)}
-          handleChange={handleChange}
-        />
+        {getEventName(eventDetails.typeId) === "Referendum" && (
+          <Referendum handleChange={handleChange} />
+        )}
         <Button
           variant="outlined"
           type="submit"

@@ -24,7 +24,7 @@ const Controls = ({ election, status }) => {
           onClick={handlePublishModalOpen}
           type="button"
           variant="outlined"
-          disabled={status !== "Urmeaza"}
+          disabled={status !== "Urmeaza" || election?.published === true}
         >
           Publica
         </Button>

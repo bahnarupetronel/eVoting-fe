@@ -37,7 +37,6 @@
   border: 1px solid black;
   border-radius: 10px;
   display: flex;
-  /* background-color: #f3f3f3; */
   margin: 1rem 0;
 }
 
@@ -48,12 +47,25 @@
 .link:hover {
   color: blue;
 }
+
 .header {
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
 }
 
+.law-text {
+  color: #19376d;
+}
+
+.container-margin {
+  margin-bottom: 70px;
+}
+
 @media only screen and (min-width: 650px) {
+  .header {
+    flex-direction: row;
+  }
 }
 
 @media only screen and (min-width: 1024px) {

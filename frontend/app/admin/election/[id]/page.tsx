@@ -1,6 +1,6 @@
-import ElectionCandidates from "@/_components/election/adminEdit/ElectionCandidates";
+import ElectionFactory from "@/_components/election/adminEdit/ElectionFactory";
 
 const page = () => {
-  return <ElectionCandidates />;
+  return <ElectionFactory />;
 };
 export default page;

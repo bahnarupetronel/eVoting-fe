@@ -1,0 +1,146 @@
+.container-dropdown-extended {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  color: black;
+}
+
+.container-cards {
+  display: grid;
+  grid-template-columns: 1fr;
+  margin: 0;
+}
+
+.container-dropdown {
+  background-color: inherit;
+  border-radius: 15px;
+  margin-bottom: 2rem;
+}
+
+.btn-dropdown {
+  display: flex;
+  justify-content: space-between;
+  justify-self: center;
+  padding-left: 1rem;
+  background-color: #6e6c7f;
+  color: white;
+  width: 100%;
+  border: 1px solid black;
+  cursor: pointer;
+}
+
+.title-dropdown {
+  font-size: 1rem;
+}
+
+.title {
+  margin: 0;
+  color: #1c1b1b;
+  margin-bottom: 0;
+}
+
+.user-address,
+.title-modal {
+  margin-top: 0;
+}
+
+.title-modal {
+  display: flex;
+  margin-bottom: 0;
+}
+
+.btn-dropdown {
+  font-size: 16px;
+  text-align: left;
+}
+
+.icon {
+  margin: auto 0;
+  font-size: 2em;
+}
+
+.hr {
+  margin: 0 1.2rem;
+  border: 1px solid black;
+}
+
+.span {
+  border: 1px solid red;
+}
+
+.p-warning {
+  display: block;
+  padding: 5px 0 5px 10px;
+  margin: 0;
+}
+
+.header-validate {
+  color: red;
+  padding: 5px 1rem;
+  background-color: yellow;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid red;
+  margin-bottom: 1rem;
+  border-radius: 5px;
+}
+
+.section-header {
+  display: flex;
+  align-items: center;
+}
+
+.icon-success {
+  color: green;
+}
+
+.icon-error {
+  color: red;
+}
+
+.div-verifications {
+  display: flex;
+  align-items: center;
+}
+
+.main {
+  margin-top: 1rem;
+}
+
+@media only screen and (min-width: 650px) {
+  .container-cards {
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+}
+
+@media only screen and (min-width: 800px) {
+  .container-cards {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+
+  .title-dropdown {
+    font-size: 1.1rem;
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  .title-dropdown {
+    font-size: 1.2rem;
+  }
+}
+
+@media only screen and (min-width: 1280px) {
+  .container-cards {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 30px;
+  }
+
+  .card {
+    margin-top: 2rem;
+  }
+}
+
+@media only screen and (min-width: 1580px) {
+}

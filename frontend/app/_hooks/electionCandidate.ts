@@ -40,8 +40,27 @@ const useGetRegisteredCandidates = (
   });
 };
 
+const useGetRegisteredCandidatesForUser = (
+  electionId: string,
+  candidateTypeId: number
+) => {
+  return useQuery({
+    queryKey: [
+      `election-candidate/registered?electionId=${electionId}&candidateTypeId=${candidateTypeId}`,
+    ],
+    queryFn: () =>
+      ElectionCandidateService.getRegisteredCandidates(
+        electionId,
+        candidateTypeId
+      ),
+    retry: 0,
+    enabled: candidateTypeId > 0,
+  });
+};
+
 export {
   useRegisterCandidateToEvent,
   useDeleteCandidateFromEvent,
   useGetRegisteredCandidates,
+  useGetRegisteredCandidatesForUser,
 };

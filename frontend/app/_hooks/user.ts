@@ -20,6 +20,22 @@ const useIsConfirmEmailSent = (email: string) => {
   });
 };
 
+const useGetAddress = () => {
+  return useQuery({
+    queryKey: ["user-address"],
+    queryFn: () => UserService.getAddress(),
+    retry: 0,
+  });
+};
+
+const useGetIsUserAllowedToVote = () => {
+  return useQuery({
+    queryKey: ["user-allowed-to-vote"],
+    queryFn: () => UserService.getIsUserAllowedToVote(),
+    retry: 0,
+  });
+};
+
 const useSendValidationEmail = () => {
   return useMutation({
     mutationFn: (token: string) => {
@@ -50,4 +66,6 @@ export {
   useSendValidationEmail,
   useSendEmailToken,
   usePostUserDetails,
+  useGetAddress,
+  useGetIsUserAllowedToVote,
 };

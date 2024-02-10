@@ -32,6 +32,7 @@ const LogoutUser = () => {
         setIsLoading(false);
         removeCookie("isUserLoggedIn");
         removeCookie("user");
+        removeCookie("role");
 
         setIsLoggedIn(false);
         setUser(null);

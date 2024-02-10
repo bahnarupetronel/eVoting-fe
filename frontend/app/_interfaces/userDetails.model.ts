@@ -1,3 +1,5 @@
+import { RoleModel } from "./roles.model";
+
 export interface UserDetailsModel {
   id: string;
   firstName: string;
@@ -11,7 +13,7 @@ export interface UserDetailsModel {
   postalCode: string;
   localityId: number;
   countyId: number;
-  roles: Array<String>;
+  roles: Array<RoleModel>;
   enabled: boolean;
   authorities?: any;
   accountNonExpired: boolean;
