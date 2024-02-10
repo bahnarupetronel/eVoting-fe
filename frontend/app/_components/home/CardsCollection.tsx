@@ -1,11 +1,11 @@
 import { cards, loggedInCards } from "@/_services/home/getCards";
 import Card from "./Card";
 import styles from "./home.module.css";
-import useCookies from "@/_hooks/useCookies";
+import { useAuth } from "@/_context/user/UserContext";
 
 const CardsCollection = () => {
-  const { getCookie } = useCookies();
-  const user = getCookie("user");
+  const { user } = useAuth();
+
   const cardsList = user ? loggedInCards : cards;
   return (
     <div className={styles["cards-container"]}>

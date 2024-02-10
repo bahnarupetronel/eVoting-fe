@@ -16,6 +16,7 @@ const FilterLocalities = ({
   const [localities, setLocalities] = useState<Array<locality>>([]);
   const [counties, setCounties] = useState([]);
   const [localitiesFilterOptions, setLocalitiesFilterOptions] = useState([]);
+  const [key, setKey] = useState(null);
 
   const countiesFilterOptions: Array<String> = [];
   counties?.forEach((county) => {
@@ -41,7 +42,6 @@ const FilterLocalities = ({
   const handleChange = (value: string, filter: string) => {
     if (filter === "county") {
       setFilters({ locality: "", county: value });
-      setLocalitiesFilterOptions([]);
     } else {
       const selected: locality = localities.find(
         (locality: locality) =>
@@ -54,6 +54,8 @@ const FilterLocalities = ({
 
   useEffect(() => {
     filterLocalitiesByCounty();
+    setFilters({ ...filters, locality: "" });
+    setKey(new Date());
   }, [filters.county]);
 
   useEffect(() => {
@@ -81,6 +83,7 @@ const FilterLocalities = ({
       />
 
       <Autocomplete
+        key={key}
         inputValue={filters.locality}
         onInputChange={(event: any, newValue: string | null) => {
           handleChange(newValue, "locality");

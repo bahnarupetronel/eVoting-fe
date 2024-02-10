@@ -1,17 +1,17 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import styles from "./registerCandidates.module.css";
+import styles from "./referendum.module.css";
 import globalStyles from "@/_shared/stylesheets/global.module.css";
+import electionStyles from "./election.module.css";
 import dayjs from "dayjs";
 import SelectType from "../id/SelectType";
-import Controls from "./Controls";
 import { getElectionStatus } from "../utils/getElectionStatus";
-import ReferendumOptions from "../referendum/ReferendumOptions";
 import { useGetCandidateTypesByElection } from "@/_hooks/candidate";
 import { createOptions } from "@/_shared/utils/createOptions";
+import { formatDate } from "../utils/formatDate";
 
-const ReferendumElection = ({ election }: { election }) => {
+const Referendum = ({ election }: { election }) => {
   const year = dayjs(election?.startDate).get("year");
   const { isSuccess, data } = useGetCandidateTypesByElection(
     election?.type?.id,
@@ -28,17 +28,10 @@ const ReferendumElection = ({ election }: { election }) => {
     if (options.length > 0) setType(options[0].value);
   }, [options.length]);
 
-  console.log(election);
   return (
-    <main
-      className={`${globalStyles["container"]} ${styles["container-margin"]}`}
-    >
+    <main className={`${globalStyles["container"]}`}>
       <header className={styles["header"]}>
         <h2 className={styles["title"]}>{election.type.name + " " + year}</h2>
-        <Controls
-          election={election}
-          status={status}
-        />
       </header>
       <section>
         <SelectType
@@ -49,23 +42,21 @@ const ReferendumElection = ({ election }: { election }) => {
       </section>
       <p>{election?.description}</p>
       <h3>
-        Legea curenta:{" "}
+        Legea dezbatuta:{" "}
         <span className={styles["law-text"]}>{election?.lawText}</span>{" "}
       </h3>
-      <h3>
-        Legea propusa:{" "}
-        <span className={styles["law-text"]}>{election?.proposedLawText}</span>{" "}
-      </h3>
-      {!election?.published && status !== "Urmeaza" && (
-        <p className={styles["info-error"]}>
-          Evenimentul nu mai poate fi publicat.
+      <div className={electionStyles["dates"]}>
+        <p className={electionStyles["date"]}>
+          <span className={electionStyles["span"]}>Incepe:</span>
+          <span>{formatDate(election.startDate)}</span>
         </p>
-      )}
-      <ReferendumOptions
-        hasUserVotedResponse={false}
-        isUserAllowedToVote={false}
-      />
+
+        <p className={electionStyles["date"]}>
+          <span className={electionStyles["span"]}>Se termina:</span>
+          <span>{formatDate(election.endDate)}</span>
+        </p>
+      </div>
     </main>
   );
 };
-export default ReferendumElection;
+export default Referendum;

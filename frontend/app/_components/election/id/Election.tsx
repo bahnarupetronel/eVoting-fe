@@ -17,12 +17,14 @@ import SelectType from "./SelectType";
 import { useGetCandidateTypesByElection } from "@/_hooks/candidate";
 import { createOptions } from "@/_shared/utils/createOptions";
 import ElectionTitle from "../ElectionTitle";
+import Referendum from "./Referendum";
+import NotFoundPage from "@/_components/notFound/NotFoundPage";
 
 const Election = () => {
   const pathname = usePathname();
   const id: string = pathname.split("/").pop();
   const [election, setElection] = useState<ElectionModel>(null);
-
+  const [isError, setIsError] = useState(false);
   const [hasCandidates, setHasCandidates] = useState(false);
   const [locality, setLocality] = useState<locality | null>(null);
   const status =
@@ -46,12 +48,21 @@ const Election = () => {
     getElectionById(id).then((response) => {
       if (200 <= response.status && response.status < 300)
         setElection(response.data);
+      else setIsError(true);
     });
   }, []);
 
-  if (election === null) {
-    return <div>Loading</div>;
+  if (isError) {
+    return <NotFoundPage />;
   }
+
+  if (!isError && election === null) {
+    return <div>Se incarca....</div>;
+  }
+
+  if (election?.type.name === "Referendum")
+    return <Referendum election={election} />;
+
   return (
     <Box
       sx={{ flexGrow: 1, bgcolor: "background.default", p: 2 }}

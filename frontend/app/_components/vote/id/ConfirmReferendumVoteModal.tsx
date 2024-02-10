@@ -8,26 +8,25 @@ import {
 } from "@mui/material";
 import "react-notifications/lib/notifications.css";
 import { NotificationManager } from "react-notifications";
-import { usePathname } from "next/navigation";
 import styles from "./dropdown.module.css";
-import { CandidateModel } from "@/_interfaces/candidate.model";
 import { CandidateType } from "@/_interfaces/candidateType.model";
 import UserAddressTitle from "./UserAddressTitle";
 import { useVoteCandidate } from "@/_hooks/vote";
-import { VoteModel } from "@/_interfaces/vote.model";
+import { VoteReferendumModel } from "@/_interfaces/voteReferendum.model";
+import { ReferendmOptionModel } from "@/_interfaces/referendumOption.model";
 
-const ConfirmSelectionModal = ({
+const ConfirmReferendumVoteModal = ({
   electionType,
   isModalOpen,
   setIsModalOpen,
-  candidate,
+  option,
   vote,
 }: {
   electionType: CandidateType;
-  candidate: CandidateModel;
+  option: ReferendmOptionModel;
   isModalOpen: boolean;
   setIsModalOpen: Function;
-  vote: VoteModel;
+  vote: VoteReferendumModel;
 }) => {
   const mutation = useVoteCandidate();
 
@@ -36,22 +35,22 @@ const ConfirmSelectionModal = ({
   };
 
   const handleSubmitVote = () => {
-    mutation.mutate(vote, {
-      onSuccess: () => {
-        NotificationManager.success(
-          "Votul a fost inregistrat. Va multumim!",
-          "",
-          5000
-        );
-      },
-      onError: () => {
-        NotificationManager.error(
-          "Ceva nu a functionat! Votul nu a fost inregistrat! Reincercati mai tarziu!",
-          "Eroare",
-          5000
-        );
-      },
-    });
+    //   mutation.mutate(vote, {
+    //     onSuccess: () => {
+    //       NotificationManager.success(
+    //         "Votul a fost inregistrat. Va multumim!",
+    //         "",
+    //         5000
+    //       );
+    //     },
+    //     onError: () => {
+    //       NotificationManager.error(
+    //         "Ceva nu a functionat! Votul nu a fost inregistrat! Reincercati mai tarziu!",
+    //         "Eroare",
+    //         5000
+    //       );
+    //     },
+    //   });
 
     handleClose();
   };
@@ -64,18 +63,15 @@ const ConfirmSelectionModal = ({
       aria-describedby="alert-dialog-description"
     >
       <DialogTitle id="alert-dialog-title">
-        Confirmati selectia votului pentru Alegerile{" "}
-        {electionType?.electionType.name}
+        Confirmati selectia votului pentru Referendum
       </DialogTitle>
       <hr className={styles["hr"]} />
       <DialogContent>
         <h3 className={styles["title-modal"]}>
-          {candidate?.candidateType?.name + " ->  "}
           <UserAddressTitle electionType={electionType?.electionType} />
         </h3>
         <DialogContentText id="alert-dialog-description">
-          Ati ales candidatul {candidate?.name} de la partidul
-          {" " + candidate?.politicalParty.name}. Votul nu mai poate fi
+          Ati ales varianta {option?.optionName}. Votul nu mai poate fi
           schimbat. Trimiteti mai departe?
         </DialogContentText>
       </DialogContent>
@@ -97,4 +93,4 @@ const ConfirmSelectionModal = ({
     </Dialog>
   );
 };
-export default ConfirmSelectionModal;
+export default ConfirmReferendumVoteModal;

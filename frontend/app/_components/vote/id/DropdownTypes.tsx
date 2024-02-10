@@ -1,12 +1,14 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styles from "./dropdown.module.css";
 import DropdownItems from "./DropdownItems";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import { useGetRegisteredCandidatesForUser } from "@/_hooks/electionCandidate";
 import { useHasUserVoted } from "@/_hooks/hasUserVoted";
+import ReferendumOptions from "@/_components/election/referendum/ReferendumOptions";
+import { CandidateType } from "@/_interfaces/candidateType.model";
 const DropdownTypes = ({
   types,
   electionId,
@@ -41,6 +43,22 @@ const DropdownTypes = ({
       setType(types[index].id);
     }
   };
+
+  useEffect(() => {
+    const electionType: CandidateType = types[0];
+    if (electionType.name === "Referendum") {
+      setType(electionType.id);
+    }
+  }, []);
+
+  if (types[0].name === "Referendum") {
+    return (
+      <ReferendumOptions
+        hasUserVotedResponse={hasUserVotedResponse?.data}
+        isUserAllowedToVote={isUserAllowedToVote}
+      />
+    );
+  }
 
   return (
     <main className={styles["main"]}>

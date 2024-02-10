@@ -18,23 +18,17 @@ const RegisterCandidates = ({
   eventId: number;
   candidateTypeId: number;
 }) => {
-  const [enabled, setEnabled] = useState(false);
   let candidates: Array<EventCandidate> = [];
   const { isSuccess, isError, isLoading, data } = useGetAvailableCandidates(
     typeId,
     localityId,
     eventId,
-    candidateTypeId,
-    enabled
+    candidateTypeId
   );
 
   if (isSuccess) {
     candidates = data.data;
   }
-
-  useEffect(() => {
-    if (typeId && localityId) setEnabled(true);
-  }, [localityId, typeId]);
 
   if (isError) {
     return <div>Eroare</div>;

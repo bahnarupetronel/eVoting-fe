@@ -17,6 +17,7 @@ const Election = ({ election }: { election }) => {
     election?.type?.id,
     election
   );
+
   const options = createOptions(isSuccess, data?.data);
   const [type, setType] = useState("");
 
