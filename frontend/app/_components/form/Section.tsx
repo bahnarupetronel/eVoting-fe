@@ -1,17 +1,21 @@
+import { Button } from "@mui/material";
 import styles from "./form.module.css";
 
 export const Section = ({ title, children, handleClick }) => {
   return (
     <div className="section mb-4">
-      <div className="title-row mb-4">
-        <h4>{title}</h4>
-        <button
+      <header className={styles["header"]}>
+        <h3>{title}</h3>
+        <Button
+          type="button"
+          variant="outlined"
           className={styles["btn-edit"]}
           onClick={handleClick}
         >
           Editeaza
-        </button>
-      </div>
+        </Button>
+      </header>
+      <hr className={styles["hr"]} />
       <div className={styles["content"]}>{children}</div>
     </div>
   );

@@ -7,22 +7,17 @@ export const Stepper = ({ location }) => {
 
   return (
     <nav className={styles["stepper"]}>
-      <ul className={styles["navbar-nav"]}>
-        <li className={styles["step nav-item"]}>
+      <ul className={styles["nav-ul"]}>
+        <li className={`${styles["nav-item"]}`}>
           <span className={styles[getLinkClass("form1")]}>
             Detalii personale
           </span>
         </li>
-        <li className={styles["step nav-item"]}>
+        <li className={`${styles["nav-item"]}`}>
           <span className={styles[getLinkClass("form2")]}>Adresa</span>
         </li>
-        <li className={styles["step nav-item"]}>
-          <span className={styles[getLinkClass("form3")]}>
-            Adauga poza cu CI
-          </span>
-        </li>
-        <li className={styles["step nav-item"]}>
-          <span className={styles[getLinkClass("confirm")]}>Cofirmare</span>
+        <li className={`${styles["nav-item"]}`}>
+          <span className={styles[getLinkClass("confirm")]}>Confirmare</span>
         </li>
       </ul>
     </nav>

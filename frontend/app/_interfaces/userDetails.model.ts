@@ -12,7 +12,8 @@ export interface UserDetailsModel {
   phoneNumber: string;
   postalCode: string;
   localityId: number;
-  countyId: number;
+  county: string;
+  locality: string;
   roles: Array<RoleModel>;
   enabled: boolean;
   authorities?: any;

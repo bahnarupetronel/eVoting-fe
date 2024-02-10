@@ -1,4 +1,4 @@
-import styles from "../authentication/register/register.module.css";
+import styles from "@/_shared/stylesheets/auth.module.css";
 
 export const Form = ({ children, ...props }) => {
   return (
