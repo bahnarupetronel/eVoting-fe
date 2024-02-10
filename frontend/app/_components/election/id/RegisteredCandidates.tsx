@@ -35,7 +35,9 @@ export const RegisteredCandidates = ({
   }, []);
 
   useEffect(() => {
-    if (locality?.id) setEnabled(true);
+    if (locality?.id) {
+      setEnabled(true);
+    } else setEnabled(false);
   }, [locality?.id ?? null]);
 
   return (

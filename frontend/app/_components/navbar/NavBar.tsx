@@ -13,12 +13,14 @@ import {
 import MenuIcon from "@mui/icons-material/Menu";
 import { useAuth } from "@/_context/user/UserContext";
 import styles from "./nav.module.css";
+import { useCookies } from "@/_hooks/useCookies";
 
 export default function NavBar(props) {
   const { isLoggedIn } = useAuth();
+  const { getCookie } = useCookies();
+  const role: string = getCookie("role");
   const { window } = props;
   const [mobileOpen, setMobileOpen] = useState(false);
-
   const handleDrawerToggle = () => {
     setMobileOpen((prevState) => !prevState);
   };
@@ -44,6 +46,15 @@ export default function NavBar(props) {
             className={styles["nav-btn-mobile"]}
           >
             Voteaza
+          </Link>
+        )}
+        {isLoggedIn && role === "admin" && (
+          <Link
+            key="admin"
+            href="/admin"
+            className={styles["nav-btn-mobile"]}
+          >
+            Admin
           </Link>
         )}
         {isLoggedIn ? (
@@ -99,6 +110,15 @@ export default function NavBar(props) {
               className={styles["nav-btn"]}
             >
               Voteaza
+            </Link>
+          )}
+          {isLoggedIn && role === "admin" && (
+            <Link
+              key="admin"
+              href="/admin"
+              className={styles["nav-btn"]}
+            >
+              Admin
             </Link>
           )}
           {isLoggedIn ? (

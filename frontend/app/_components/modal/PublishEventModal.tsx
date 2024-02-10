@@ -8,6 +8,7 @@ import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
+import { useRouter } from "next/navigation";
 
 export function PublishEventModal({
   election,
@@ -18,6 +19,7 @@ export function PublishEventModal({
   isModalOpen: boolean;
   setIsModalOpen: Function;
 }) {
+  const router = useRouter();
   const mutation = usePublishEvent();
 
   const handlePublishEvent = async () => {
@@ -28,6 +30,7 @@ export function PublishEventModal({
           "",
           5000
         );
+        router.push("/admin/election/unpublished");
       },
       onError: () => {
         NotificationManager.error(

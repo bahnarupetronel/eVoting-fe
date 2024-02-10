@@ -1,4 +1,3 @@
-import { ElectionModel } from "@/_interfaces/election.model";
 import ElectionsService from "@/_services/election/ElectionsService";
 import { useMutation, useQuery } from "@tanstack/react-query";
 
@@ -34,6 +33,14 @@ const useGetElectionById = (id: string) => {
   });
 };
 
+const useGetElectionAndTypes = (id: string) => {
+  return useQuery({
+    queryKey: ["election-and-types", id],
+    queryFn: () => ElectionsService.getElectionAndTypes(id),
+    retry: 0,
+  });
+};
+
 const usePublishEvent = () => {
   return useMutation({
     mutationFn: (electionId: number) => {
@@ -48,4 +55,5 @@ export {
   useGetElectionById,
   useGetLiveElections,
   useGetUpcomingElections,
+  useGetElectionAndTypes,
 };

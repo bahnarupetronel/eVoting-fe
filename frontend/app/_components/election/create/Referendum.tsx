@@ -9,22 +9,8 @@ const Referendum = ({ handleChange }: { handleChange: Function }) => {
       <InputLabel htmlFor="name">Textul de lege al referendumului:</InputLabel>
       <Input
         placeholder="Introduceti textul de lege"
-        onChange={(e) => handleChange(e, "refendum-question")}
+        onChange={(e) => handleChange(e, "lawText")}
         className={styles["input-referendum"]}
-      />
-
-      <InputLabel
-        htmlFor="name"
-        className={styles["label-event"]}
-      >
-        Scop:
-      </InputLabel>
-      <TextareaAutosize
-        onChange={(e) => handleChange(e, "referendum-description")}
-        className={styles["textarea"]}
-        aria-label="minimum height"
-        minRows={3}
-        placeholder="Introduceti scopul referendumului"
       />
     </div>
   );

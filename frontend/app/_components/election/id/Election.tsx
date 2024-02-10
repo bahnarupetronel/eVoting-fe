@@ -16,6 +16,7 @@ import dayjs from "dayjs";
 import SelectType from "./SelectType";
 import { useGetCandidateTypesByElection } from "@/_hooks/candidate";
 import { createOptions } from "@/_shared/utils/createOptions";
+import ElectionTitle from "../ElectionTitle";
 
 const Election = () => {
   const pathname = usePathname();
@@ -32,8 +33,6 @@ const Election = () => {
   );
   const options = createOptions(isSuccess, data?.data);
   const [type, setType] = useState("");
-
-  const year = dayjs(election?.startDate).get("year");
 
   const handleLocalityChange = (locality: locality) => {
     setLocality(locality);
@@ -58,14 +57,7 @@ const Election = () => {
       sx={{ flexGrow: 1, bgcolor: "background.default", p: 2 }}
       className={globalStyles["container"]}
     >
-      <h2 className={styles["title"]}>
-        {election.type.name === "Referendum" ? (
-          election?.type.name
-        ) : (
-          <>Alegeri {election?.type.name}</>
-        )}
-        {" " + year}
-      </h2>
+      <ElectionTitle election={election} />
       <SelectType
         type={type}
         setType={setType}

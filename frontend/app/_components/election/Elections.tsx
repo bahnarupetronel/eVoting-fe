@@ -70,6 +70,7 @@ const Elections = ({
       }
     });
   }, []);
+
   return (
     <div className={globalStyles["container"]}>
       <Header

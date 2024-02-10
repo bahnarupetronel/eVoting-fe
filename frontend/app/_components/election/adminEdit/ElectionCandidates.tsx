@@ -1,92 +1,52 @@
 "use client";
 
-import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
-import ElectionCandidatesFactory from "./ElectionCandidatesFactory";
 import styles from "./registerCandidates.module.css";
-import globalStyles from "@/_shared/stylesheets/global.module.css";
-import dayjs from "dayjs";
-import { createOptions } from "@/_shared/utils/createOptions";
-import { useGetCandidateTypesByElection } from "@/_hooks/candidate";
-import SelectType from "../id/SelectType";
-import { useGetElectionById } from "@/_hooks/elections";
-import IsLoadingComponent from "@/_shared/components/isLoading/IsLoadingComponent";
-import Controls from "./Controls";
-import { getElectionStatus } from "../utils/getElectionStatus";
+import { useState } from "react";
+import FilterLocalities from "@/_shared/components/FilterLocalities";
+import RegisterCandidates from "./RegisterCandidates";
+import { ElectionModel } from "@/_interfaces/election.model";
+import { locality } from "@/_interfaces/locality.model";
 
-const ElectionCandidates = () => {
-  const pathname = usePathname();
-  const id: string = pathname.split("/")[3];
-  const {
-    isSuccess: isElectionFetched,
-    isError,
-    isLoading,
-    data: election,
-  } = useGetElectionById(id);
-  const year = dayjs(election?.startDate).get("year");
-  const { isSuccess, data } = useGetCandidateTypesByElection(
-    election?.data.type.id,
-    election?.data
-  );
-  const options = createOptions(isSuccess, data?.data);
-  const [type, setType] = useState("");
+const LocalElectionCandidates = ({
+  election,
+  type,
+}: {
+  election: ElectionModel;
+  type: string;
+}) => {
+  const [locality, setLocality] = useState<locality>(null);
 
-  const status =
-    getElectionStatus(election?.data.startDate, election?.data.endDate) || null;
+  const handleLocalityChange = (selectedLocality: locality) => {
+    setLocality(selectedLocality);
+  };
+  const date = election?.startDate.toString().split("T");
 
-  useEffect(() => {
-    if (options.length > 0) setType(options[0].value);
-  }, [options.length]);
-
-  if (isLoading) {
+  if (election?.published)
     return (
-      <main className={globalStyles["container"]}>
-        <IsLoadingComponent />
-      </main>
+      <div>
+        <p className={styles["info-error"]}>
+          Lista nu mai poate fi modificata! Evenimentul a fost publicat!
+        </p>
+      </div>
     );
-  }
-
-  if (isError) {
-    return <main className={globalStyles["container"]}>Eroare...</main>;
-  }
 
   return (
-    <main className={globalStyles["container"]}>
-      <header className={styles["header"]}>
-        <h2 className={styles["title"]}>
-          {" "}
-          {election.data.type.name === "Referendum" ? (
-            election.data.type.name
-          ) : (
-            <>Alegeri {election.data.type.name}</>
-          )}
-          {" " + year}
-        </h2>
-        <Controls
-          election={election.data}
-          status={status}
-        />
-      </header>
-      <section>
-        <SelectType
-          type={type}
-          setType={setType}
-          options={options}
-        />
-      </section>
-      <ElectionCandidatesFactory
-        election={election.data}
-        type={type}
+    <div>
+      <p>Alege o localitate si inregistreaza candidatii la eveniment:</p>
+      <FilterLocalities handleLocalityChange={handleLocalityChange} />
+      <p className={styles["info-error"]}>
+        Lista poate fi modificata pana la data de{" "}
+        <span>
+          {date[0]}, ora {date[1]} !
+        </span>
+      </p>
+      <RegisterCandidates
+        localityId={locality ? locality?.id : null}
+        typeId={election ? election?.type.id : null}
+        eventId={election?.electionId}
+        candidateTypeId={parseInt(type)}
       />
-      {!election.data?.published && status !== "Urmeaza" && (
-        <p className={styles["info-error"]}>
-          Inregistrarile pentru acest eveniment s-au terminat. Lista nu mai
-          poate fi modificata.
-          <br />
-          Evenimentul nu mai poate fi publicat.
-        </p>
-      )}
-    </main>
+    </div>
   );
 };
-export default ElectionCandidates;
+export default LocalElectionCandidates;

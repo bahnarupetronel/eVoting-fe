@@ -15,7 +15,6 @@
 .container-btn {
   display: flex;
   gap: 20px;
-  margin-top: 2vh;
 }
 
 .description {
@@ -48,4 +47,10 @@
 .span {
   font-weight: bold;
   color: #19376d;
+}
+
+@media only screen and (min-width: 650px) {
+  .container-btn {
+    margin-top: 2vh;
+  }
 }

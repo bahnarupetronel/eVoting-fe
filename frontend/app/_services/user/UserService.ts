@@ -18,8 +18,16 @@ class UserService {
     return await axios.get("/api/user");
   };
 
+  getAddress = async () => {
+    return await axios.get("/api/user/address");
+  };
+
   postUserDetails = async (user: userDetailsEdit) => {
     return await axios.post("/api/user", user);
+  };
+
+  getIsUserAllowedToVote = async () => {
+    return await axios.get("/api/user/allowed-to-vote");
   };
 }
 

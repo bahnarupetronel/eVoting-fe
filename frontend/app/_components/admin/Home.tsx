@@ -33,7 +33,7 @@ const Home = () => {
           </li>
         </ul>
 
-        <p>Editeaza: </p>
+        {/* <p>Editeaza: </p>
         <ul>
           <li>
             <Link
@@ -51,16 +51,7 @@ const Home = () => {
               Partid politic
             </Link>
           </li>
-        </ul>
-        <p>
-          Sterge evenimente publicate:{" "}
-          <Link
-            href="/admin/election/published"
-            target="_blank"
-          >
-            aici.
-          </Link>
-        </p>
+        </ul> */}
         <p>
           Vezi lista de evenimente nepublicate:{" "}
           <Link
@@ -70,7 +61,7 @@ const Home = () => {
             aici.
           </Link>
         </p>
-        <p>
+        {/* <p>
           Trimite invitatie pentru roluri de admin:{" "}
           <Link
             href="/admin/invitation"
@@ -78,7 +69,7 @@ const Home = () => {
           >
             aici.
           </Link>
-        </p>
+        </p> */}
       </div>
     </div>
   );

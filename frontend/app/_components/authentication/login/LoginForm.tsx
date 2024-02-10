@@ -47,6 +47,7 @@ const LoginForm = () => {
         const user: UserLoginResponse = response.data;
         setCookie("isUserLoggedIn", true);
         setCookie("user", user.email);
+        setCookie("role", user.roles);
         setUser(user);
         setIsLoggedIn(true);
         router.push("/");

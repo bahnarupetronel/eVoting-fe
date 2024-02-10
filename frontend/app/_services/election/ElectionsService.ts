@@ -22,6 +22,10 @@ class ElectionsService {
   getElectionById = async (id: string): Promise<any> => {
     return await axios.get(`/api/election/${id}`);
   };
+
+  getElectionAndTypes = async (id: string): Promise<any> => {
+    return await axios.get(`/api/election/election-and-types?election=${id}`);
+  };
 }
 
 export default new ElectionsService();

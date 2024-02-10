@@ -21,6 +21,15 @@ class ElectionCandidateService {
       `/api/election-candidate?election=${electionId}&locality=${localityId}&typeId=${type}`
     );
   };
+
+  getRegisteredCandidates = async (
+    electionId: string,
+    candidateTypeId: number
+  ) => {
+    return await axios.get(
+      `/api/election-candidate/registered?electionId=${electionId}&candidateTypeId=${candidateTypeId}`
+    );
+  };
 }
 
 export default new ElectionCandidateService();
