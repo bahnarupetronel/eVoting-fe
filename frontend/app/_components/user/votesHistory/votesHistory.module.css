@@ -18,6 +18,7 @@
   border: 1px solid black;
   display: flex;
   align-items: center;
+  margin-bottom: 1rem;
 }
 
 .index {
@@ -25,11 +26,13 @@
 }
 
 .icon {
+  margin: 0 5px;
   font-size: 25px;
   color: green;
 }
 
 .info {
+  color: green;
   margin-left: auto;
 }
 

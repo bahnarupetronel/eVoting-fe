@@ -11,4 +11,22 @@ const useGetLocalityById = (localityId: number, enabled: boolean) => {
   });
 };
 
-export { useGetLocalityById };
+const useGetLocalititesForMap = () => {
+  return useQuery({
+    queryKey: ["localitiesForMap"],
+    queryFn: () => CountyService.getLocalitiesForMap(),
+    staleTime: 1000 * 60 * 60 * 24,
+    retry: 0,
+  });
+};
+
+const useGetCountiesForMap = () => {
+  return useQuery({
+    queryKey: ["countiesForMap"],
+    queryFn: () => CountyService.getCountiesForMap(),
+    staleTime: 1000 * 60 * 60 * 24,
+    retry: 0,
+  });
+};
+
+export { useGetLocalityById, useGetLocalititesForMap, useGetCountiesForMap };

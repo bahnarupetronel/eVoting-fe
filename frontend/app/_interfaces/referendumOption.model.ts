@@ -1,4 +1,4 @@
-export type ReferendmOptionModel = {
+export type ReferendumOptionModel = {
   optionId: number;
   optionName: string;
 };

@@ -10,8 +10,10 @@ import { getElectionStatus } from "../utils/getElectionStatus";
 import { useGetCandidateTypesByElection } from "@/_hooks/candidate";
 import { createOptions } from "@/_shared/utils/createOptions";
 import { formatDate } from "../utils/formatDate";
+import ResultsFactory from "@/_components/results/ResultsFactory";
+import { ReferendumResponseModel } from "@/_interfaces/ReferendumResponse.model";
 
-const Referendum = ({ election }: { election }) => {
+const Referendum = ({ election }: { election: ReferendumResponseModel }) => {
   const year = dayjs(election?.startDate).get("year");
   const { isSuccess, data } = useGetCandidateTypesByElection(
     election?.type?.id,
@@ -56,6 +58,13 @@ const Referendum = ({ election }: { election }) => {
           <span>{formatDate(election.endDate)}</span>
         </p>
       </div>
+      {status !== "Urmeaza" && (
+        <ResultsFactory
+          candidateTypeId={type}
+          election={election}
+          status={status}
+        />
+      )}
     </main>
   );
 };

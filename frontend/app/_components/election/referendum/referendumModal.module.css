@@ -14,11 +14,14 @@
   width: 100%;
 }
 
-.title-candidate {
-  margin: 0;
-  word-break: break-all;
+.title-modal {
+  margin-top: 0;
 }
-
 .btn-card {
   width: 100%;
+}
+
+.hr {
+  border: 1px solid black;
+  margin: 0 1rem;
 }
