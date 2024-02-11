@@ -7,6 +7,10 @@ class HasUserVotedService {
       `/api/user-voted?electionId=${hasUserVoted.electionId}&candidateTypeId=${hasUserVoted.candidateTypeId}`
     );
   };
+
+  getUserVotes = async () => {
+    return await axios.get(`/api/user-voted/votes`);
+  };
 }
 
 export default new HasUserVotedService();

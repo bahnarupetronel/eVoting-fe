@@ -12,11 +12,13 @@ const RegisterCandidates = ({
   localityId,
   eventId,
   candidateTypeId,
+  county,
 }: {
   typeId: number;
   localityId: number;
   eventId: number;
   candidateTypeId: number;
+  county: string;
 }) => {
   let candidates: Array<EventCandidate> = [];
   const { isSuccess, isError, isLoading, data } = useGetAvailableCandidates(
@@ -65,9 +67,11 @@ const RegisterCandidates = ({
       {isLoading && <IsLoadingComponent />}
       {candidates?.map((candidate, index) => (
         <RegisterCandidateCard
+          county={county}
           candidate={candidate}
           index={index}
           key={candidate.id}
+          candidateTypeId={candidateTypeId}
         />
       ))}
     </div>
