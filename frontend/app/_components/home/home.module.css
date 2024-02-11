@@ -42,7 +42,7 @@
   border-bottom: 2px solid black;
 }
 
-@media only screen and (min-width: 800px) {
+@media only screen and (min-width: 620px) {
   .cards-container {
     margin: 1rem 10vw;
     grid-template-columns: 1fr 1fr;

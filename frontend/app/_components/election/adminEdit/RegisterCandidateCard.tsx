@@ -16,21 +16,28 @@ import styles from "./registerCandidates.module.css";
 const RegisterCandidateCard = ({
   candidate,
   index,
+  county,
+  candidateTypeId,
 }: {
+  county: string;
   candidate: EventCandidate;
   index: number;
+  candidateTypeId;
 }) => {
   const mutationAdd = useRegisterCandidateToEvent();
   const mutationRemove = useDeleteCandidateFromEvent();
   const pathname = usePathname();
   const [toggleButton, setToggleButton] = useState(candidate?.registered);
   const electionId: string = pathname.split("/")[3];
+  console.log(candidate);
   const createSubmitData = () => {
     return {
       politicalPartyId: candidate.politicalPartyId,
       candidateId: candidate.id,
       competingInLocality: candidate.competingInLocality,
       electionId: parseInt(electionId),
+      county: county,
+      candidateTypeId: candidateTypeId,
     };
   };
 

@@ -42,6 +42,7 @@ const LocalElectionCandidates = ({
       </p>
       <RegisterCandidates
         localityId={locality ? locality?.id : null}
+        county={locality?.county}
         typeId={election ? election?.type.id : null}
         eventId={election?.electionId}
         candidateTypeId={parseInt(type)}

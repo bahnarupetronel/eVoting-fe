@@ -125,7 +125,7 @@ export const EditProfileModal = ({
               placeholder="Email"
               className={styles["input"]}
             />
-            {userCopy?.email.length > 0 && !isEmailValid(userCopy?.email) && (
+            {userCopy?.email?.length > 0 && !isEmailValid(userCopy?.email) && (
               <p className={styles["error"]}>{errors["invalid-email"]}</p>
             )}
           </div>
@@ -142,7 +142,7 @@ export const EditProfileModal = ({
               placeholder="Cnp"
               className={styles["input"]}
             />
-            {userCopy?.cnp.length > 0 && !isCNPValid(userCopy?.cnp) && (
+            {userCopy?.cnp?.length > 0 && !isCNPValid(userCopy?.cnp) && (
               <p className={styles["error"]}>{errors["invalid-cnp"]}</p>
             )}
           </div>

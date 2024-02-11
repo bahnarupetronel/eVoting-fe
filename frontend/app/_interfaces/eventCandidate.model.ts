@@ -5,6 +5,8 @@ export interface EventCandidate {
   politicalPartyId: number;
   politicalParty: string;
   competingInLocality: number;
+  county: string;
+  candidateTypeId: number;
   locality: string;
   registered: boolean;
 }

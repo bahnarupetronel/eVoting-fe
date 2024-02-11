@@ -14,4 +14,12 @@ const useHasUserVoted = (hasUserVoted: HasUserVotedModel, type) => {
   });
 };
 
-export { useHasUserVoted };
+const useGetUserVotes = () => {
+  return useQuery({
+    queryKey: [`user-votes`],
+    queryFn: () => HasUserVotedService.getUserVotes(),
+    retry: 0,
+  });
+};
+
+export { useHasUserVoted, useGetUserVotes };

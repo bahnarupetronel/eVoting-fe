@@ -2,7 +2,6 @@
 
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
-import AddBoxIcon from "@mui/icons-material/AddBox";
 import TimelineIcon from "@mui/icons-material/Timeline";
 import AccountBoxIcon from "@mui/icons-material/AccountBox";
 import LogoutIcon from "@mui/icons-material/Logout";
@@ -11,15 +10,6 @@ import styles from "./menu.module.css";
 export default function MenuListComposition() {
   const [open, setOpen] = useState(false);
   const anchorRef = useRef(null);
-
-  function handleListKeyDown(event) {
-    if (event.key === "Tab") {
-      event.preventDefault();
-      setOpen(false);
-    } else if (event.key === "Escape") {
-      setOpen(false);
-    }
-  }
 
   // return focus to the button when we transitioned from !open -> open
   const prevOpen = useRef(open);
@@ -41,24 +31,17 @@ export default function MenuListComposition() {
           <AccountBoxIcon className={styles["icon"]} />
           Contul meu
         </Link>
+
         <Link
-          href="/user/validate-account"
-          target="blank"
-          className={styles["nav-link"]}
-        >
-          <AddBoxIcon className={styles["icon"]} />
-          Validare cont
-        </Link>
-        <Link
-          href="/user/vote/history"
+          href="/user/votes-history"
           className={styles["nav-link"]}
         >
           <TimelineIcon className={styles["icon"]} />
-          Istoricul voturilor
+          Voturi
         </Link>
         <Link
           href="/logout"
-          className={styles["nav-link"]}
+          className={`${styles["nav-link"]} ${styles["logout"]}`}
         >
           <LogoutIcon className={styles["icon"]} />
           Delogare
