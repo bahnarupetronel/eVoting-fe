@@ -9,6 +9,14 @@ class CountyService {
     return await axios.get("/localities/all");
   };
 
+  getLocalitiesForMap = async () => {
+    return await axios.get("/localities/map");
+  };
+
+  getCountiesForMap = async () => {
+    return await axios.get("/counties/map");
+  };
+
   getLocalityById = async (localityId: number) => {
     return await axios.get(`/localities/${localityId}`);
   };

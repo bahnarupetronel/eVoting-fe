@@ -2,12 +2,8 @@ import styles from "./votesHistory.module.css";
 import dayjs from "dayjs";
 import DoneIcon from "@mui/icons-material/Done";
 
-import { useRouter } from "next/navigation";
-
 export const VoteHistoryCard = ({ vote, index }: { vote; index }) => {
-  console.log(index);
   const year = dayjs(vote?.startDate).get("year");
-  const router = useRouter();
 
   if (vote == null) return <div>Loading</div>;
 

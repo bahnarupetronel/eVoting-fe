@@ -4,11 +4,23 @@ import { useGetUserVotes } from "@/_hooks/hasUserVoted";
 import styles from "./votesHistory.module.css";
 import Menu from "../Menu";
 import VoteHistoryCard from "./VoteHistoryCard";
+import IsLoadingComponent from "@/_shared/components/isLoading/IsLoadingComponent";
 
 const VotesHistory = () => {
-  const { isSuccess, isError, isLoading, data: votes } = useGetUserVotes();
+  const { isLoading, data: votes } = useGetUserVotes();
 
-  console.log(votes);
+  if (isLoading) {
+    return (
+      <div className={styles["container-user"]}>
+        <Menu />
+        <section className={styles["section"]}>
+          <h3>Istoricul voturilor</h3>
+          <IsLoadingComponent />
+        </section>
+      </div>
+    );
+  }
+
   return (
     <div className={styles["container-user"]}>
       <Menu />

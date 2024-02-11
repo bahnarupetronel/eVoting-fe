@@ -45,7 +45,7 @@ export const RegisteredCandidates = ({
       {isLoading && <IsLoadingComponent />}
       {candidates?.data.map((candidate, index) => (
         <RegisteredCandidateCard
-          key={candidate.id}
+          key={index}
           candidate={candidate}
           index={index}
         />

@@ -4,7 +4,6 @@ import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
 import { Divider, Box } from "@mui/material";
 import { getElectionById } from "@/_services/election/getElectionById";
-import { ElectionModel } from "@/_interfaces/election.model";
 import { formatDate } from "../utils/formatDate";
 import { RegisteredCandidates } from "./RegisteredCandidates";
 import FilterLocalities from "@/_shared/components/FilterLocalities";
@@ -12,18 +11,19 @@ import { getElectionStatus } from "../utils/getElectionStatus";
 import { locality } from "@/_interfaces/locality.model";
 import styles from "./election.module.css";
 import globalStyles from "@/_shared/stylesheets/App.module.css";
-import dayjs from "dayjs";
 import SelectType from "./SelectType";
 import { useGetCandidateTypesByElection } from "@/_hooks/candidate";
 import { createOptions } from "@/_shared/utils/createOptions";
 import ElectionTitle from "../ElectionTitle";
 import Referendum from "./Referendum";
 import NotFoundPage from "@/_components/notFound/NotFoundPage";
+import ResultsFactory from "@/_components/results/ResultsFactory";
+import { ReferendumResponseModel } from "@/_interfaces/ReferendumResponse.model";
 
 const Election = () => {
   const pathname = usePathname();
   const id: string = pathname.split("/").pop();
-  const [election, setElection] = useState<ElectionModel>(null);
+  const [election, setElection] = useState<ReferendumResponseModel>(null);
   const [isError, setIsError] = useState(false);
   const [hasCandidates, setHasCandidates] = useState(false);
   const [locality, setLocality] = useState<locality | null>(null);
@@ -102,6 +102,13 @@ const Election = () => {
         electionId={id}
         type={type}
       />
+      {status !== "Urmeaza" && (
+        <ResultsFactory
+          candidateTypeId={type}
+          election={election}
+          status={status}
+        />
+      )}
     </Box>
   );
 };
