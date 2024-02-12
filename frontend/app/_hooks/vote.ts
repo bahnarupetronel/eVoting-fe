@@ -22,7 +22,7 @@ const useGetNumberOfVotes = (vote: VotesRequestModel, enabled: boolean) => {
       vote?.localityId,
     ],
     queryFn: () => VoteService.getNumberOfVotes(vote),
-    staleTime: 1000 * 5,
+    staleTime: 0,
     retry: 0,
     enabled: enabled === true,
   });

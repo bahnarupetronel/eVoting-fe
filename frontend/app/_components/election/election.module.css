@@ -19,6 +19,12 @@
   margin: 0 0 1rem;
 }
 
+.header-event {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
 /*search*/
 .search-list {
   margin-top: 0.5vh;
@@ -47,6 +53,16 @@
   display: block;
 }
 
+.link-results {
+  text-decoration: none;
+  color: inherit;
+  font-size: 1.2rem;
+}
+
+.link-results:hover {
+  text-decoration: underline;
+}
+
 @media only screen and (max-width: 650px) {
   .search-list,
   .search-bar {
@@ -54,6 +70,10 @@
   }
 
   .container-flex {
+    flex-direction: column;
+  }
+
+  .header-event {
     flex-direction: column;
   }
 }
