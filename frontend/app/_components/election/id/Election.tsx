@@ -18,7 +18,7 @@ import ElectionTitle from "../ElectionTitle";
 import Referendum from "./Referendum";
 import NotFoundPage from "@/_components/notFound/NotFoundPage";
 import ResultsFactory from "@/_components/results/ResultsFactory";
-import { ReferendumResponseModel } from "@/_interfaces/ReferendumResponse.model";
+import { ReferendumResponseModel } from "@/_interfaces/referendumResponse.model";
 
 const Election = () => {
   const pathname = usePathname();
@@ -102,13 +102,11 @@ const Election = () => {
         electionId={id}
         type={type}
       />
-      {status !== "Urmeaza" && (
-        <ResultsFactory
-          candidateTypeId={type}
-          election={election}
-          status={status}
-        />
-      )}
+      <ResultsFactory
+        candidateTypeId={type}
+        election={election}
+        status={status}
+      />
     </Box>
   );
 };
