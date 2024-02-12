@@ -52,8 +52,8 @@ const VoteCard = ({
 
   return (
     <div className={styles["card-vote"]}>
-      <h2 className={styles["title-candidate"]}>{candidate?.name}</h2>
-      <h4>{candidate?.politicalParty?.name}</h4>
+      <h2>{candidate?.politicalParty?.name}</h2>
+      <h4 className={styles["title-candidate"]}>{candidate?.name}</h4>
       <Button
         variant="outlined"
         type="button"
