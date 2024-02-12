@@ -8,7 +8,6 @@ const ReferendumOptions = ({ hasUserVotedResponse, isUserAllowedToVote }) => {
 
   return (
     <main>
-      <h3>Variante de votare:</h3>
       <section className={styles["container"]}>
         {isSuccess &&
           referendumOptions?.data.map(

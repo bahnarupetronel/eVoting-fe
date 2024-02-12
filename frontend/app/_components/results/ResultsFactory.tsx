@@ -12,10 +12,9 @@ const ResultsFactory = ({
   election;
   status: string;
 }) => {
-  //id 1 and id 3 //Primar sau consiliu local
-  //id 2 and id 8 //Consiliu judetean sau Presedinte consiliu judetean
-  //id 4, 5, 6, 7 per country
-  //9 referendum
+  //Locality: Primar(1), Consiliu local(3)
+  //County: Consiliu judetean(8), Presedinte consiliu judetean(2), Senat(4), Camera deputatilor(5)
+  //Country: Referendum(9), Parlament european(7), Presedinte(6)
   if (status !== "Terminat")
     return (
       <div>
@@ -35,7 +34,12 @@ const ResultsFactory = ({
         />
       </div>
     );
-  if (candidateTypeId == "2" || candidateTypeId == "8")
+  if (
+    candidateTypeId == "2" ||
+    candidateTypeId == "8" ||
+    candidateTypeId == "5" ||
+    candidateTypeId == "4"
+  )
     return (
       <div>
         <h3>Rezultate:</h3>
