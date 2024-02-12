@@ -7,7 +7,7 @@ import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import { useGetRegisteredCandidatesForUser } from "@/_hooks/electionCandidate";
 import { useHasUserVoted } from "@/_hooks/hasUserVoted";
-import ReferendumOptions from "@/_components/election/referendum/ReferendumOptions";
+import ReferendumOptions from "@/_components/vote/referendum/ReferendumOptions";
 import { CandidateType } from "@/_interfaces/candidateType.model";
 const DropdownTypes = ({
   types,

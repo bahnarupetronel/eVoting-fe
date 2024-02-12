@@ -7,7 +7,7 @@ import dayjs from "dayjs";
 import SelectType from "../id/SelectType";
 import Controls from "./Controls";
 import { getElectionStatus } from "../utils/getElectionStatus";
-import ReferendumOptions from "../referendum/ReferendumOptions";
+import ReferendumOptions from "../../vote/referendum/ReferendumOptions";
 import { useGetCandidateTypesByElection } from "@/_hooks/candidate";
 import { createOptions } from "@/_shared/utils/createOptions";
 
