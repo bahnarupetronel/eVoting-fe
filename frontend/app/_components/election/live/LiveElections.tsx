@@ -76,7 +76,7 @@ const LiveElections = () => {
           currentPageElections?.map((election: ElectionModel) => (
             <ElectionCard
               election={election}
-              key={election.electionId}
+              key={election?.electionId}
             />
           ))
         ) : (

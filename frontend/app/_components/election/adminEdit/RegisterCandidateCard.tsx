@@ -29,7 +29,6 @@ const RegisterCandidateCard = ({
   const pathname = usePathname();
   const [toggleButton, setToggleButton] = useState(candidate?.registered);
   const electionId: string = pathname.split("/")[3];
-  console.log(candidate);
   const createSubmitData = () => {
     return {
       politicalPartyId: candidate.politicalPartyId,

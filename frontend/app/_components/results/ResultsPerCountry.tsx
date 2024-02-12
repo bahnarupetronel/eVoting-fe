@@ -26,8 +26,12 @@ const ResultsPerCountry = ({
 
   return (
     <div>
+      {data?.data.length === 0 && (
+        <p>Nu am gasit voturi inregistrate pentru acest eveniment.</p>
+      )}
       {data?.data.map((vote, index) => (
         <ResultsCard
+          key={index}
           vote={vote}
           index={index}
         />

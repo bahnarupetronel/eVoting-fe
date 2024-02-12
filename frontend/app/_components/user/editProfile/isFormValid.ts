@@ -12,7 +12,6 @@ export const isFormValid = (user: userDetailsEdit) => {
       key.toString() !== "locality"
     )
       if (!user[key]) {
-        console.log(key);
         return false;
       }
   }

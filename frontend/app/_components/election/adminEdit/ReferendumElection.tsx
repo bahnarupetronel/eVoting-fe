@@ -27,8 +27,6 @@ const ReferendumElection = ({ election }: { election }) => {
   useEffect(() => {
     if (options.length > 0) setType(options[0].value);
   }, [options.length]);
-
-  console.log(election);
   return (
     <main
       className={`${globalStyles["container"]} ${styles["container-margin"]}`}

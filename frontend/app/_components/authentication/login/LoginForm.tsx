@@ -39,7 +39,6 @@ const LoginForm = () => {
 
   const loginUser = async (userInput: UserLogin) => {
     event.preventDefault();
-    console.log(userInput);
     userMutation.mutate(userInput, {
       onSuccess: (response) => {
         NotificationManager.success(
