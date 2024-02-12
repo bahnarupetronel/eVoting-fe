@@ -52,8 +52,7 @@ const OptionCardDisplay = ({
 
   return (
     <div className={styles["option"]}>
-      <h3 className={styles["option-title"]}>Varianta {index + 1}</h3>
-      <h3 className={styles["option-title"]}>{option.optionName}</h3>
+      <h1 className={styles["option-title"]}>{option.optionName}</h1>
 
       <Button
         type="button"
