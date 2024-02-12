@@ -28,7 +28,6 @@ const Form2 = ({ changeLocation }: { changeLocation: Function }) => {
   });
 
   const handleLocalityChange = (locality: locality) => {
-    console.log(locality);
     setState({
       ...state,
       localityId: locality.id,

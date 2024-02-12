@@ -26,8 +26,6 @@ const ChangePassword = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(password.password);
-    console.log(isPasswordValid(password.password));
     if (
       password.confirmPassword === password.password &&
       isPasswordValid(password.password)

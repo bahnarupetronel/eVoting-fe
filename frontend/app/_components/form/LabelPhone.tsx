@@ -7,9 +7,7 @@ const LabelPhone = ({ title, htmlFor, output }) => {
   const [message, setMessage] = useState("");
 
   const handleChange = (event) => {
-    console.log(event.target.value);
     setMessage(event.target.value.toString());
-    console.log(message);
     output = event.target.value.toString();
   };
   return (

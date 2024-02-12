@@ -16,7 +16,6 @@ const Label = ({
   const handleChange = (event) => {
     output.htmlFor = event?.target?.value?.toString();
     setMessage(event.target.value.toString());
-    console.log(output);
   };
   return (
     <div className="mb-2">

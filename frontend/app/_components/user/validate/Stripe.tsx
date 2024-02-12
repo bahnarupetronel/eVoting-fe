@@ -23,12 +23,10 @@ const Stripe = () => {
   const handleClick = () => {
     mutation.mutate(email, {
       onSuccess: (response) => {
-        console.log(response.data);
         const sessionUrl = response.data.url;
         router.push(sessionUrl);
       },
       onError: (response) => {
-        console.log(response);
         setStatus(response);
       },
     });

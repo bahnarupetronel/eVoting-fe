@@ -26,7 +26,6 @@ const VoteEvent = () => {
   }
 
   if (route === "vote" && !data?.data.election.published) {
-    console.log("unpublished");
     return <NotFoundPage />;
   }
 

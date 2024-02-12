@@ -1,7 +1,7 @@
 import { useGetNumberOfVotes } from "@/_hooks/voteReferendum";
 import IsLoadingComponent from "@/_shared/components/isLoading/IsLoadingComponent";
 import ResultsReferendumCard from "./ResultsReferendumCard";
-import { ReferendumResponseModel } from "@/_interfaces/ReferendumResponse.model";
+import { ReferendumResponseModel } from "@/_interfaces/referendumResponse.model";
 
 const ReferendumResults = ({
   election,
