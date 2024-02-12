@@ -9,6 +9,7 @@ import { useState } from "react";
 import { errors, isPasswordValid } from "../../form/utils/validateForm";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useChangePassword } from "@/_hooks/auth";
+import VoteImage from "../../../../public/assets/vote.jpg";
 
 const ChangePassword = () => {
   const searchParams = useSearchParams();
@@ -54,7 +55,7 @@ const ChangePassword = () => {
     <main className={styles["container"]}>
       <div className={styles["img-container"]}>
         <Image
-          src="/assets/vote.jpg"
+          src={VoteImage}
           alt="vote-image"
           fill
           priority

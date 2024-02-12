@@ -8,6 +8,7 @@ import Form2 from "@/_components/authentication/register/Form2";
 import Confirm from "@/_components/authentication/register/Confirm";
 import Stepper from "@/_components/form/Stepper";
 import styles from "@/_shared/stylesheets/auth.module.css";
+import VoteImage from "../../../../public/assets/vote.jpg";
 
 const Register = () => {
   const [location, setLocation] = useState("form1");
@@ -21,7 +22,7 @@ const Register = () => {
       <FormProvider>
         <div className={styles["img-container"]}>
           <Image
-            src="/assets/vote.jpg"
+            src={VoteImage}
             alt="vote-image"
             fill
             priority
