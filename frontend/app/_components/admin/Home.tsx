@@ -32,26 +32,6 @@ const Home = () => {
             </Link>
           </li>
         </ul>
-
-        {/* <p>Editeaza: </p>
-        <ul>
-          <li>
-            <Link
-              href="/admin/edit"
-              target="_blank"
-            >
-              Profil candidati
-            </Link>
-          </li>
-          <li>
-            <Link
-              href="/admin/edit"
-              target="_blank"
-            >
-              Partid politic
-            </Link>
-          </li>
-        </ul> */}
         <p>
           Vezi lista de evenimente nepublicate:{" "}
           <Link
@@ -61,15 +41,6 @@ const Home = () => {
             aici.
           </Link>
         </p>
-        {/* <p>
-          Trimite invitatie pentru roluri de admin:{" "}
-          <Link
-            href="/admin/invitation"
-            target="_blank"
-          >
-            aici.
-          </Link>
-        </p> */}
       </div>
     </div>
   );

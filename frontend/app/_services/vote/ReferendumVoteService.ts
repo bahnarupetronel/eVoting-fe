@@ -7,7 +7,9 @@ class ReferendumVoteService {
   };
 
   getNumberOfVotes = async (electionId: number) => {
-    return await axios.get(`/api/referendum-vote?electionId=${electionId}`);
+    return await axios.get(
+      `/api/referendum-vote/results?electionId=${electionId}`
+    );
   };
 }
 
