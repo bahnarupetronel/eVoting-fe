@@ -9,7 +9,7 @@ class VoteService {
 
   getNumberOfVotes = async (vote: VotesRequestModel) => {
     return await axios.get(
-      `/api/vote?electionId=${vote.electionId}&candidateTypeId=${vote.candidateTypeId}&localityId=${vote.localityId}`
+      `/api/vote/results?electionId=${vote.electionId}&candidateTypeId=${vote.candidateTypeId}&localityId=${vote.localityId}`
     );
   };
 }
