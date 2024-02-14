@@ -1,15 +1,15 @@
 "use client";
 
+import { useState } from "react";
 import { Button } from "@mui/material";
-import styles from "./referendum.module.css";
 import { usePathname } from "next/navigation";
 import useCookies from "@/_hooks/useCookies";
-import ConfirmReferendumSelectionModal from "./ConfirmReferendumSelectionModal";
-import { useState } from "react";
+import ModalReferendumVote from "../modals/ModalReferendumVote";
 import { ReferendumVoteModel } from "@/_interfaces/referendumVoteModel";
 import { ReferendumOptionModel } from "@/_interfaces/referendumOption.model";
+import styles from "./voteCardReferendum.module.css";
 
-const OptionCardDisplay = ({
+const VoteCardReferendum = ({
   option,
   index,
   hasUserVotedResponse,
@@ -62,7 +62,7 @@ const OptionCardDisplay = ({
       >
         {getButtonText()}
       </Button>
-      <ConfirmReferendumSelectionModal
+      <ModalReferendumVote
         option={option}
         isModalOpen={isModalOpen}
         setIsModalOpen={setIsModalOpen}
@@ -71,4 +71,4 @@ const OptionCardDisplay = ({
     </div>
   );
 };
-export default OptionCardDisplay;
+export default VoteCardReferendum;

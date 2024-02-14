@@ -1,22 +1,20 @@
+.option-title {
+  margin: 0.5rem;
+  font-size: 3rem;
+}
+
 .disabled {
   opacity: 0.5;
   pointer-events: none;
 }
 
-.card-vote {
+.option {
+  border: 1px solid black;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 10px;
-  border: 1px solid black;
-  margin-top: 1rem;
-  width: 100%;
-}
-
-.title-candidate {
-  margin: 0;
-  word-break: break-all;
+  padding: 1rem;
 }
 
 .btn-card {

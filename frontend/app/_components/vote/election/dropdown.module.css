@@ -5,11 +5,6 @@
   color: black;
 }
 
-.container-cards {
-  display: grid;
-  grid-template-columns: 1fr;
-  margin: 0;
-}
 
 .container-dropdown {
   background-color: inherit;
@@ -44,11 +39,6 @@
   margin-top: 0;
 }
 
-.title-modal {
-  display: flex;
-  margin-bottom: 0;
-}
-
 .btn-dropdown {
   font-size: 16px;
   text-align: left;
@@ -57,11 +47,6 @@
 .icon {
   margin: auto 0;
   font-size: 2em;
-}
-
-.hr {
-  margin: 0 1.2rem;
-  border: 1px solid black;
 }
 
 .span {
@@ -108,17 +93,7 @@
   margin-top: 1rem;
 }
 
-@media only screen and (min-width: 650px) {
-  .container-cards {
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
-  }
-}
-
 @media only screen and (min-width: 800px) {
-  .container-cards {
-    grid-template-columns: 1fr 1fr 1fr;
-  }
 
   .title-dropdown {
     font-size: 1.1rem;
@@ -129,18 +104,4 @@
   .title-dropdown {
     font-size: 1.2rem;
   }
-}
-
-@media only screen and (min-width: 1280px) {
-  .container-cards {
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    gap: 30px;
-  }
-
-  .card {
-    margin-top: 2rem;
-  }
-}
-
-@media only screen and (min-width: 1580px) {
 }

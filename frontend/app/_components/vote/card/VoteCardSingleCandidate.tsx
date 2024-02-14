@@ -3,14 +3,15 @@
 import { Button } from "@mui/material";
 import styles from "./voteCard.module.css";
 import { useState } from "react";
-import ConfirmSelectionModal from "./ConfirmSelectionModal";
 import { CandidateModel } from "@/_interfaces/candidate.model";
 import { CandidateType } from "@/_interfaces/candidateType.model";
 import { useCookies } from "@/_hooks/useCookies";
 import { VoteModel } from "@/_interfaces/vote.model";
 import { usePathname } from "next/navigation";
+import ModalVote from "../modals/ModalVote";
+import IsLoadingComponent from "@/_shared/components/isLoading/IsLoadingComponent";
 
-const VoteCard = ({
+const VoteCardSingleCandidate = ({
   candidate,
   electionType,
   hasUserVotedResponse,
@@ -26,10 +27,9 @@ const VoteCard = ({
   const [isModalOpen, setIsModalOpen] = useState(false);
   const { getCookie } = useCookies();
   const role = getCookie("role");
-
   const vote: VoteModel = {
     electionId: electionId,
-    candidateId: candidate?.id,
+    politicalPartyId: candidate?.politicalParty.id,
     candidateTypeId: candidate?.candidateType.id,
   };
 
@@ -50,6 +50,10 @@ const VoteCard = ({
     else return "Ai votat";
   };
 
+  if (!candidate) {
+    return <IsLoadingComponent />;
+  }
+
   return (
     <div className={styles["card-vote"]}>
       <h2>{candidate?.politicalParty?.name}</h2>
@@ -62,7 +66,7 @@ const VoteCard = ({
       >
         {getButtonText()}
       </Button>
-      <ConfirmSelectionModal
+      <ModalVote
         electionType={electionType}
         candidate={candidate}
         isModalOpen={isModalOpen}
@@ -72,4 +76,4 @@ const VoteCard = ({
     </div>
   );
 };
-export default VoteCard;
+export default VoteCardSingleCandidate;

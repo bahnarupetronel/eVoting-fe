@@ -1,15 +1,15 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import styles from "./dropdown.module.css";
-import DropdownItems from "./DropdownItems";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
-import { useGetRegisteredCandidatesForUser } from "@/_hooks/electionCandidate";
 import { useHasUserVoted } from "@/_hooks/hasUserVoted";
-import ReferendumOptions from "@/_components/vote/referendum/ReferendumOptions";
 import { CandidateType } from "@/_interfaces/candidateType.model";
-const DropdownTypes = ({
+import ReferendumOptions from "../referendum/ReferendumOptions";
+import styles from "./dropdown.module.css";
+import OptionsFactory from "./OptionsFactory";
+
+const DropdownElectionTypes = ({
   types,
   electionId,
   isUserAllowedToVote,
@@ -20,11 +20,6 @@ const DropdownTypes = ({
 }) => {
   const [indexOpenedDropdown, setIndexOpenedDropdown] = useState(-1);
   const [type, setType] = useState(0);
-
-  const { isSuccess, data: candidates } = useGetRegisteredCandidatesForUser(
-    electionId,
-    type
-  );
 
   const hasUserVoted = {
     electionId: electionId,
@@ -82,11 +77,12 @@ const DropdownTypes = ({
               )}
             </button>
             {indexOpenedDropdown === index && (
-              <DropdownItems
+              <OptionsFactory
                 isUserAllowedToVote={isUserAllowedToVote}
                 hasUserVotedResponse={hasUserVotedResponse?.data}
                 electionType={electionType}
-                candidates={candidates?.data}
+                electionId={electionId}
+                type={type}
               />
             )}
           </div>
@@ -95,4 +91,4 @@ const DropdownTypes = ({
     </main>
   );
 };
-export default DropdownTypes;
+export default DropdownElectionTypes;

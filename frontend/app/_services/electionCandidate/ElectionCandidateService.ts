@@ -22,12 +22,21 @@ class ElectionCandidateService {
     );
   };
 
-  getRegisteredCandidates = async (
+  getRegisteredSingleCandidatesPerParty = async (
     electionId: string,
     candidateTypeId: number
   ) => {
     return await axios.get(
-      `/api/election-candidate/registered?electionId=${electionId}&candidateTypeId=${candidateTypeId}`
+      `/api/election-candidate/registered/single?electionId=${electionId}&candidateTypeId=${candidateTypeId}`
+    );
+  };
+
+  getRegisteredMultipleCandidatesPerParty = async (
+    electionId: string,
+    candidateTypeId: number
+  ) => {
+    return await axios.get(
+      `/api/election-candidate/registered/multiple?electionId=${electionId}&candidateTypeId=${candidateTypeId}`
     );
   };
 }

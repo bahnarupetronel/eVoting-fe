@@ -26,6 +26,7 @@ const FilterLocalities = ({
   const filterLocalitiesByCounty = (): void => {
     if (filters.county && countiesFilterOptions.indexOf(filters.county) >= 0) {
       const county = counties.find((county) => county.name == filters.county);
+      
       let filteredLocalities = localities?.filter(
         (locality) => locality.county === county.name
       );
@@ -35,6 +36,7 @@ const FilterLocalities = ({
           label: locality?.name,
         })
       );
+
       setLocalitiesFilterOptions(filtered);
     }
   };
