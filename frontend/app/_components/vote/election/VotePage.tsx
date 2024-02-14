@@ -4,13 +4,13 @@ import { usePathname } from "next/navigation";
 import globalStyles from "@/_shared/stylesheets/global.module.css";
 import ElectionTitle from "@/_components/election/ElectionTitle";
 import { useGetElectionAndTypes } from "@/_hooks/elections";
-import DropdownTypes from "./DropdownTypes";
+import DropdownElectionTypes from "./DropdownElectionTypes";
 import UserAddressTitle from "./UserAddressTitle";
 import { useGetIsUserAllowedToVote } from "@/_hooks/user";
 import HeaderUserNotAllowedToVote from "./HeaderUserNotAllowedToVote";
 import NotFoundPage from "@/_components/notFound/NotFoundPage";
 
-const VoteEvent = () => {
+const VotePage = () => {
   const pathname = usePathname();
   const electionId: string = pathname.split("/")[2];
   const route: string = pathname.split("/")[1];
@@ -41,7 +41,7 @@ const VoteEvent = () => {
           <h3>Sunteti de acord cu modificarea acestei legi?</h3>
         </div>
       )}
-      <DropdownTypes
+      <DropdownElectionTypes
         types={data.data?.candidateTypes}
         electionId={electionId}
         isUserAllowedToVote={isUserAllowedToVote?.data}
@@ -49,4 +49,4 @@ const VoteEvent = () => {
     </div>
   );
 };
-export default VoteEvent;
+export default VotePage;

@@ -40,16 +40,16 @@ const useGetRegisteredCandidates = (
   });
 };
 
-const useGetRegisteredCandidatesForUser = (
+const useGetRegisteredSingleCandidatesPerParty = (
   electionId: string,
   candidateTypeId: number
 ) => {
   return useQuery({
     queryKey: [
-      `election-candidate/registered?electionId=${electionId}&candidateTypeId=${candidateTypeId}`,
+      `election-candidate/registered/single?electionId=${electionId}&candidateTypeId=${candidateTypeId}`,
     ],
     queryFn: () =>
-      ElectionCandidateService.getRegisteredCandidates(
+      ElectionCandidateService.getRegisteredSingleCandidatesPerParty(
         electionId,
         candidateTypeId
       ),
@@ -58,9 +58,29 @@ const useGetRegisteredCandidatesForUser = (
   });
 };
 
+const useGetRegisteredMultipleCandidatesPerParty = (
+  electionId: string,
+  candidateTypeId: number
+) => {
+  return useQuery({
+    queryKey: [
+      `election-candidate/registered/multiple?electionId=${electionId}&candidateTypeId=${candidateTypeId}`,
+    ],
+    queryFn: () =>
+      ElectionCandidateService.getRegisteredMultipleCandidatesPerParty(
+        electionId,
+        candidateTypeId
+      ),
+    retry: 0,
+    enabled: candidateTypeId > 0,
+  });
+};
+
+
 export {
   useRegisterCandidateToEvent,
   useDeleteCandidateFromEvent,
   useGetRegisteredCandidates,
-  useGetRegisteredCandidatesForUser,
+  useGetRegisteredSingleCandidatesPerParty,
+  useGetRegisteredMultipleCandidatesPerParty
 };

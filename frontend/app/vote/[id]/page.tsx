@@ -1,6 +1,6 @@
-import VoteEvent from "@/_components/vote/election/VoteEvent";
+import VotePage from "@/_components/vote/election/VotePage";
 
 const page = () => {
-  return <VoteEvent />;
+  return <VotePage />;
 };
 export default page;

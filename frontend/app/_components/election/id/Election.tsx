@@ -90,7 +90,7 @@ const Election = () => {
 
       {hasCandidates && (
         <>
-          <p>Vezi candidatii din localitatea: </p>
+          <p>Vezi candidatii inregistrati din localitatea: </p>
           <FilterLocalities handleLocalityChange={handleLocalityChange} />
         </>
       )}

@@ -9,14 +9,14 @@ import {
 import "react-notifications/lib/notifications.css";
 import { NotificationManager } from "react-notifications";
 import { usePathname } from "next/navigation";
-import styles from "./dropdown.module.css";
+import styles from "./modal.module.css";
 import { CandidateModel } from "@/_interfaces/candidate.model";
 import { CandidateType } from "@/_interfaces/candidateType.model";
-import UserAddressTitle from "./UserAddressTitle";
+import UserAddressTitle from "../election/UserAddressTitle";
 import { useVoteCandidate } from "@/_hooks/vote";
 import { VoteModel } from "@/_interfaces/vote.model";
 
-const ConfirmSelectionModal = ({
+const ModalVote = ({
   electionType,
   isModalOpen,
   setIsModalOpen,
@@ -97,4 +97,4 @@ const ConfirmSelectionModal = ({
     </Dialog>
   );
 };
-export default ConfirmSelectionModal;
+export default ModalVote;

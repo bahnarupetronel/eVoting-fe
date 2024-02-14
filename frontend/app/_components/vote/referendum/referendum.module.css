@@ -1,26 +1,7 @@
-.option {
-  border: 1px solid black;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 1rem;
-}
-
 .container {
   display: grid;
   grid-template-columns: 1fr;
   gap: 1rem;
-}
-
-.option-title {
-  margin: 0.5rem;
-  font-size: 3rem;
-}
-
-.disabled {
-  opacity: 0.5;
-  pointer-events: none;
 }
 
 .card-vote {
@@ -36,10 +17,6 @@
 
 .title-candidate {
   margin: 0;
-}
-
-.btn-card {
-  width: 100%;
 }
 
 @media only screen and (min-width: 650px) {

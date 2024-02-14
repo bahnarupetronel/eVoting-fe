@@ -8,23 +8,26 @@ import {
 } from "@mui/material";
 import "react-notifications/lib/notifications.css";
 import { NotificationManager } from "react-notifications";
-import styles from "./referendumModal.module.css";
-import { useVoteReferendum } from "@/_hooks/voteReferendum";
-import { ReferendumVoteModel } from "@/_interfaces/referendumVoteModel";
-import { ReferendumOptionModel } from "@/_interfaces/referendumOption.model";
+import styles from "./modal.module.css";
+import { CandidateType } from "@/_interfaces/candidateType.model";
+import UserAddressTitle from "../election/UserAddressTitle";
+import { useVoteCandidate } from "@/_hooks/vote";
+import { VoteModel } from "@/_interfaces/vote.model";
 
-const ConfirmReferendumSelectionModal = ({
+const ModalMultipleCandidates = ({
+  electionType,
   isModalOpen,
   setIsModalOpen,
-  option,
+  politicalPartyName,
   vote,
 }: {
-  option: ReferendumOptionModel;
+  politicalPartyName: string;
+  electionType: CandidateType;
   isModalOpen: boolean;
   setIsModalOpen: Function;
-  vote: ReferendumVoteModel;
+  vote: VoteModel;
 }) => {
-  const mutation = useVoteReferendum();
+  const mutation = useVoteCandidate();
 
   const handleClose = () => {
     setIsModalOpen(false);
@@ -59,14 +62,18 @@ const ConfirmReferendumSelectionModal = ({
       aria-describedby="alert-dialog-description"
     >
       <DialogTitle id="alert-dialog-title">
-        Confirmati selectia votului
+        Confirmati selectia votului pentru Alegerile{" "}
+        {electionType?.electionType.name}
       </DialogTitle>
       <hr className={styles["hr"]} />
       <DialogContent>
-        <h3 className={styles["title-modal"]}>Referendum</h3>
+        <h3 className={styles["title-modal"]}>
+          <UserAddressTitle electionType={electionType?.electionType} />
+        </h3>
         <DialogContentText id="alert-dialog-description">
-          Ati ales varianta {option?.optionName}. Votul nu mai poate fi
-          schimbat. Trimiteti mai departe?
+          Ati ales partidul
+          {" " + politicalPartyName}. Votul nu mai poate fi schimbat. Trimiteti
+          mai departe?
         </DialogContentText>
       </DialogContent>
       <DialogActions>
@@ -87,4 +94,4 @@ const ConfirmReferendumSelectionModal = ({
     </Dialog>
   );
 };
-export default ConfirmReferendumSelectionModal;
+export default ModalMultipleCandidates;

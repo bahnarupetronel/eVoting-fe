@@ -1,0 +1,9 @@
+.hr {
+  margin: 0 1.2rem;
+  border: 1px solid black;
+}
+
+.title-modal {
+  display: flex;
+  margin-bottom: 0;
+}

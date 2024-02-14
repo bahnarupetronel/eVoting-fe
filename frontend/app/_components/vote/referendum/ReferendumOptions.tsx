@@ -1,6 +1,6 @@
 import { useGetReferendumOptions } from "@/_hooks/referendum";
 import styles from "./referendum.module.css";
-import OptionCardDisplay from "./OptionCardDisplay";
+import VoteCardReferendum from "../card/VoteCardReferendum";
 import { ReferendumOptionModel } from "@/_interfaces/referendumOption.model";
 
 const ReferendumOptions = ({ hasUserVotedResponse, isUserAllowedToVote }) => {
@@ -12,7 +12,7 @@ const ReferendumOptions = ({ hasUserVotedResponse, isUserAllowedToVote }) => {
         {isSuccess &&
           referendumOptions?.data.map(
             (option: ReferendumOptionModel, index) => (
-              <OptionCardDisplay
+              <VoteCardReferendum
                 isUserAllowedToVote={isUserAllowedToVote}
                 hasUserVotedResponse={hasUserVotedResponse}
                 key={option?.optionId}

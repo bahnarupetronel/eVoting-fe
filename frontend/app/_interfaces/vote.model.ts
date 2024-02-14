@@ -1,5 +1,5 @@
 export interface VoteModel {
   electionId: string;
-  candidateId: string;
+  politicalPartyId: number;
   candidateTypeId: number;
 }
